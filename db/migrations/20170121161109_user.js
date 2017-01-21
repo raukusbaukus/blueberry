@@ -9,7 +9,7 @@ exports.up = function(knex, Promise) {
     users.string('location', 255);
     users.enu('remote_irl', ['remote', 'irl', 'both']).defaultTo('both').notNullable();
     users.string('phone', 255);
-    users.boolean('email_notifications');
+    users.enu('notifications', ['email', 'phone', 'both']);
   })
 };
 
