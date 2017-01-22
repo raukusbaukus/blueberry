@@ -45,8 +45,56 @@ exports.seed = function(knex, Promise) {
         }),
         knex('events_users').insert({
           id: 7,
-          'event': 2,
-          user: 1,
+          'event': 5,
+          user: 5,
+          role: 'student'
+        }),
+        knex('events_users').insert({
+          id: 8,
+          'event': 5,
+          user: 6,
+          role: 'student'
+        }),
+        knex('events_users').insert({
+          id: 9,
+          'event': 6,
+          user: 5,
+          role: 'student'
+        }),
+        knex('events_users').insert({
+          id: 10,
+          'event': 5,
+          user: 7,
+          role: 'student'
+        }),
+        knex('events_users').insert({
+          id: 11,
+          'event': 7,
+          user: 7,
+          role: 'student'
+        }),
+        knex('events_users').insert({
+          id: 12,
+          'event': 7,
+          user: 5,
+          role: 'student'
+        }),
+        knex('events_users').insert({
+          id: 13,
+          'event': 7,
+          user: 6,
+          role: 'student'
+        }),
+        knex('events_users').insert({
+          id: 14,
+          'event': 6,
+          user: 6,
+          role: 'student'
+        }),
+        knex('events_users').insert({
+          id: 15,
+          'event': 6,
+          user: 7,
           role: 'student'
         })
       ]);
