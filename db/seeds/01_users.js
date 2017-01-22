@@ -46,6 +46,36 @@ exports.seed = function(knex, Promise) {
                     location: 'Denver, CO',
                     remote_irl: 'both',
                     phone: '706-631-9370',
+                }),
+                knex('users').insert({
+                    id: 5,
+                    display_name: 'Sarah D Healey',
+                    bio: 'I am an afficianado of eveything. I know a lot about a ton. Let me teach you something!',
+                    email: 'patrauls@gmail.com',
+                    password: 'swordfish',
+                    location: 'Denver, CO',
+                    remote_irl: 'both',
+                    phone: '706-631-9370',
+                }),
+                knex('users').insert({
+                    id: 6,
+                    display_name: 'Charity Rauls',
+                    bio: 'I am an afficianado of eveything. I know a lot about a ton. Let me teach you something!',
+                    email: 'patrauls@gmail.com',
+                    password: 'swordfish',
+                    location: 'Denver, CO',
+                    remote_irl: 'both',
+                    phone: '706-631-9370',
+                }),
+                knex('users').insert({
+                    id: 7,
+                    display_name: 'Nmuta Jones',
+                    bio: 'I am an afficianado of eveything. I know a lot about a ton. Let me teach you something!',
+                    email: 'patrauls@gmail.com',
+                    password: 'swordfish',
+                    location: 'Denver, CO',
+                    remote_irl: 'both',
+                    phone: '706-631-9370',
                 })
             ]);
         });

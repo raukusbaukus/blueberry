@@ -39,6 +39,12 @@ exports.seed = function(knex, Promise) {
                     title: 'Object Oriented Programming',
                     popularity: 0,
                     user: 1
+                }),
+                knex('tags').insert({
+                    id: 7,
+                    title: 'Ruby',
+                    popularity: 0,
+                    user: 1
                 })
             ]);
         });
