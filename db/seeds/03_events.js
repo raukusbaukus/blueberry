@@ -11,12 +11,52 @@ exports.seed = function(knex, Promise) {
                     start: '2017-01-28 12:00:00',
                     end: '2017-01-28 13:00:00',
                     description: 'The awesomest event ever',
-                    skill_level: 'beginner',
+                    skill_level: 'advanced',
                     capacity: 50
                 }),
                 knex('events').insert({
                     id: 2,
                     title: 'JavaScript',
+                    user: 2,
+                    start: '2017-01-27 12:00:00',
+                    end: '2017-01-27 13:00:00',
+                    description: 'The awesomest event ever',
+                    skill_level: 'beginner',
+                    capacity: 50
+                }),
+                knex('events').insert({
+                    id: 3,
+                    title: 'PHP',
+                    user: 3,
+                    start: '2017-01-28 15:00:00',
+                    end: '2017-01-28 16:00:00',
+                    description: 'The awesomest event ever',
+                    skill_level: 'beginner',
+                    capacity: 50
+                }),
+                knex('events').insert({
+                    id: 4,
+                    title: 'Loops',
+                    user: 4,
+                    start: '2017-01-29 12:00:00',
+                    end: '2017-01-29 13:00:00',
+                    description: 'The awesomest event ever',
+                    skill_level: 'beginner',
+                    capacity: 50
+                }),
+                knex('events').insert({
+                    id: 5,
+                    title: 'Lessons in Object Oriented Programming',
+                    user: 1,
+                    start: '2017-01-25 18:30:00',
+                    end: '2017-01-25 20:00:00',
+                    description: 'The awesomest event ever',
+                    skill_level: 'intermediate',
+                    capacity: 50
+                }),
+                knex('events').insert({
+                    id: 6,
+                    title: 'Intro to React and Redux',
                     user: 1,
                     start: '2017-01-28 12:00:00',
                     end: '2017-01-28 13:00:00',
@@ -25,9 +65,9 @@ exports.seed = function(knex, Promise) {
                     capacity: 50
                 }),
                 knex('events').insert({
-                    id: 3,
+                    id: 7,
                     title: 'NPM',
-                    user: 1,
+                    user: 4,
                     start: '2017-01-28 12:00:00',
                     end: '2017-01-28 13:00:00',
                     description: 'The awesomest event ever',
