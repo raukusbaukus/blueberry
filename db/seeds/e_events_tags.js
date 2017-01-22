@@ -6,35 +6,35 @@ exports.seed = function(knex, Promise) {
                 // Inserts seed entries
                 knex('events_tags').insert({
                     event: 2,
-                    tag: 2;
+                    tag: 2
                 }),
                 knex('events_tags').insert({
                     event: 2,
-                    tag: 3;
+                    tag: 3
                 }),
                 knex('events_tags').insert({
                     event: 2,
-                    tag: 4;
+                    tag: 4
                 }),
                 knex('events_tags').insert({
                     event: 3,
-                    tag: 3;
+                    tag: 3
                 }),
                 knex('events_tags').insert({
                     event: 3,
-                    tag: 1;
+                    tag: 1
                 }),
                 knex('events_tags').insert({
                     event: 3,
-                    tag: 5;
+                    tag: 5
                 }),
                 knex('events_tags').insert({
                     event: 1,
-                    tag: 3;
+                    tag: 3
                 }),
                 knex('events_tags').insert({
                     event: 3,
-                    tag: 6;
+                    tag: 6
                 })
             ]);
         });

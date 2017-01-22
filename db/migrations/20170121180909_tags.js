@@ -3,7 +3,8 @@ exports.up = function(knex, Promise) {
     tags.increments('id');
     tags.string('title', 255);
     tags.integer('popularity').notNullable().defaultTo(0);
-    tags.integer('user').references('users.id');
+    tags.integer('user');
+    tags.foreign('user').references('users.id').onDelete('cascade');
   })
 };
 

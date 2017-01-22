@@ -8,7 +8,7 @@ exports.seed = function(knex, Promise) {
                     id: 1,
                     title: 'Node',
                     user: 1,
-                    start: '2017-01-28 1200:00',
+                    start: '2017-01-28 12:00:00',
                     end: '2017-01-28 13:00:00',
                     description: 'The awesomest event ever',
                     skill_level: 'beginner',

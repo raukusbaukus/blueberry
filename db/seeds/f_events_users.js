@@ -20,32 +20,32 @@ exports.seed = function(knex, Promise) {
           role: 'student'
         }),
         knex('events_users').insert({
-          id: 2,
+          id: 3,
           'event': 1,
           user: 4,
           role: 'student'
         }),
         knex('events_users').insert({
-          id: 2,
+          id: 4,
           'event': 3,
           user: 4,
           role: 'teacher'
         }),
         knex('events_users').insert({
-          id: 2,
+          id: 5,
           'event': 1,
           user: 1,
           role: 'student'
         }),
         knex('events_users').insert({
-          id: 2,
+          id: 6,
           'event': 3,
           user: 1,
           role: 'student'
         }),
         knex('events_users').insert({
-          id: 3,
-          'event': 4,
+          id: 7,
+          'event': 2,
           user: 1,
           role: 'student'
         })

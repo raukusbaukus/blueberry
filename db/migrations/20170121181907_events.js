@@ -3,7 +3,7 @@ exports.up = function(knex, Promise) {
   return knex.schema.createTable('events', function(events) {
     events.increments('id');
     events.string('title').notNullable();
-    events.integer('user').references('users.id').notNullable();
+    events.integer('user').notNullable().references('users.id').onDelete('cascade');
     events.dateTime('start').notNullable();
     events.dateTime('end').notNullable();
     events.text('description');
