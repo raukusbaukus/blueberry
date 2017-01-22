@@ -1,7 +1,6 @@
 # Blueberry
 An app for coordinating interest based user learning and teaching
 
-
 ##API
 here is the object passed inside an array as the result of getting the `./` route
 ```js
@@ -23,3 +22,5 @@ event = {
   }
 }
 ```
+
+##Technologies
