@@ -23,4 +23,39 @@ event = {
 }
 ```
 
-##Technologies
+##Github merging:
+
+You should always be working on a feature branch, not on master or staging.
+
+whenever you start a new feature branch, do the following from the CLI to setup your branch:
+```
+git checkout -b feature_name
+git push --set-upstream-to origin feature_name
+```
+
+after that, when you are pushing changes, just do:
+```
+git add .
+git status
+git commit -m 'commit message'
+git push
+```
+then, on github.com perform a pull request from feature_name branch to the staging branch
+
+we only merge from staging into master in preparation to deploy
+
+##Keeping your database up-to-date:
+
+When you need your current local branch updated with a new version of the database on staging, follow these steps:
+
+From the CLI, be in the root /blueberry directory and do:
+```
+dropdb blueberry;
+createdb blueberry;
+git branch --set-upstream-to staging
+git pull
+git branch --set-upstream-to feature_name
+cd db
+knex migrate:latest
+knex seed:run
+```
