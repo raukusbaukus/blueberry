@@ -4,7 +4,8 @@ exports.up = function(knex, Promise) {
         events_users.integer('event').notNullable().references('events.id').onDelete('cascade');
         events_users.integer('user').notNullable().references('users.id').onDelete('cascade');
         events_users.enu('role', ['student', 'teacher']).notNullable();
-        events_users.enu('rating', [1, 2, 3, 4, 5]);
+        events_users.enu('event_rating', [1, 2, 3, 4, 5]);
+        events_users.enu('user_rating', [1, 2, 3, 4, 5]);
         events_users.timestamp('timestamp').defaultTo(knex.fn.now());
         events_users.text('review');
         events_users.unique(['event', 'user', 'role']);
