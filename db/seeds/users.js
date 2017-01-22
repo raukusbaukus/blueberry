@@ -38,7 +38,7 @@ exports.seed = function(knex, Promise) {
                     notifications: 'phone'
                 }),
                 knex('users').insert({
-                    id: 3,
+                    id: 4,
                     display_name: 'Patrick Rauls',
                     bio: 'I am an afficianado of eveything. I know a lot about a ton. Let me teach you something!',
                     email: 'patrauls@gmail.com',
