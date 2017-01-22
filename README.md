@@ -33,7 +33,7 @@ git checkout -b feature_name
 git push --set-upstream-to origin feature_name
 
 after that, when you are pushing changes, just do:
-=======
+
 ```
 git checkout -b feature_name
 git push --set-upstream-to origin feature_name
@@ -46,8 +46,6 @@ git status
 git commit -m 'commit message'
 git push
 ```
->>>>>>> 9f1fd5f5de9e44ee481fb529999ce2676d9af200
-then, on github.com perform a pull request from feature_name branch to the staging branch
 
 we only merge from staging into master in preparation to deploy
 
