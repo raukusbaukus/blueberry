@@ -8,7 +8,8 @@ exports.seed = function(knex, Promise) {
           'event': 1,
           user: 2,
           role: 'student',
-          rating: 3,
+          event_rating: 3,
+          user_rating: 5,
           review: 'Meh. It was ok.'
         }),
         knex('events_users').insert({

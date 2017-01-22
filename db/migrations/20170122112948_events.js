@@ -8,6 +8,7 @@ exports.up = function(knex, Promise) {
     events.text('description');
     events.enu('skill_level', ['beginner', 'intermediate', 'advanced']);
     events.integer('capacity').notNullable();
+    events.decimal('rating', 2, 1);
   });
 };
 
