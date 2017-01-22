@@ -8,5 +8,7 @@ router.get('/', (req, res, next) => {
         console.log(values)
     }).catch(err => {
         console.error(err)
+    }).finally(() => {
+      connect.destroy();
     });
 });
