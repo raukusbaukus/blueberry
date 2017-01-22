@@ -9,6 +9,7 @@ exports.up = function(knex, Promise) {
     users.enu('remote_irl', ['remote', 'irl', 'both']).defaultTo('both').notNullable();
     users.string('phone', 255);
     users.enu('notifications', ['email', 'phone', 'both']);
+    users.integer('xp').notNullable().defaultTo(0);
     users.decimal('rating', 2, 1);
   })
 };
