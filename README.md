@@ -23,7 +23,7 @@ event = {
 }
 ```
 
-##Github merging:
+##Github feature branch guidelines:
 
 You should always be working on a feature branch, not on master or staging.
 
