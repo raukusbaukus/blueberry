@@ -1,5 +1,6 @@
 # Blueberry
-An app for coordinating interest based user learning and teaching
+####Learn From Each Other
+blueberry makes it easy for users to coordinate learning from each other, whether on opposite sides of the world or at the local cafe.
 
 ##API
 here is the object passed inside an array as the result of getting the `./` route
