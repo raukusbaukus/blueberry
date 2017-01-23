@@ -7,7 +7,7 @@ here is the object passed inside an array as the result of getting the `./` rout
 event = {
   title: 'String Theory',
   location: {
-    title: 'Galvanize',
+    venue: 'Galvanize',
     address: '1644 Platte St. Level 4',
     area: 'Denver, CO'
   },
@@ -17,9 +17,13 @@ event = {
   host: {
     avatar: 'https://en.wikipedia.org/wiki/Avatar_(computing)#/media/File:Avatar_girl_face.png',
     display_name: 'Anita Grung',
+    bio: 'OMG I am so awesome at everything',
     rating: 4.9,
     xp: 147
-  }
+  },
+  description: 'An Introduction to Multiverse',
+  skill_level: 'beginner',
+  capacity: 100
 }
 ```
 

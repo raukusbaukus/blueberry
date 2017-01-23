@@ -30,7 +30,7 @@ router.get('/', (req, res, next) => {
                 }
                 events.push(event);
             });
-            res.render('index', events));
+            res.render('index', {'events': events});
         }).catch(err => {
             console.error(err)
             res.status(400).send('hey!' + err);
