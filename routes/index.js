@@ -1,9 +1,15 @@
-var express = require('express');
-var router = express.Router();
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+const express = require('express'),
+    router = express.Router(),
+    knex = require('knex'),
+    connect = knex(require('../db/knexfile')[process.env.NODE_ENV]);
+
+router.get('/', (req, res, next) => {
+    return connect.select('*').then(values => {
+        console.log(values)
+    }).catch(err => {
+        console.error(err)
+    }).finally(() => {
+      connect.destroy();
+    });
 });
-
-module.exports = router;
