@@ -28,7 +28,7 @@ app.get('/', (req, res) => {
 app.get('/landing', (req, res) => {
 
 	// var html = new EJS({url: 'index.ejs'}).render();
-	res.render('../views/index.ejs');
+	res.render('../views/index.ejs', {test: 'blabla'});
 	console.log("Hello!");
 
   // knex.select('*').from('events').then((payload) => {
