@@ -17,10 +17,8 @@ app.listen(arg, function() {
 });
 
 // app.get('/landing', (req, res) => {
-
 //     // var html = new EJS({url: 'index.ejs'}).render();
 //     res.render('../views/index.ejs');
-
 //     // knex.select('*').from('events').then((payload) => {
 //     //   if (payload.length > 0) {
 //     //     res.status(200).send(payload); //JSON.stringify(payload));
