@@ -20,7 +20,6 @@ app.get('/landing', (req, res) => {
 
     // var html = new EJS({url: 'index.ejs'}).render();
     res.render('../views/index.ejs');
-    console.log("Hello!");
 
     // knex.select('*').from('events').then((payload) => {
     //   if (payload.length > 0) {
