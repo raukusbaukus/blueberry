@@ -5,25 +5,25 @@ An app for coordinating interest based user learning and teaching
 here is the object passed inside an array as the result of getting the `./` route
 ```js
 event = {
-  title: 'String Theory',
+  title: 'String Theory',                     //event.title
   location: {
-    venue: 'Galvanize',
-    address: '1644 Platte St. Level 4',
-    area: 'Denver, CO'
+    venue: 'Galvanize',                       //event.location.venue
+    address: '1644 Platte St. Level 4',       //event.location.address
+    area: 'Denver, CO'                        //event.location.area
   },
-  start: '2018-01-08 18:00:00',
-  end: '2018-01-08 20:00:00',
-  tags: ['Astronomy', 'Physics'],
+  start: '2018-01-08 18:00:00',               //event.start
+  end: '2018-01-08 20:00:00',                 //event.end
+  tags: ['Astronomy', 'Physics'],             //event.tag
   host: {
-    avatar: 'https://en.wikipedia.org/wiki/Avatar_(computing)#/media/File:Avatar_girl_face.png',
-    display_name: 'Anita Grung',
-    bio: 'OMG I am so awesome at everything',
-    rating: 4.9,
-    xp: 147
+    avatar: http://tinyurl.com/jgb86vs        //event.host.avatar
+    display_name: 'Anita Grung',              //event.host.display_name
+    bio: 'OMG I am so awesome at everything', //event.host.bio
+    rating: 4.9,                              //event.host.rating
+    xp: 147                                   //event.host.xp
   },
-  description: 'An Introduction to Multiverse',
-  skill_level: 'beginner',
-  capacity: 100
+  description: 'Intro to Multiverse',         //event.description
+  skill_level: 'beginner',                    //event.skill_level
+  capacity: 100                               //event.capacity
 }
 ```
 
