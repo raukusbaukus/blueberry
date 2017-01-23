@@ -6,6 +6,7 @@ const env = 'development',
   module.exports = {
     get_events() {
       return connect.select(
+        'events.id',
         'events.title',
         'events.venue',
         'events.address',
