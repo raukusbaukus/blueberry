@@ -6,7 +6,6 @@ router.get('/', (req, res, next) => {
   queries.get_events()
     .then(values => {
       let events = [];
-      //
       queries.get_tags()
         .then(tag_values => {
           let tags = [];
@@ -45,15 +44,17 @@ router.get('/', (req, res, next) => {
             events.push(event);
           });
           res.render('index', {
-            'events': events
-        });
-      }).catch(err => {
-          console.error(err)
-          res.status(400).send('hey!' + err);
+            events: events
+          });
         })
-      }).catch(err => {
+        .catch(err => {
+          console.error(err)
+          res.status(500).send(err);
+        })
+    })
+    .catch(err => {
       console.error(err)
-      res.status(400).send('hey!' + err);
+      res.status(500).send(err);
     });
 });
 

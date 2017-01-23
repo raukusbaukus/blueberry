@@ -5,9 +5,8 @@ const env = 'development',
 
 module.exports = {
   get_tags() {
-    return connect.select(
-        'event', 'tag', 'title'
-      ).from('events_tags')
+    return connect.select('event', 'tag', 'title')
+      .from('events_tags')
       .innerJoin('tags', 'events_tags.tag', 'tags.id')
     connect.destroy();
   },
@@ -27,10 +26,9 @@ module.exports = {
         'users.xp',
         'events.description',
         'events.skill_level'
-      ).from('events')
+      )
+      .from('events')
       .innerJoin('users', 'events.user', 'users.id')
-      // .innerJoin('events_tags', 'events.id', 'events_tags.event')
-      // .innerJoin('tags', 'events_tags.tag', 'tags.id')
     connect.destroy();
   }
 }
