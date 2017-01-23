@@ -34,7 +34,7 @@ router.get('/', (req, res, next) => {
                 display_name: value.display_name,
                 bio: value.bio,
                 rating: value.rating,
-                xp: value.xp,
+                xp: value.xp ? value.xp : 'new'
               },
               description: value.description,
               skill_level: value.skill_level,
