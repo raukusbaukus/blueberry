@@ -10,15 +10,15 @@ router.get('/', (req, res, next) => {
                 let event = {
                     title: value.title,
                     location: {
-                        // title: value.venue,
-                        // address: value.address,
-                        // area: value.area
+                        title: value.venue,
+                        address: value.address,
+                        area: value.area
                     },
                     start: value.start,
                     end: value.end,
                     tags: value.tag,
                     host: {
-                        // avatar: '',
+                        avatar: value.avatar,
                         display_name: value.display_name,
                         bio: value.bio,
                         rating: value.rating,
@@ -29,8 +29,8 @@ router.get('/', (req, res, next) => {
                 }
                 events.push(event);
             });
-            console.log(values);
-            res.status(200).send('hey!' + JSON.stringify(events));
+            console.log(events);
+            res.render('index', {events: events});
         }).catch(err => {
             console.error(err)
             res.status(400).send('hey!' + err);
