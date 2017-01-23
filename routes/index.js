@@ -16,7 +16,7 @@ router.get('/', (req, res, next) => {
                     },
                     start: value.start,
                     end: value.end,
-                    tags: value.tag,
+                    tags: [],
                     host: {
                         avatar: value.avatar,
                         display_name: value.display_name,
