@@ -4,13 +4,37 @@ const express = require('express'),
 
 router.get('/', (req, res, next) => {
     queries.get_events()
-    .then(values => {
-      let events = JSON.stringify(values);
-      res.status(200).send('hey!' + events);
-    }).catch(err => {
-        console.error(err)
-        res.status(400).send('hey!' + err);
-    })
+        .then(values => {
+            let events = [];
+            values.forEach(value => {
+                let event = {
+                    title: value.title,
+                    location: {
+                        // title: value.venue,
+                        // address: value.address,
+                        // area: value.area
+                    },
+                    start: value.start,
+                    end: value.end,
+                    // tags: value.tag,
+                    host: {
+                        // avatar: '',
+                        display_name: value.display_name,
+                        bio: value.bio,
+                        rating: value.rating,
+                        xp: value.xp,
+                    },
+                    description: value.description,
+                    skill_level: value.skill_level
+                }
+                events.push(event);
+            });
+            console.log(values);
+            res.status(200).send('hey!' + JSON.stringify(events));
+        }).catch(err => {
+            console.error(err)
+            res.status(400).send('hey!' + err);
+        })
 });
 
 module.exports = router;
