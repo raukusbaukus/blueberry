@@ -6,6 +6,9 @@ exports.up = function(knex, Promise) {
     events.dateTime('start').notNullable();
     events.dateTime('end').notNullable();
     events.text('description');
+    events.string('venue', 255);
+    events.string('address', 255).notNullable();
+    events.string('area', 255).notNullable();
     events.enu('skill_level', ['beginner', 'intermediate', 'advanced']);
     events.integer('capacity').notNullable();
     events.decimal('rating', 2, 1);

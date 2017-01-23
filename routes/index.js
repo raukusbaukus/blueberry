@@ -25,12 +25,12 @@ router.get('/', (req, res, next) => {
                         xp: value.xp,
                     },
                     description: value.description,
-                    skill_level: value.skill_level
+                    skill_level: value.skill_level,
+                    capacity: value.capacity
                 }
                 events.push(event);
             });
-            console.log(events);
-            res.render('index', {events: events});
+            res.render('index', {'events': events});
         }).catch(err => {
             console.error(err)
             res.status(400).send('hey!' + err);
