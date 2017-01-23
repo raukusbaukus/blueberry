@@ -13,6 +13,8 @@
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+	<!-- SO EJS CAN USE JS -->
+	<!-- <script type="text/javascript" src="ejs_production.js"></script> -->
 	<title>BlueBerry</title>
 </head>
 
@@ -58,13 +60,17 @@
 		<!-- EVENTS LIST -->
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-md-12">
-					<ul class="list-group">   
+				<div class="col-md-12"> 
+				<ul class="list-group">
+				<% events.forEach(event => { %>
+					   
+		   				<li class="list-group-item active"> <%= event.title %> </li>
+		   				<li class="list-group-item"> <%= event.location.venue %> </li>
 		   				<li class="list-group-item"> <%= event.location.address %> </li>
-		   				<li class="list-group-item"> <%= event.location.title %> </li>
 		   				<li class="list-group-item"> <%= event.location.area %> </li>
 		   				<li class="list-group-item"> <%= event.start %> </li>
 		   				<li class="list-group-item"> <%= event.skill_level %> </li>
+		   				<li class="list-group-item"> <%= event.capacity %> </li>
 		   				<li class="list-group-item"> <%= event.end %> </li>
 		   				<li class="list-group-item"> <%= event.description %> </li>
 		   				<li class="list-group-item"> <%= event.tags %> </li>
@@ -73,28 +79,15 @@
 		   				<li class="list-group-item"> <%= event.host.rating %> </li>
 		   				<li class="list-group-item"> <%= event.host.xp %> </li>
 		   				<li class="list-group-item"> <%= event.host.bio %> </li>
-					</ul>
+					
+				<% }); %>
+				</ul>
 				</div>
 			</div>
 		</div>
 
-		   <!-- <p> <%= lyric %> </p>
-		   <img src ='<%= image %>' >
-		   <br>
-		   <a href= <%= nextPage %> >Next</a> -->
-
-
-
-
-
-
 
 	</main>
-
-
-
-
-
 
 
 
