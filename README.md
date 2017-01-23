@@ -12,9 +12,9 @@ event = {
     address: '1644 Platte St. Level 4',       //event.location.address
     area: 'Denver, CO'                        //event.location.area
   },
-  date: '1/08',                         //event.date
-  start: '6:00pm',                          //event.start
-  end: '8:00pm',                            //event.end
+  date: '1/08',                               //event.date
+  start: '6:00pm',                            //event.start
+  end: '8:00pm',                              //event.end
   tags: ['Astronomy', 'Physics'],             //event.tags  NOT YET AVAILABLE
   host: {
     avatar: 'http://tinyurl.com/jgb86vs',      //event.host.avatar
