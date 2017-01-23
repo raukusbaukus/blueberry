@@ -13,9 +13,9 @@ event = {
   },
   start: '2018-01-08 18:00:00',               //event.start
   end: '2018-01-08 20:00:00',                 //event.end
-  tags: ['Astronomy', 'Physics'],             //event.tags
+  tags: ['Astronomy', 'Physics'],             //event.tags  NOT YET AVAILABLE
   host: {
-    avatar: 'http://tinyurl.com/jgb86vs'        //event.host.avatar
+    avatar: 'http://tinyurl.com/jgb86vs'      //event.host.avatar
     display_name: 'Anita Grung',              //event.host.display_name
     bio: 'OMG I am so awesome at everything', //event.host.bio
     rating: 4.9,                              //event.host.rating
