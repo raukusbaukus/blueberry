@@ -26,8 +26,8 @@ router.get('/', (req, res, next) => {
                 area: value.area
               },
               date: value.start.toLocaleDateString('en-us', {month: 'numeric', day: '2-digit'}),
-              start: value.start.toLocaleDateString('en-us', {hour: 'numeric', minute: '2-digit'}),
-              end: value.end.toLocaleDateString('en-us', {hour: 'numeric', minute: '2-digit'}),
+              start: value.start.toLocaleTimeString('en-us', {hour: 'numeric', minute: '2-digit'}),
+              end: value.end.toLocaleTimeString('en-us', {hour: 'numeric', minute: '2-digit'}),
               tags: [],
               host: {
                 avatar: value.avatar,
