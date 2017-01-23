@@ -1,15 +1,16 @@
-
 const express = require('express'),
     router = express.Router(),
-    knex = require('knex'),
-    connect = knex(require('../db/knexfile')[process.env.NODE_ENV]);
+    queries = require('../queries');
 
 router.get('/', (req, res, next) => {
-    return connect.select('*').then(values => {
-        console.log(values)
+    queries.get_events()
+    .then(values => {
+      let events = JSON.stringify(values);
+      res.status(200).send('hey!' + events);
     }).catch(err => {
         console.error(err)
-    }).finally(() => {
-      connect.destroy();
-    });
+        res.status(400).send('hey!' + err);
+    })
 });
+
+module.exports = router;
