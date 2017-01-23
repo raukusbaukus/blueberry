@@ -10,22 +10,23 @@ router.get('/', (req, res, next) => {
                 let event = {
                     title: value.title,
                     location: {
-                        // title: value.venue,
-                        // address: value.address,
-                        // area: value.area
+                        title: value.venue,
+                        address: value.address,
+                        area: value.area
                     },
                     start: value.start,
                     end: value.end,
                     tags: value.tag,
                     host: {
-                        // avatar: '',
+                        avatar: '',
                         display_name: value.display_name,
                         bio: value.bio,
                         rating: value.rating,
                         xp: value.xp,
                     },
                     description: value.description,
-                    skill_level: value.skill_level
+                    skill_level: value.skill_level,
+                    capacity: value.capacity
                 }
                 events.push(event);
             });
