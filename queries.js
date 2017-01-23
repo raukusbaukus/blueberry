@@ -10,6 +10,11 @@ module.exports = {
       .innerJoin('tags', 'events_tags.tag', 'tags.id')
     connect.destroy();
   },
+  get_all_tags() {
+    return connect.select('title')
+      .from('tags')
+    connect.destroy();
+  },
   get_events() {
     return connect.select(
         'events.id',
