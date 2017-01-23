@@ -8,12 +8,13 @@ here is the object passed inside an array as the result of getting the `./` rout
 event = {
   title: 'String Theory',                     //event.title
   location: {
-    venue: 'Galvanize',                       //event.location.venue
+    title: 'Galvanize',                       //event.location.title
     address: '1644 Platte St. Level 4',       //event.location.address
     area: 'Denver, CO'                        //event.location.area
   },
-  start: '2018-01-08 18:00:00',               //event.start
-  end: '2018-01-08 20:00:00',                 //event.end
+  date: '1/08',                               //event.date
+  start: '6:00pm',                            //event.start
+  end: '8:00pm',                              //event.end
   tags: ['Astronomy', 'Physics'],             //event.tags  NOT YET AVAILABLE
   host: {
     avatar: 'http://tinyurl.com/jgb86vs',      //event.host.avatar
