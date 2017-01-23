@@ -6,9 +6,11 @@ exports.up = function(knex, Promise) {
     users.string('email', 255).notNullable();
     users.string('password', 255).notNullable();
     users.string('location', 255);
+    users.string('avatar', 255);
     users.enu('remote_irl', ['remote', 'irl', 'both']).defaultTo('both').notNullable();
     users.string('phone', 255);
     users.enu('notifications', ['email', 'phone', 'both']);
+    users.integer('xp').notNullable().defaultTo(0);
     users.decimal('rating', 2, 1);
   })
 };
