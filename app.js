@@ -16,16 +16,16 @@ app.listen(arg, function() {
     console.log('Listening on port ' + arg);
 });
 
-app.get('/landing', (req, res) => {
+// app.get('/landing', (req, res) => {
 
-    // var html = new EJS({url: 'index.ejs'}).render();
-    res.render('../views/index.ejs');
+//     // var html = new EJS({url: 'index.ejs'}).render();
+//     res.render('../views/index.ejs');
 
-    // knex.select('*').from('events').then((payload) => {
-    //   if (payload.length > 0) {
-    //     res.status(200).send(payload); //JSON.stringify(payload));
-    //   } else {
-    //     res.status(404).send('No events found.');
-    //   }
-    // });
-});
+//     // knex.select('*').from('events').then((payload) => {
+//     //   if (payload.length > 0) {
+//     //     res.status(200).send(payload); //JSON.stringify(payload));
+//     //   } else {
+//     //     res.status(404).send('No events found.');
+//     //   }
+//     // });
+// });
