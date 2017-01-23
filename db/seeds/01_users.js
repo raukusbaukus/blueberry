@@ -12,7 +12,8 @@ exports.seed = function(knex, Promise) {
                     location: 'Denver, CO',
                     remote_irl: 'both',
                     phone: '(303) 717-6970',
-                    notifications: 'both'
+                    notifications: 'both',
+                    avatar: 'http://www.hbc333.com/data/out/190/46870779-profile-pictures.jpg'
                 }),
                 knex('users').insert({
                     id: 2,
