@@ -1,5 +1,6 @@
 # Blueberry
-An app for coordinating interest based user learning and teaching
+####Learn From Each Other
+blueberry makes it easy for users to coordinate learning from each other, whether on opposite sides of the world or at the local cafe.
 
 ##API
 here is the object passed inside an array as the result of getting the `./` route
@@ -15,7 +16,7 @@ event = {
   end: '2018-01-08 20:00:00',                 //event.end
   tags: ['Astronomy', 'Physics'],             //event.tags  NOT YET AVAILABLE
   host: {
-    avatar: 'http://tinyurl.com/jgb86vs'      //event.host.avatar
+    avatar: 'http://tinyurl.com/jgb86vs',      //event.host.avatar
     display_name: 'Anita Grung',              //event.host.display_name
     bio: 'OMG I am so awesome at everything', //event.host.bio
     rating: 4.9,                              //event.host.rating
@@ -33,13 +34,9 @@ You should always be working on a feature branch, not on master or staging.
 
 whenever you start a new feature branch, do the following from the CLI to setup your branch:
 
-git checkout -b feature_name
-git push --set-upstream-to origin feature_name
-
-after that, when you are pushing changes, just do:
 
 ```
-git checkout -b feature_name
+git checkout -b [feature_name]
 git push --set-upstream-to origin feature_name
 ```
 
@@ -47,7 +44,7 @@ after that, when you are pushing changes, just do:
 ```
 git add .
 git status
-git commit -m 'commit message'
+git commit -m '[commit message]'
 git push
 ```
 
@@ -64,7 +61,7 @@ dropdb blueberry;
 createdb blueberry;
 git branch --set-upstream-to origin staging
 git pull
-git branch --set-upstream-to origin feature_name
+git branch --set-upstream-to origin [feature_name]
 cd db
 knex migrate:latest
 knex seed:run
