@@ -1,11 +1,18 @@
 const env = 'development',
-    knex = require('knex'),
-    config = require('./db/knexfile'),
-    connect = knex(config[env]);
+  knex = require('knex'),
+  config = require('./db/knexfile'),
+  connect = knex(config[env]);
 
-  module.exports = {
-    get_events() {
-      return connect.select(
+module.exports = {
+  get_tags() {
+    return connect.select(
+        'event', 'tag', 'title'
+      ).from('events_tags')
+      .innerJoin('tags', 'events_tags.tag', 'tags.id')
+    connect.destroy();
+  },
+  get_events() {
+    return connect.select(
         'events.id',
         'events.title',
         'events.venue',
@@ -22,8 +29,8 @@ const env = 'development',
         'events.skill_level'
       ).from('events')
       .innerJoin('users', 'events.user', 'users.id')
-      .innerJoin('events_tags', 'events.id', 'events_tags.event')
-      .innerJoin('tags', 'events_tags.tag', 'tags.id')
-      connect.destroy();
-    }
+      // .innerJoin('events_tags', 'events.id', 'events_tags.event')
+      // .innerJoin('tags', 'events_tags.tag', 'tags.id')
+    connect.destroy();
   }
+}
