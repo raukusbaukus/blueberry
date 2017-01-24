@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha",
-    "watch": "`npm bin`/nodemon app.js"
+    "watch": "`npm bin`/nodemon app.js",
+    "start": "node app.js"
   },
   "author": "Team Myrmidon",
   "license": "ISC",
