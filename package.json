@@ -2,7 +2,6 @@
   "name": "blueberry",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "test": "mocha",
     "watch": "`npm bin`/nodemon app.js",
@@ -25,6 +24,6 @@
     "supertest": "^2.0.1"
   },
   "engines": {
-    "node": "^7.4.0"
+    "node": "7.4.0"
   }
 }
