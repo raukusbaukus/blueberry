@@ -11,6 +11,7 @@ exports.up = function(knex, Promise) {
     events.string('area', 255).notNullable();
     events.enu('skill_level', ['beginner', 'intermediate', 'advanced']);
     events.integer('capacity').notNullable();
+    events.integer('list').notNullable().defaultTo(0);
     events.decimal('rating', 2, 1);
   });
 };

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Registration form</title>
+
+    <meta name="description" content="registration form with validation. " />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <!-- BOOTSTRAP -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- AWESOMEPLETE SEARCH -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.1/awesomplete.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.1/awesomplete.js"></script>
+
+    <link rel='stylesheet' href='js-form-validation.css' type='text/css' />
+    <script src="registration-form.js"></script>
+</head>
+
+<body onLoad="document.registration.userid.focus();">
+    <h1>Registration Form</h1>
+    <p>Use tab keys to move from one input field to the next.</p>
+    <form name='registration' onSubmit="return formValidation();">
+        <ul>
+            <li><label for="display_name">Display Name</label></li>
+            <li><input required id="display_name" type="text" name="display_name" size="12" /></li>
+            <li><label for="password">Password</label></li>
+            <li><input id="password" type="password" name="password" size="12" /></li>
+            <li><label for="postcode">ZIP Code</label></li>
+            <li><input id="postcode" type="text" name="postcode" /></li>
+            <li><label for="email">Email</label></li>
+            <li><input id="email" type="text" name="email" size="50" /></li>
+            <li><label for="phone">Phone</label></li>
+            <li><input id="phone" type="text" name="phone" size="50" /></li>
+            <li><label for="meeting_type">Meeting Type:</label></li>
+            <li>
+                <select id="meeting_type" name="meeting_type">
+                    <option selected="" value="default">(Please select a meeting type)</option>
+                    <option value="irl">in person</option>
+                    <option value="remote">online</option>
+                    <option value="both">Both</option>
+                </select>
+            </li>
+            <li><label for="desc">Bio:</label></li>
+            <li><textarea name="desc" id="desc"></textarea></li>
+            <li><input type="submit" name="submit" value="Submit" /></li>
+        </ul>
+    </form>
+</body>
+
+</html>

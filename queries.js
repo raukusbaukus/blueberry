@@ -1,6 +1,6 @@
-const env = 'development',
+const env = process.env.NODE_ENV || 'development',
   knex = require('knex'),
-  config = require('./db/knexfile'),
+  config = require('./knexfile'),
   connect = knex(config[env]);
 
 module.exports = {
@@ -34,6 +34,7 @@ module.exports = {
       )
       .from('events')
       .innerJoin('users', 'events.user', 'users.id')
+      .orderBy('list', 'desc')
     connect.destroy();
   }
 }
