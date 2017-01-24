@@ -15,6 +15,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.1/awesomplete.css">
 	<link rel="stylesheet" type="text/css" href="stylesheets/style.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.1/awesomplete.js"></script>
+	<script src="/js/sign.js"></script>
 	<title>BlueBerry</title>
 </head>
 
@@ -22,12 +23,31 @@
 	<header class="navbar-fixed-top">
 		<nav class="container navbar">
 			<a class="navbar-brand" href="#">
+				<span>blueberry</span>
 				<img alt="blueberry logo" src="/img/logo.png">
 			</a>
 			<ul class="nav navbar-nav pull-right">
-				<li><a href="#">Sign-In</a></li>
+				<li>
+					<a id="login-trigger" href="#">Sign-In</a>
+					<div id="login-content">
+		        <form>
+		          <fieldset id="inputs">
+								<label for="username" class="sr-only">Email</label>
+		            <input id="username" type="email" name="email" placeholder="email" required>
+								<label for="password" class="sr-only">Password</label>
+		            <input id="password" type="password" name="Password" placeholder="Password" required>
+		          </fieldset>
+		          <fieldset id="actions">
+								<input type="checkbox" checked="checked">
+								<label>Keep me signed in</label>
+		            <input type="submit" id="submit" value="Sign-In">
+		          </fieldset>
+		        </form>
+		      </div>
+				</li>
 				<li><a href="#">Sign-Up</a></li>
 			</ul>
+
 		</nav>
 	</header>
 	<main>
