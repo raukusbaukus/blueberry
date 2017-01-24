@@ -34,7 +34,7 @@ module.exports = {
       )
       .from('events')
       .innerJoin('users', 'events.user', 'users.id')
-      .orderBy('popularity', 'desc')
+      .orderBy('list', 'desc')
     connect.destroy();
   }
 }
