@@ -57,47 +57,41 @@
 			</div>
 		</div>
 		<!-- EVENTS LIST -->
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-md-12">
-					<ul class="list-group">
-						<% events.forEach(event => { %>
+		<ul class="list-group container">
+			<% events.forEach(event => { %>
 
-							<li class="list-group-item container">
-								<div class="row">
-									<div class="col-xs-6">
-										<%= event.location.title %>
-											<%= event.location.area %>
-									</div>
-									<div class="col-xs-6 text-right">
-										<% for(i = 0; i < 3 && i < event.tags.length; i++) { %>
-											<span> #<%= event.tags[i] %></span>
-											<% }; %>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-xs-12">
-										<h3><%= event.title %></h3></div>
-								</div>
-								<div class="row">
-									<div class="col-xs-6">
-										<strong><%= event.date %></strong>
-										<%= event.start %> -
-											<%= event.end %>
-									</div>
-									<div class="col-xs-6 text-right">
-										<div>
-											<div><%= event.host.display_name %></div>
-											<div>xp <%= event.host.xp %> | <img alt="star" src="/img/star.png" style="height: 1em"> <%= event.host.rating %></div>
-											</div>
-									</div>
-								</div>
-							</li>
-							<% }); %>
-					</ul>
-				</div>
-			</div>
-		</div>
+				<li class="list-group-item row">
+					<div class="col-xs-6">
+						<%= event.location.title %>
+							<%= event.location.area %>
+					</div>
+					<div class="col-xs-6 text-right">
+						<% for(i = 0; i < 3 && i < event.tags.length; i++) { %>
+							<span> #<%= event.tags[i] %></span>
+							<% }; %>
+					</div>
+					<div class="col-xs-12">
+						<h3><%= event.title %></h3>
+					</div>
+					<div class="col-xs-6">
+						<strong><%= event.date %></strong>
+						<%= event.start %> -
+							<%= event.end %>
+					</div>
+					<div class="col-xs-6 text-right">
+						<div>
+							<div>
+								<%= event.host.display_name %>
+							</div>
+							<div>
+								<img alt="star" src="/img/star.png" style="height: 1em"> <%= event.host.rating %>
+								| xp <%= event.host.xp %>
+							</div>
+						</div>
+					</div>
+				</li>
+				<% }); %>
+		</ul>
 
 
 	</main>
