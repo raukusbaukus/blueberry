@@ -2,10 +2,10 @@
   "name": "blueberry",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "test": "mocha",
-    "watch": "`npm bin`/nodemon app.js"
+    "watch": "node ./bin/www",
+    "start": "node ./bin/www"
   },
   "author": "Team Myrmidon",
   "license": "ISC",
@@ -24,6 +24,6 @@
     "supertest": "^2.0.1"
   },
   "engines": {
-    "node": "^7.4.0"
+    "node": "7.4.0"
   }
 }

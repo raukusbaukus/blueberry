@@ -1,43 +1,90 @@
 /*------GLOBAL------*/
 
 section {
-    padding: 15rem 0 0 0;
+    padding: 5rem 0 15rem;
     background-color: #fbfbfb;
 }
 
 a {
     cursor: pointer;
+    color: inherit;
 }
 
+.padding-top-3rem {
+    padding-top: 10rem;
+}
+
+.white {
+    color: white;
+}
+
+.margin-top-2rem {
+    margin-top: 2rem;
+}
+
+.tag {
+  color: #fff;
+  background-color: #ccc;
+  border-radius: .5rem;
+  padding: .5rem 1rem;
+}
 
 /*----------HEADER-------*/
 
 #login-content {
     display: none;
     position: absolute;
+    background-color: #fff;
+    border-radius: .2rem;
+    padding: .5rem 2rem 1rem 2rem;
 }
 
 #login-content input:not([type=checkbox]) {
     display: block;
+    border: none;
+    border-bottom: .1rem solid rgba(0, 0, 0, 0.1);
+    margin: 1rem auto;
+    color: #555;
+}
+
+#login-content input:focus {
+    outline: none;
+}
+
+#login-content button {
+    width: 100%;
+}
+
+.navbar-default {
+    border-radius: 0;
 }
 
 .navbar-brand img {
-    display: none; /* just until we get our own logo */
+    display: none;/* just until we get our own logo */
     height: 3rem;
 }
-
+.weight-900 {
+  font-size: 2rem;
+}
 
 /*--------------#LANDING---------------*/
 
 #landing {
-    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0,0,0,0), #fbfbfb);
-    backgound-size: cover;
-    background-position: center center;
+    padding-top: 15rem;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/img/background.jpg');
+    background-size: 100%;
+    background-repeat: none;
+    color: #fff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-.description {
+#landing h1 {
+    font-size: 4rem;
+    font-weight: 900;
+    line-height: 3.8rem;
     text-align: center;
-    width: 50%;
+    width: 70%;
     min-width: 40rem;
     margin: auto;
 }
@@ -45,17 +92,20 @@ a {
 
 /*----------search bar-----------*/
 
-.searchform label, .searchform input {
+
+/*.searchform label, .searchform input {
     color: #737373;
-}
+}*/
 
 .searchform label {
-    margin: 4rem auto;
+    margin: 3rem auto 1rem;
+    font-weight: 300;
     font-size: 3rem;
+    background-color: rgba(0, 0, 0, 0.5)
 }
 
 .searchform input[type="search"] {
-    border: .1em solid #737373;
+    border: .1em solid #fff;
     border-width: 0 0 0.1em;
     background-color: transparent;
     font: 2rem "Open Sans", sans-serif;
@@ -67,6 +117,24 @@ a {
 
 .searchform input[type="search"]:focus {
     outline: none;
+}
+
+.searchform ::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.searchform :-moz-placeholder {
+    /* Firefox 18- */
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.searchform ::-moz-placeholder {
+    /* Firefox 19+ */
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.searchform :-ms-input-placeholder {
+    color: rgba(255, 255, 255, 0.6);
 }
 
 

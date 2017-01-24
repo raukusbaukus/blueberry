@@ -1,20 +1,20 @@
+require('dotenv').config();
 const express = require('express'),
     app = express(),
     path = require('path'),
     routes = require('./routes/index');
-var config = require('./db/knexfile.js');
-var env = 'development';
-var knex = require('knex')(config[env]);
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use("/", routes);
 // set the view engine to ejs
 app.set('view engine', 'ejs');
+app.set('port', process.env.PORT || 3000);
+// const arg = process.argv[2] ? Number(process.argv[2]) : 3000;
+//
+// app.listen(arg, function() {
+//     console.log('App is listening on port ' + arg);
+// });
 
-const arg = process.argv[2] ? Number(process.argv[2]) : 8081;
-
-app.listen(arg, function() {
-    console.log('Listening on port ' + arg);
-});
 
 // app.get('/landing', (req, res) => {
 //     // var html = new EJS({url: 'index.ejs'}).render();
@@ -27,3 +27,4 @@ app.listen(arg, function() {
 //     //   }
 //     // });
 // });
+module.exports = app;
