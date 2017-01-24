@@ -1,11 +1,16 @@
-// Update with your config settings.
+require('dotenv').load();
 
 module.exports = {
 
     development: {
-        client: 'postgresql',
+        client: 'postgresql', //do pg later
         connection: {
-            database: 'blueberry',
+          database: 'blueberry'
+          //later
+            // host: process.env.HOST,
+            // user: process.env.USER,
+            // password: process.env.PASSWORD,
+            // database: process.env.DATABASE
         }
     },
 
