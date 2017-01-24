@@ -54,11 +54,12 @@ a {
 }
 
 .navbar-brand img {
-    display: none;
-    /* just until we get our own logo */
+    display: none;/* just until we get our own logo */
     height: 3rem;
 }
-
+.weight-900 {
+  font-size: 2rem;
+}
 
 /*--------------#LANDING---------------*/
 
