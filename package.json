@@ -7,7 +7,7 @@
     "test": "mocha",
     "watch": "`npm bin`/nodemon app.js"
   },
-  "author": "",
+  "author": "Team Myrmidon",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^4.0.0",
@@ -22,5 +22,9 @@
     "chai": "^3.5.0",
     "nodemon": "^1.11.0",
     "supertest": "^2.0.1"
+  },
+    "engines": {
+      "node": "7.4.0"
+    }
   }
 }
