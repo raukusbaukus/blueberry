@@ -72,7 +72,7 @@ a {
 #landing {
     padding-top: 15rem;
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/img/background.jpg');
-    background-size: 100%;
+    background-size: cover;
     background-repeat: none;
     color: #fff;
     -webkit-font-smoothing: antialiased;
