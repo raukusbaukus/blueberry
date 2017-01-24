@@ -6,6 +6,7 @@ router.get('/', (req, res, next) => {
   queries.get_events()
     .then(values => {
       let events = [];
+      //
       queries.get_all_tags()
         .then(all_tag_titles => {
           let all_tags = [];
@@ -15,6 +16,7 @@ router.get('/', (req, res, next) => {
             }
             all_tags.push(all_tag);
           });
+          //
           queries.get_tags()
             .then(tag_values => {
               let tags = [];
@@ -38,11 +40,11 @@ router.get('/', (req, res, next) => {
                     month: 'numeric',
                     day: '2-digit'
                   }),
-                  start: value.start.toLocaleDateString('en-us', {
+                  start: value.start.toLocaleTimeString('en-us', {
                     hour: 'numeric',
                     minute: '2-digit'
                   }),
-                  end: value.end.toLocaleDateString('en-us', {
+                  end: value.end.toLocaleTimeString('en-us', {
                     hour: 'numeric',
                     minute: '2-digit'
                   }),
@@ -52,7 +54,7 @@ router.get('/', (req, res, next) => {
                     display_name: value.display_name,
                     bio: value.bio,
                     rating: value.rating,
-                    xp: value.xp,
+                    xp: value.xp ? value.xp : 'new'
                   },
                   description: value.description,
                   skill_level: value.skill_level,
