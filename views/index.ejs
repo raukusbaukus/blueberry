@@ -34,9 +34,9 @@
 							<form>
 								<fieldset id="inputs">
 									<label for="username" class="sr-only">Email</label>
-									<input autofocus id="username" type="email" name="email" placeholder="email" required>
+									<input autofocus required id="username" type="email" name="email" placeholder="email" required>
 									<label for="password" class="sr-only">Password</label>
-									<input id="password" type="password" name="Password" placeholder="Password" required>
+									<input required id="password" type="password" name="Password" placeholder="Password" required>
 								</fieldset>
 								<fieldset id="actions">
 									<input type="checkbox" checked="checked">
@@ -81,7 +81,7 @@
 							</div>
 							<div class="col-xs-6 text-right">
 								<% for(i = 0; i < 3 && i < event.tags.length; i++) { %>
-									<span class="event_tag"> #<%= event.tags[i] %></span>
+									<span class="tag"><%= event.tags[i] %></span>
 									<% }; %>
 							</div>
 							<div class="col-xs-12">

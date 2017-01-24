@@ -22,6 +22,12 @@ a {
     margin-top: 2rem;
 }
 
+.tag {
+  color: #fff;
+  background-color: #ccc;
+  border-radius: .5rem;
+  padding: .5rem 1rem;
+}
 
 /*----------HEADER-------*/
 
