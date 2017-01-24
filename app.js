@@ -14,11 +14,11 @@ app.use("/", routes);
 // set the view engine to ejs
 app.set('view engine', 'ejs');
 
-const arg = process.argv[2] ? Number(process.argv[2]) : 3000;
+//const arg = process.argv[2] ? Number(process.argv[2]) : 3000;
 
-app.listen(arg, function() {
-    console.log('App is listening on port ' + arg);
-});
+// app.listen(arg, function() {
+//     console.log('App is listening on port ' + arg);
+// });
 
 
 // app.get('/landing', (req, res) => {

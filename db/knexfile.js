@@ -1,4 +1,4 @@
-require('dotenv').config({silent: true});
+require('dotenv').config({silent: true}); //.load()
 
 module.exports = {
 

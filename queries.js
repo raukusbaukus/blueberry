@@ -1,4 +1,4 @@
-const env = 'development',
+const env = process.env.NODE_ENV || 'development',
   knex = require('knex'),
   config = require('./db/knexfile'),
   connect = knex(config[env]);
