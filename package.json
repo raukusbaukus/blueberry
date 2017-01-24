@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "test": "mocha",
-    "watch": "`npm bin`/nodemon app.js",
+    "watch": "node ./bin/www",
     "start": "node ./bin/www"
   },
   "author": "Team Myrmidon",
