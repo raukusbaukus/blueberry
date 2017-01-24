@@ -33,17 +33,18 @@
 	<main>
 		<h1 class="description">blueberry makes it easy for users to coordinate learning from each other</h1>
 		<!-- SEARCH BAR -->
-		<form class="searchform group">
-			<label for="search-box">
-   						 <span class="spanText">What do you want to learn?</span>
-  		</label>
-			<input type="search" id="search-box" list="search-tags" placeholder="JavaScript">
-			<datalist id="search-tags">
-      <% all_tags.forEach(tag => { %>
-          <option><%= tag.title %></option>
-      <% }); %>
-      </datalist>
+		<form class="searchform group text-center">
+				<label for="search-box">
+   					<span class="spanText">What do you want to learn?</span>
+  			</label>
+				<input type="search" class="text-center" id="search-box" list="search-tags" placeholder="JavaScript">
+				<datalist id="search-tags">
+      	<% all_tags.forEach(tag => { %>
+          	<option><%= tag.title %></option>
+      	<% }); %>
+      	</datalist>
 		</form>
+		<a><div class="text-center">I want to teach a subject</div></a>
 		<!-- EVENTS LIST -->
 		<ul class="list-group container">
 			<% events.forEach(event => { %>
@@ -54,7 +55,7 @@
 					</div>
 					<div class="col-xs-6 text-right">
 						<% for(i = 0; i < 3 && i < event.tags.length; i++) { %>
-							<span> #<%= event.tags[i] %></span>
+							<span class="event_tag"> #<%= event.tags[i] %></span>
 							<% }; %>
 					</div>
 					<div class="col-xs-12">
