@@ -14,7 +14,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use("/", routes);
 // set the view engine to ejs
 app.set('view engine', 'ejs');
-
+app.set('port', process.env.PORT || 3000);
 // const arg = process.argv[2] ? Number(process.argv[2]) : 3000;
 //
 // app.listen(arg, function() {
