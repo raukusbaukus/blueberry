@@ -1,7 +1,7 @@
 /*------GLOBAL------*/
 
 section {
-    padding: 5rem 0 20rem;
+    padding: 5rem 0 15rem;
     background-color: #fbfbfb;
 }
 
@@ -11,9 +11,16 @@ a {
 }
 
 .padding-top-3rem {
-  padding-top: 10rem;
+    padding-top: 10rem;
 }
 
+.white {
+    color: white;
+}
+
+.margin-top-2rem {
+    margin-top: 2rem;
+}
 
 
 /*----------HEADER-------*/
@@ -29,18 +36,22 @@ a {
 #login-content input:not([type=checkbox]) {
     display: block;
     border: none;
-    border-bottom: .1rem solid rgba(0,0,0,0.1);
+    border-bottom: .1rem solid rgba(0, 0, 0, 0.1);
     margin: 1rem auto;
 }
+
 #login-content input:focus {
-  outline: none;
+    outline: none;
 }
+
 #login-content button {
-  width: 100%;
+    width: 100%;
 }
+
 .navbar-default {
-  border-radius: 0;
+    border-radius: 0;
 }
+
 .navbar-brand img {
     display: none;
     /* just until we get our own logo */
@@ -51,21 +62,21 @@ a {
 /*--------------#LANDING---------------*/
 
 #landing {
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0,0,0,0.6)), url('/img/background.jpg');
+    padding-top: 15rem;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/img/background.jpg');
     background-size: 100%;
     background-repeat: none;
     color: #fff;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
 #landing h1 {
-  font-size: 5rem;
-  font-weight: 900;
-  line-height: 4.7rem;
-}
-.description {
+    font-size: 4rem;
+    font-weight: 900;
+    line-height: 3.8rem;
     text-align: center;
-    width: 50%;
+    width: 70%;
     min-width: 40rem;
     margin: auto;
 }
@@ -82,7 +93,7 @@ a {
     margin: 3rem auto 1rem;
     font-weight: 300;
     font-size: 3rem;
-    background-color: rgba(0,0,0,0.5)
+    background-color: rgba(0, 0, 0, 0.5)
 }
 
 .searchform input[type="search"] {
@@ -115,8 +126,10 @@ a {
 }
 
 .searchform :-ms-input-placeholder {
-  color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.6);
 }
+
+
 /* ------ FOOTER ------ */
 
 footer {

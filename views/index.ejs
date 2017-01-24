@@ -21,8 +21,8 @@
 
 <body>
 	<header class="navbar-fixed-top">
-		<nav class="navbar navbar-default">
-			<div class="container">
+		<nav class="navbar">
+			<div class="container white">
 				<a class="navbar-brand" href="#">
 					<span>blueberry</span>
 					<img alt="blueberry logo" src="/img/logo.png">
@@ -53,7 +53,7 @@
 	</header>
 	<main>
 		<section id="landing">
-			<h1 class="description padding-top-3rem">blueberry makes it easy for users to coordinate learning from each other</h1>
+			<h1>blueberry makes it easy for users to coordinate learning from each other</h1>
 			<!-- SEARCH BAR -->
 			<form class="searchform group text-center">
 				<label for="search-box">
@@ -70,40 +70,43 @@
 		</section>
 		<!-- EVENTS LIST -->
 		<section id="event_list">
-			<ul class="list-group container">
-				<% events.forEach(event => { %>
-					<li class="list-group-item row">
-						<div class="col-xs-6">
-							<%= event.location.title %>
-								<%= event.location.area %>
-						</div>
-						<div class="col-xs-6 text-right">
-							<% for(i = 0; i < 3 && i < event.tags.length; i++) { %>
-								<span class="event_tag"> #<%= event.tags[i] %></span>
-								<% }; %>
-						</div>
-						<div class="col-xs-12">
-							<h3><%= event.title %></h3>
-						</div>
-						<div class="col-xs-6">
-							<strong><%= event.date %></strong>
-							<%= event.start %> -
-								<%= event.end %>
-						</div>
-						<div class="col-xs-6 text-right">
-							<div>
+			<div class="container">
+				<h2 class="text-center">Popular Events</h2>
+				<ul class="list-group container margin-top-2rem">
+					<% events.forEach(event => { %>
+						<li class="list-group-item row">
+							<div class="col-xs-6">
+								<%= event.location.title %>
+									<%= event.location.area %>
+							</div>
+							<div class="col-xs-6 text-right">
+								<% for(i = 0; i < 3 && i < event.tags.length; i++) { %>
+									<span class="event_tag"> #<%= event.tags[i] %></span>
+									<% }; %>
+							</div>
+							<div class="col-xs-12">
+								<h3><%= event.title %></h3>
+							</div>
+							<div class="col-xs-6">
+								<strong><%= event.date %></strong>
+								<%= event.start %> -
+									<%= event.end %>
+							</div>
+							<div class="col-xs-6 text-right">
 								<div>
-									<%= event.host.display_name %>
-								</div>
-								<div>xp
-									<%= event.host.xp %> | <img alt="star" src="/img/star.png" style="height: 1em">
-										<%= event.host.rating %>
+									<div>
+										<%= event.host.display_name %>
+									</div>
+									<div>xp
+										<%= event.host.xp %> | <img alt="star" src="/img/star.png" style="height: 1em">
+											<%= event.host.rating %>
+									</div>
 								</div>
 							</div>
-						</div>
-					</li>
-					<% }); %>
-			</ul>
+						</li>
+						<% }); %>
+				</ul>
+			</div>
 		</section>
 	</main>
 
