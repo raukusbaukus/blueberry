@@ -6,7 +6,6 @@ router.get('/', (req, res, next) => {
   queries.get_events()
     .then(values => {
       let events = [];
-      //
       queries.get_all_tags()
         .then(all_tag_titles => {
           let all_tags = [];
@@ -16,7 +15,6 @@ router.get('/', (req, res, next) => {
             }
             all_tags.push(all_tag);
           });
-          //
           queries.get_tags()
             .then(tag_values => {
               let tags = [];
