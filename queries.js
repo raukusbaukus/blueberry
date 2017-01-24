@@ -34,6 +34,7 @@ module.exports = {
       )
       .from('events')
       .innerJoin('users', 'events.user', 'users.id')
+      .orderBy('list', 'desc')
     connect.destroy();
   }
 }
