@@ -6,16 +6,17 @@ const express = require('express'),
 // var env = process.env.NODE_ENV || 'development';
 // var config = require('./db/knexfile.js')[env];
 // var knex = require('knex')(config[env]);
-//
-// module.exports = require('knex')(config);
+
+console.log("in app.js")
+
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use("/", routes);
 // set the view engine to ejs
 app.set('view engine', 'ejs');
 
-//const arg = process.argv[2] ? Number(process.argv[2]) : 3000;
-
+// const arg = process.argv[2] ? Number(process.argv[2]) : 3000;
+//
 // app.listen(arg, function() {
 //     console.log('App is listening on port ' + arg);
 // });
@@ -32,3 +33,4 @@ app.set('view engine', 'ejs');
 //     //   }
 //     // });
 // });
+module.exports = app;
