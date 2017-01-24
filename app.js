@@ -6,6 +6,7 @@ const express = require('express'),
 // var env = process.env.NODE_ENV || 'development';
 // var config = require('./db/knexfile.js')[env];
 // var knex = require('knex')(config[env]);
+//this stuff is in queries.js
 
 console.log("in app.js")
 
