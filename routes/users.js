@@ -2,16 +2,16 @@ var express = require('express');
 var router = express.Router();
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+router.get('/', (req, res, next) => {
   res.send('respond with a resource');
 });
 /* Sign-up form */
-router.get('/users', function(req, res, next) {
-  res.redirect('/event');
+router.get('/users', (req, res, next) => {
+  res.redirect('/events');
 });
 /*Sign-in*/
-router.put('/users', function(req, res, next) {
-  res.send('respond with a resource');
+router.put('/users', (req, res, next) => {
+  res.redirect('/events');
 });
 
 module.exports = router;
