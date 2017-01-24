@@ -1,89 +1,44 @@
 
-/*------HEADER------*/
-.header {
-	color: #FFFFFF;
-	background-color: #2541B2;
-	height: 100px;
-	padding-top: 10px;
-}
+    /*------GLOBAL------*/
+    section {
+      padding: 15rem 0 0 0;
+      background-color: #fbfbfb;
+    }
 
-.logo {
-	/*font-weight: bold;*/
-}
 
-.nav-top {
-	float: right;
+		/*--------------#LANDING---------------*/
+#landing {
+  background: linear-gradient(rgba(0,0,0,1), #fbfbfb);
+  backgound-size: cover;
+  background-position: center center;
 }
-.nav-top h1 a {
-	text-decoration: none;
-  	color: white;
-}
-.nav-top ul {
-	margin: 0;
-  	list-style: none;
-  	padding-top: 20px;
-  	padding-bottom: 20px;
-}
-.nav-top ul li {
-	display: inline-block;
-}
-.nav-top ul li a {
-	font-size: 25px;
-  	/*font-family: 'Bitter', serif;
-  	color: #3C5661;*/
-  	text-decoration: none;
-  	padding-right: 50px;
-  	/*margin: 0;*/
-  	margin-right: 20px;
-}
-
-		/*--------------MAIN---------------*/
-
- main {
-  padding-bottom: 200px;
- }   
 .description {
 	text-align: center;
-	padding-top: 80px;
-	padding-bottom: 150px;
+	width: 50%;
+	min-width: 40rem;
+	margin: auto;
 }
     /*----------search bar-----------*/
 
-.search-bar {
-  text-align: center;
-}
 
-.searchform {
-  display: block;
-  /*margin: 0;*/
-  margin-left: 550px;
-  overflow: hidden;
-  width: 40%;
-}
 label, input {
-  /*vertical-align: baseline;*/
   color: #737373;
 }
 label {
-  margin: 0em 0em 0em 0em;
-  float: center;
-  font-size: 25px;
-  padding-bottom: 30px;
-  
+  margin: 4rem auto;
+  font-size: 3rem;
 }
 input[type="search"] {
-  border: 2px solid #737373;
-  border-width: 0 0 3px;
+  border: .1em solid #737373;
+  border-width: 0 0 0.1em;
   background-color: transparent;
-  font: 22px "Open Sans", sans-serif;
-  padding: 0.125em 0.225em;
-  width: 85%;
-  /*float: left;*/
-  
+  font: 2rem "Open Sans", sans-serif;
+  width: 20%;
+	min-width: 20rem;
+	margin: 1rem auto;
+	display: block;
 }
 input[type="search"]:focus {
-  /*color: #E18728;*/
-  /*border-color: #E18728;*/
   outline: none;
 }
 
@@ -93,20 +48,13 @@ input[type="search"]:focus {
 footer {
     /*height: 200px;*/
     background-color: #3C5661;
-    font-size: 15px;
+    font-size: 1.5rem;
     font-family: 'Arial', serif;
     text-align: center;
     /*display: block;*/
     padding: 30px;
-}  
+}
 
 footer p {
   color: white;
 }
-
-
-
-
-
-
-
