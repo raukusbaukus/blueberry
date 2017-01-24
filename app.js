@@ -3,13 +3,6 @@ const express = require('express'),
     app = express(),
     path = require('path'),
     routes = require('./routes/index');
-// var env = process.env.NODE_ENV || 'development';
-// var config = require('./db/knexfile.js')[env];
-// var knex = require('knex')(config[env]);
-//this stuff is in queries.js
-
-console.log("in app.js")
-
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use("/", routes);
