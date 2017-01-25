@@ -42,5 +42,19 @@ module.exports = {
             .from('users')
             .where('email', email)
             .limit(1);
+    },
+    get_event_by_id(id) {
+        console.log('in get_event_by_id');
+        return connect.select('id','title')
+        .from('events')
+        .where('id', id); 
+        console.log('func finished');
     }
+
+    
 }
+
+
+
+// get_tag_by_event (will req joined)
+// get_users_by_evetn()

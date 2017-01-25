@@ -4,12 +4,14 @@ const express = require('express'),
     body_parser = require('body-parser'),
     path = require('path'),
     routes = require('./routes/index'),
+    event_route = require('./routes/event'),
     passport = require('passport'),
     local_strategy = require('passport-local').Strategy,
     session = require('express-session'),
     query = require('./queries');
 
-app.use(body_parser());
+
+app.use(body_parser.urlencoded({ extended: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -41,6 +43,27 @@ app.post('/login', passport.authenticate('local'), (req, res) => {
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use("/", routes);
+
+// app.get('/event/:id', (req, res, next) => {
+//     let id = req.params.id;
+//     //res.send(id);
+//     console.log('it worked');
+//     query.get_event_by_id(id)
+//             .then(tag_ids => {
+//               let tid = [];
+//               tag_ids.forEach(tag_id => {
+//                 console.log("you're in!!!");
+//                 let id_list = {
+//                   title: tag_id.title
+//                 }
+//                 tid.push(id_list);
+//               });
+//               res.send(tid);
+//           });
+// });
+
+
+app.use("/event", event_route);
 // set the view engine to ejs
 app.set('view engine', 'ejs');
 app.set('port', process.env.PORT || 3000);

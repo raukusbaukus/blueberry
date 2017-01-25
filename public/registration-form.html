@@ -19,39 +19,68 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.1/awesomplete.js"></script>
 
-    <link rel='stylesheet' href='js-form-validation.css' type='text/css' />
+    <link rel='stylesheet' href='./stylesheets/js-form-validation.css' type='text/css' />
     <script src="registration-form.js"></script>
 </head>
 
-<body onLoad="document.registration.userid.focus();">
-    <h1>Registration Form</h1>
-    <p>Use tab keys to move from one input field to the next.</p>
-    <form name='registration' onSubmit="return formValidation();">
-        <ul>
-            <li><label for="display_name">Display Name</label></li>
-            <li><input required id="display_name" type="text" name="display_name" size="12" /></li>
-            <li><label for="password">Password</label></li>
-            <li><input id="password" type="password" name="password" size="12" /></li>
-            <li><label for="postcode">ZIP Code</label></li>
-            <li><input id="postcode" type="text" name="postcode" /></li>
-            <li><label for="email">Email</label></li>
-            <li><input id="email" type="text" name="email" size="50" /></li>
-            <li><label for="phone">Phone</label></li>
-            <li><input id="phone" type="text" name="phone" size="50" /></li>
-            <li><label for="meeting_type">Meeting Type:</label></li>
-            <li>
-                <select id="meeting_type" name="meeting_type">
-                    <option selected="" value="default">(Please select a meeting type)</option>
-                    <option value="irl">in person</option>
-                    <option value="remote">online</option>
-                    <option value="both">Both</option>
-                </select>
-            </li>
-            <li><label for="desc">Bio:</label></li>
-            <li><textarea name="desc" id="desc"></textarea></li>
-            <li><input type="submit" name="submit" value="Submit" /></li>
-        </ul>
-    </form>
+<body>
+    <header class="navbar-fixed-top">
+        <nav class="navbar">
+            <div class="container white">
+                <a class="navbar-brand" href="#">
+                    <span class="weight-900">blueberry</span>
+                    <img alt="blueberry logo" src="/img/logo.png">
+                </a>
+                <ul class="nav navbar-nav pull-right">
+                    <li><a href="/registration-form.html">Sign-Up</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    
+    <main onLoad="document.registration.userid.focus();">
+        <div class="form_div">
+        <h1>Registration Form</h1>
+        <p>Use tab keys to move from one input field to the next.</p>
+        <form name='registration' onSubmit="return formValidation();">
+            <ul>
+                <li><label for="display_name">Display Name</label></li>
+                <li><input required id="display_name" type="text" name="display_name" size="12" /></li>
+                <li><label for="password">Password</label></li>
+                <li><input id="password" type="password" name="password" size="12" /></li>
+                <li><label for="postcode">ZIP Code</label></li>
+                <li><input id="postcode" type="text" name="postcode" /></li>
+                <li><label for="email">Email</label></li>
+                <li><input id="email" type="text" name="email" size="50" /></li>
+                <li><label for="phone">Phone</label></li>
+                <li><input id="phone" type="text" name="phone" size="50" /></li>
+                <li><label for="meeting_type">Meeting Type:</label></li>
+                <li>
+                    <select id="meeting_type" name="meeting_type">
+                        <option selected="" value="default">(Please select a meeting type)</option>
+                        <option value="irl">in person</option>
+                        <option value="remote">online</option>
+                        <option value="both">Both</option>
+                    </select>
+                </li>
+                <li><label for="desc">Bio:</label></li>
+                <li><textarea name="desc" id="desc"></textarea></li>
+                <li><input type="submit" name="submit" value="Submit" /></li>
+            </ul>
+        </form>
+        </div>
+    </main>
+   <footer>
+        <div class="container">
+            <p>PRESS</p>
+            <p>CONTACT</p>
+            <p>SITEMAP</p>
+            <p>DONATE</p>
+            <p>© 2017 All rights reserved</p>
+            <p><a href="#">Usage Policy</a></p>
+            <p><a href="%">About the Site</a></p>
+        </div>
+    </footer>
 </body>
 
 </html>
