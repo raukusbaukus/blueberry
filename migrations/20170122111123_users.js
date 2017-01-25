@@ -12,6 +12,7 @@ exports.up = function(knex, Promise) {
     users.enu('notifications', ['email', 'phone', 'both']);
     users.integer('xp').notNullable().defaultTo(0);
     users.decimal('rating', 2, 1);
+    users.unique('email');
   })
 };
 

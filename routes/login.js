@@ -2,11 +2,12 @@ const express = require('express'),
     router = express.Router(),
     queries = require('../queries'),
     passport = require('passport'),
-    local_strategy = passport.('passport-local').Strategy;
+    local_strategy = require('passport-local').Strategy;
 
+console.log('login.js');
 passport.use(new local_strategy((username, password, done) => {
   User.findOne({username}, (err, user) => {
-    
+
   });
 }));
 
