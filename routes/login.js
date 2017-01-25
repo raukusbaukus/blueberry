@@ -1,17 +1,8 @@
 const express = require('express'),
     router = express.Router(),
-    queries = require('../queries'),
-    passport = require('passport'),
-    local_strategy = require('passport-local').Strategy;
+    queries = require('../queries');
 
-console.log('login.js');
-passport.use(new local_strategy((username, password, done) => {
-  User.findOne({username}, (err, user) => {
-
-  });
-}));
-
-router.post('/login', passport.authenticate('local'), (req, res) => {
-
+router.post('/', (req, res) => {
+    console.log(req);
     res.redirect('/users/' + req.user.username);
 });
