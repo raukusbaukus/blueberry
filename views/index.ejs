@@ -29,7 +29,7 @@
 				</a>
 				<ul class="nav navbar-nav pull-right">
 					<li>
-						<a id="login-trigger" href="#">Sign-In</a>
+						<a id="login-trigger">Sign-In</a>
 						<div id="login-content" class="text-center">
 							<form>
 								<fieldset id="inputs">
@@ -53,13 +53,13 @@
 	</header>
 	<main>
 		<section id="landing">
-			<h1>blueberry makes it easy for users to coordinate learning from each other</h1>
+			<!-- <h1>in each of us is a student and a teacher. blueberry helps us be both.</h1> -->
 			<!-- SEARCH BAR -->
 			<form class="searchform group text-center">
 				<label for="search-box">
    					<span class="spanText">What do you want to learn?</span>
   			</label>
-				<input type="search" class="text-center" id="search-box" list="search-tags" placeholder="JavaScript">
+				<input autofocus type="search" class="text-center" id="search-box" list="search-tags">
 				<datalist id="search-tags">
       	<% all_tags.forEach(tag => { %>
           	<option><%= tag.title %></option>
@@ -71,31 +71,35 @@
 		<!-- EVENTS LIST -->
 		<section id="event_list">
 			<div class="container">
-				<h2 class="text-center">Popular Events</h2>
+				<h2 class="text-center">Upcoming Lessons</h2>
 				<ul class="list-group container margin-top-2rem">
 					<% events.forEach(event => { %>
-						<li class="list-group-item row">
+						<li class="list-group-item event row">
 							<div class="col-xs-6">
-								<%= event.location.title %>
-									<%= event.location.area %>
-							</div>
-							<div class="col-xs-6 text-right">
-								<% for(i = 0; i < 3 && i < event.tags.length; i++) { %>
-									<span class="tag"><%= event.tags[i] %></span>
-									<% }; %>
-							</div>
-							<div class="col-xs-12">
-								<h3><%= event.title %></h3>
-							</div>
-							<div class="col-xs-6">
-								<strong><%= event.date %></strong>
-								<%= event.start %> -
-									<%= event.end %>
-							</div>
-							<div class="col-xs-6 text-right">
 								<div>
-									<div>
-										<%= event.host.display_name %>
+									<%= event.location.title %> <span class="opacity-5"><%= event.location.area %></span></div>
+								<h3><%= event.title %></h3>
+								<div><strong><%= event.date %></strong>
+									<%= event.start %> -
+										<%= event.end %>
+								</div>
+							</div>
+							<div class="col-xs-6 text-right">
+								<ul class="tag-list">
+									<% for(i = 0; i < 3 && i < event.tags.length; i++) { %>
+										<li class="tag">
+											<a href="/events">
+												<%= event.tags[i] %>
+											</a>
+										</li>
+										<% }; %>
+								</ul>
+								<div>
+									<div class="event_user">
+										<a href="/users">
+										<img class="event_avatar" alt="user photo" src="<%= event.host.avatar %>">
+										<span><%= event.host.display_name %></span>
+									</a>
 									</div>
 									<div>xp
 										<%= event.host.xp %> | <img alt="star" src="/img/star.png" style="height: 1em">
@@ -103,6 +107,7 @@
 									</div>
 								</div>
 							</div>
+
 						</li>
 						<% }); %>
 				</ul>
