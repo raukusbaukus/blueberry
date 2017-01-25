@@ -31,12 +31,12 @@
 					<li>
 						<a id="login-trigger">Sign-In</a>
 						<div id="login-content" class="text-center">
-							<form>
+							<form method="POST" action="/login">
 								<fieldset id="inputs">
 									<label for="username" class="sr-only">Email</label>
 									<input autofocus required id="username" type="email" name="email" placeholder="email" required>
 									<label for="password" class="sr-only">Password</label>
-									<input required id="password" type="password" name="Password" placeholder="Password" required>
+									<input required id="password" type="password" name="password" placeholder="Password" required>
 								</fieldset>
 								<fieldset id="actions">
 									<input type="checkbox" checked="checked">

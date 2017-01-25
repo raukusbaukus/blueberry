@@ -47,6 +47,7 @@ a:hover {
     background-color: #fff;
     border-radius: .2rem;
     padding: .5rem 2rem 1rem 2rem;
+    color: #555;
 }
 
 #login-content input:not([type=checkbox]) {
@@ -54,7 +55,6 @@ a:hover {
     border: none;
     border-bottom: .1rem solid rgba(0, 0, 0, 0.1);
     margin: 1rem auto;
-    color: #555;
 }
 
 #login-content input:focus {
@@ -63,6 +63,7 @@ a:hover {
 
 #login-content button {
     width: 100%;
+    color: #fff;
 }
 
 .navbar-default {
