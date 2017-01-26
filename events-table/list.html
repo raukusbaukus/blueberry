@@ -1,0 +1,189 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="list.css">
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"
+     integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+     crossorigin="anonymous"></script>
+<script src="list.js"></script>
+</head>
+
+
+
+<div class="container">
+	<div class="row">
+
+		<section class="content">
+			<h1>Table Filter</h1>
+			<div class="col-md-8 col-md-offset-2">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<div class="pull-right">
+							<div class="btn-group">
+								<button type="button" class="btn btn-success btn-filter" data-target="JS">JS</button>
+								<button type="button" class="btn btn-warning btn-filter" data-target="node">NODE</button>
+								<button type="button" class="btn btn-danger btn-filter" data-target="python">PYTHON</button>
+								<button type="button" class="btn btn-default btn-filter" data-target="all">ALL</button>
+							</div>
+						</div>
+						<div class="table-container">
+							<table class="table table-filter">
+								<tbody>
+									<tr data-status="JS">
+										<td>
+											<div class="ckbox">
+												<input type="checkbox" id="checkbox1">
+												<label for="checkbox1"></label>
+											</div>
+										</td>
+										<td>
+											<a href="javascript:;" class="star">
+												<i class="glyphicon glyphicon-star"></i>
+											</a>
+										</td>
+										<td>
+											<div class="media">
+												<a href="#" class="pull-left">
+													<img src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg" class="media-photo">
+												</a>
+												<div class="media-body">
+													<span class="media-meta pull-right">June 7, 1980</span>
+													<h4 class="title">
+														JavaScript
+														<span class="pull-right js">(JS)</span>
+													</h4>
+													<p class="summary">I Love to Code in Js!!!...</p>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr data-status="node">
+										<td>
+											<div class="ckbox">
+												<input type="checkbox" id="checkbox3">
+												<label for="checkbox3"></label>
+											</div>
+										</td>
+										<td>
+											<a href="javascript:;" class="star">
+												<i class="glyphicon glyphicon-star"></i>
+											</a>
+										</td>
+										<td>
+											<div class="media">
+												<a href="#" class="pull-left">
+													<img src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg" class="media-photo">
+												</a>
+												<div class="media-body">
+													<span class="media-meta pull-right">Feb 12, 2016</span>
+													<h4 class="title">
+														Node!
+														<span class="pull-right node">(Node)</span>
+													</h4>
+													<p class="summary">I love to code in Node!!!...</p>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr data-status="python">
+										<td>
+											<div class="ckbox">
+												<input type="checkbox" id="checkbox2">
+												<label for="checkbox2"></label>
+											</div>
+										</td>
+										<td>
+											<a href="javascript:;" class="star">
+												<i class="glyphicon glyphicon-star"></i>
+											</a>
+										</td>
+										<td>
+											<div class="media">
+												<a href="#" class="pull-left">
+													<img src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg" class="media-photo">
+												</a>
+												<div class="media-body">
+													<span class="media-meta pull-right">Jan 13, 2016</span>
+													<h4 class="title">
+														Python
+														<span class="pull-right python">(Python)</span>
+													</h4>
+													<p class="summary">I love to code in python!!!...</p>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr data-status="JS" class="selected">
+										<td>
+											<div class="ckbox">
+												<input type="checkbox" id="checkbox4" checked>
+												<label for="checkbox4"></label>
+											</div>
+										</td>
+										<td>
+											<a href="javascript:;" class="star star-checked">
+												<i class="glyphicon glyphicon-star"></i>
+											</a>
+										</td>
+										<td>
+											<div class="media">
+												<a href="#" class="pull-left">
+													<img src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg" class="media-photo">
+												</a>
+												<div class="media-body">
+													<span class="media-meta pull-right">Febrero 13, 2016</span>
+													<h4 class="title">
+														Lorem Impsum
+														<span class="pull-right js">(js)</span>
+													</h4>
+													<p class="summary">I love to code in js!!!...</p>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr data-status="node">
+										<td>
+											<div class="ckbox">
+												<input type="checkbox" id="checkbox5">
+												<label for="checkbox5"></label>
+											</div>
+										</td>
+										<td>
+											<a href="javascript:;" class="star">
+												<i class="glyphicon glyphicon-star"></i>
+											</a>
+										</td>
+										<td>
+											<div class="media">
+												<a href="#" class="pull-left">
+													<img src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg" class="media-photo">
+												</a>
+												<div class="media-body">
+													<span class="media-meta pull-right">Febrero 13, 2016</span>
+													<h4 class="title">
+														Lorem Impsum
+														<span class="pull-right node">(Node)</span>
+													</h4>
+													<p class="summary">I love to code in node...</p>
+												</div>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="content-footer">
+					<p>
+
+						Mohamed
+					</p>
+				</div>
+			</div>
+		</section>
+
+	</div>
+</div>
