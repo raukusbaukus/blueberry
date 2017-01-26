@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <!-- BOOTSTRAP -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- AWESOMEPLETE SEARCH -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.1/awesomplete.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.1/awesomplete.js"></script>
+    <title>{{event.title}} | Blueberry</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <h1>{{event.title}}</h1>
+            <div>
+                <div>{{event.location.title}}</div>
+                <span class="opacity-5">{{event.location.address}}</span>
+                <span class="opacity-5">{{event.location.area}}</span>
+            </div>
+            <div>{{event.date}}</div>
+            <div id="host">
+                <a href="/user/{{event.host.id}}"><h2>{{event.host.display_name}}</h2></a>
+            </div>
+            <p>{{event.description}}</p>
+            <h4>Instructors</h4>
+            <ul>
+              {{#each event.teachers}}
+                <li><a href="/user/{{this.id}}">{{this.display_name}}</a></li>
+              {{/each}}
+            </ul>
+              <div>{{event.vacancies}} spaces left</div>
+              <button class="button btn btn-default">RSVP</button>
+        </div>
+    </main>
+</body>
+
+</html>

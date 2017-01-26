@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <!-- BOOTSTRAP -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- AWESOMEPLETE SEARCH -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.1/awesomplete.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/login.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.1/awesomplete.js"></script>
+    <title>Learn from each other | blueberry login</title>
+</head>
+
+<body>
+    <header class="navbar-fixed-top">
+        <nav class="navbar">
+            <div class="container white">
+                <a class="navbar-brand" href="#">
+                    <span class="weight-900">blueberry</span>
+                    <!-- <img alt="blueberry logo" src="/img/logo.png"> -->
+                </a>
+                <ul class="nav navbar-nav pull-right">
+                    <li><a href="/registration-form.html">sign up</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="window">
+        <h1>Please Sign In</h1>
+        <form action="/login" method="post">
+            <div class="error">{{error}}</div>
+            <label for="email">Email</label>
+            <input autofocus required id="email" type="email" name="email" placeholder="jan.doe@mail.com">
+            <label for="password">Password</label>
+            <input required id="password" type="password" name="password" placeholder="********">
+            <button class="button btn btn-info">sign in</button>
+        </form>
+    </div>
+</body>
+
+</html>
