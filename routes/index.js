@@ -48,6 +48,7 @@ router.get('/', (req, res, next) => {
                   }),
                   tags: [],
                   host: {
+                    id: value.user,
                     avatar: value.avatar ? value.avatar : '/img/users/anon.jpg',
                     display_name: value.display_name,
                     bio: value.bio,

@@ -24,13 +24,15 @@ module.exports = {
                 'events.area',
                 'events.start',
                 'events.end',
+                'users.id as user',
                 'users.avatar',
                 'users.display_name',
                 'users.bio',
                 'users.rating',
                 'users.xp',
                 'events.description',
-                'events.skill_level'
+                'events.skill_level',
+                'events.capacity'
             )
             .from('events')
             .innerJoin('users', 'events.user', 'users.id')
@@ -42,5 +44,50 @@ module.exports = {
             .from('users')
             .where('email', email)
             .limit(1);
+    },
+    get_event_by_id(id) {
+        return connect.select(
+                'events.id',
+                'events.title',
+                'events.venue',
+                'events.address',
+                'events.area',
+                'events.start',
+                'events.end',
+                'users.id as user',
+                'users.avatar',
+                'users.display_name',
+                'users.bio',
+                'users.rating',
+                'users.xp',
+                'events.description',
+                'events.skill_level',
+                'events.capacity'
+            )
+            .from('events')
+            .innerJoin('users', 'events.user', 'users.id')
+            .where('events.id', id);
+        connect.destroy();
+    },
+    get_users_by_event(event_id) {
+        return connect.select(
+                'users.id',
+                'users.display_name',
+                'users.avatar',
+                'events_users.role',
+                'users.xp',
+                'users.rating'
+            )
+            .from('events_users')
+            .innerJoin('users', 'events_users.user', 'users.id')
+            .where('events_users.event', event_id);
+    },
+    get_tags_by_event(event_id) {
+        return connect.select(
+                'tags.title'
+            )
+            .from('events_tags')
+            .innerJoin('tags', 'events_tags.tag', 'tags.id')
+            .where('events_tags.event', event_id)
     }
 }
