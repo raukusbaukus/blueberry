@@ -14,6 +14,7 @@
     <!-- AWESOMEPLETE SEARCH -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.1/awesomplete.css">
     <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/event.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.1/awesomplete.js"></script>
     <title>{{event.title}} | Blueberry</title>
 </head>
@@ -34,7 +35,9 @@
             </div>
             <div>{{event.date}}</div>
             <div id="host">
+                <img class="avatar" alt="host's photo" src="{{event.host.avatar}}">
                 <a href="/user/{{event.host.id}}"><h2>{{event.host.display_name}}</h2></a>
+                <div>{{event.host.rating}}</div>
             </div>
             <p>{{event.description}}</p>
             <h4>Instructors</h4>

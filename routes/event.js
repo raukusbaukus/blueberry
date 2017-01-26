@@ -17,10 +17,10 @@ router.get('/:id', (req, res) => {
                     area: db_event[0].area
                 },
                 date: db_event[0].start.toLocaleDateString('en-us', {
-                  weekday: 'long',
-                  month: 'long',
-                  day: 'numeric',
-                  year: 'numeric'
+                    weekday: 'long',
+                    month: 'long',
+                    day: 'numeric',
+                    year: 'numeric'
                 }),
                 start: db_event[0].start.toLocaleTimeString('en-us', {
                     hour: 'numeric',
@@ -49,22 +49,22 @@ router.get('/:id', (req, res) => {
                         user.role === 'student' ? event.students.push(user) : event.teachers.push(user);
                     })
                     event.vacancies = event.capacity - event.students.length;
+                    query.get_tags_by_event(id)
+                        .then(db_tags => {
+                            db_tags.forEach(tag => {
+                                event.tags.push(tag.title);
+                            })
+                            res.render('event', {
+                                event
+                            })
+                        })
+                        .catch(err => {
+                            console.error(err);
+                        })
                 })
                 .catch(err => {
                     console.error(err);
                 })
-            query.get_tags_by_event(id)
-                .then(db_tags => {
-                    db_tags.forEach(tag => {
-                        event.tags.push(tag.title);
-                    })
-                })
-                .catch(err => {
-                    console.error(err);
-                })
-            res.render('event', {
-                event
-            })
         }))
 })
 
