@@ -7,7 +7,9 @@ const express = require('express'),
     routes = require('./routes/index'),
     login = require('./routes/login'),
     event = require('./routes/event'),
-    events = require('./routes/events')
+    events = require('./routes/events'),
+    user = require('./routes/user'),
+    users = require('./routes/users'),
     passport = require('passport'),
     local_strategy = require('passport-local').Strategy,
     session = require('express-session'),
@@ -22,6 +24,8 @@ app.use("/", routes);
 app.use('/login', login);
 app.use('/event', event);
 app.use('/events', events);
+app.use('/user', user);
+app.use('/users', users);
 // set the view engine to hbs
 app.set('view engine', 'hbs');
 app.set('port', process.env.PORT || 3000);
