@@ -6,6 +6,7 @@ const express = require('express'),
     path = require('path'),
     routes = require('./routes/index'),
     login = require('./routes/login'),
+    event = require('./routes/event'),
     passport = require('passport'),
     local_strategy = require('passport-local').Strategy,
     session = require('express-session'),
@@ -18,6 +19,7 @@ app.use(body_parser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use("/", routes);
 app.use('/login', login);
+app.use('/event', event);
 // set the view engine to hbs
 app.set('view engine', 'hbs');
 app.set('port', process.env.PORT || 3000);
