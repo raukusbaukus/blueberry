@@ -38,7 +38,7 @@ exports.seed = function(knex, Promise) {
                     end: '2017-01-28 16:00:00',
                     description: 'The awesomest event ever',
                     skill_level: 'beginner',
-                    capacity: 50
+                    capacity: 2
                 }),
                 knex('events').insert({
                     id: 4,
