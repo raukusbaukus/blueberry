@@ -1,0 +1,76 @@
+/*----------HEADER-------*/
+
+#login-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    border-radius: .2rem;
+    padding: .5rem 2rem 1rem 2rem;
+    color: #555;
+}
+
+#login-content input:not([type=checkbox]) {
+    display: block;
+    border: none;
+    border-bottom: .1rem solid rgba(0, 0, 0, 0.1);
+    margin: 1rem auto;
+}
+
+#login-content input:focus {
+    outline: none;
+}
+
+#login-content button {
+    width: 100%;
+    color: #fff;
+}
+
+.navbar-default {
+    border-radius: 0;
+}
+
+.navbar-brand img {
+    display: none;
+    /* just until we get our own logo */
+    height: 3rem;
+}
+
+.weight-900 {
+    font-size: 2rem;
+}
+
+/*------------MAIN-------------*/
+
+.event_content {
+    padding-top: 15rem;
+    /*background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/img/background.jpg');*/
+    background-image: radial-gradient(farthest-corner at 10rem 10rem, rgba(28, 49, 245, 0.94) 0%, rgba(107, 215, 227, 0.94) 100%), url(/img/background.jpg);
+    background-size: cover;
+    background-repeat: none;
+    color: #fff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin-left: 20rem;
+}
+
+.event_content ul {
+    margin-left: 5rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

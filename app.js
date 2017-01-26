@@ -62,8 +62,8 @@ app.use("/", routes);
 //           });
 // });
 
-
 app.use("/event", event_route);
+app.use("/", event_route);
 // set the view engine to ejs
 app.set('view engine', 'ejs');
 app.set('port', process.env.PORT || 3000);

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel='stylesheet' href='./stylesheets/event_style.css' type='text/css' />
+    <title>Event Page</title>
+    <!-- BOOTSTRAP -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container white">
+                <a class="navbar-brand" href="#">
+                    <span class="weight-900">blueberry</span>
+                    <img alt="blueberry logo" src="/img/logo.png">
+                </a>
+                <ul class="nav navbar-nav pull-right">
+                    <li>
+                        <a id="login-trigger">Sign-In</a>
+                        <div id="login-content" class="text-center">
+                            <form method="POST" action="/login">
+                                <fieldset id="inputs">
+                                    <label for="username" class="sr-only">Email</label>
+                                    <input autofocus required id="username" type="email" name="email" placeholder="email" required>
+                                    <label for="password" class="sr-only">Password</label>
+                                    <input required id="password" type="password" name="password" placeholder="Password" required>
+                                </fieldset>
+                                <fieldset id="actions">
+                                    <input type="checkbox" checked="checked">
+                                    <label>Keep me signed in</label>
+                                    <button class="button btn btn-info" type="submit" id="submit">Sign-In</button>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </li>
+                    <li><a href="/registration-form.html">Sign-Up</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+    	<div class="container event_content">
+    	<ul>
+    		<li><a>List item</a></li>
+    		<li><a>List item</a></li>
+    	</ul>
+    	</div>	
+    </main>
+    <footer>
+    	
+    </footer>
+</body>
+
+</html>

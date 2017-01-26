@@ -44,17 +44,51 @@ module.exports = {
             .limit(1);
     },
     get_event_by_id(id) {
-        console.log('in get_event_by_id');
         return connect.select('id','title')
-        .from('events')
-        .where('id', id); 
-        console.log('func finished');
+            .from('events')
+            .where('id', id);
+        connect.destroy();  
+    },
+    get_tags_by_event() {
+        return connect.select('title')
+            .from('tags')
+            .innerJoin('tags', 'events_tags.tag', 'tags.id')
+         connect.destroy();   
+    },
+    create_event(event) {
+        return connect.insert(event)
+            .into(events)
+            .then((new_event) => {
+                console.log(new_event);
+            });
+            .finally(() => {
+                knex.destroy();
+            });
+    },
+    delete_event(event) {
+        return connect.del(event)
+            .where(event.title, event)//doubts about this
+            .then((deleted) => {
+                console.log(deleted);
+            }).finally(() => {
+                knex.destroy();
+            });     
+    },
+    update_event(event) {
+        return connect.update(event)
+            .where(events, event)
+            .then((updated) => {
+                console.log(updated);
+            }).finally(() => {
+              knex.destroy();         
+            });  
     }
-
     
 }
 
 
 
-// get_tag_by_event (will req joined)
-// get_users_by_evetn()
+
+
+
+
