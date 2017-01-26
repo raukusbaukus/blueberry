@@ -4,6 +4,8 @@ const env = process.env.NODE_ENV || 'development',
     connect = knex(config[env]);
 
 module.exports = {
+    //to connect within any files requiring this 
+    connect,
     get_tags() {
         return connect.select('event', 'tag', 'title')
             .from('events_tags')
