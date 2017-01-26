@@ -1,20 +1,26 @@
 {
   "name": "blueberry",
   "version": "1.0.0",
-  "description": "",
+  "description": "An app to facilitate p2p learning.",
+  "repository": "https://github.com/raukusbaukus/blueberry",
   "scripts": {
     "test": "mocha",
-    "watch": "node ./bin/www",
+    "watch": "`npm bin`/nodemon ./bin/www",
     "start": "node ./bin/www"
   },
   "author": "Team Myrmidon",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.16.0",
+    "cookie-parser": "^1.4.3",
     "dotenv": "^4.0.0",
     "ejs": "^2.5.5",
     "express": "^4.14.0",
+    "express-session": "^1.15.0",
+    "hbs": "^4.0.1",
     "knex": "^0.12.6",
     "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
     "pg": "^6.1.2"
   },
   "devDependencies": {
