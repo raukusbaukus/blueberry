@@ -7,7 +7,7 @@ $(document).ready(function() {
           validating: 'glyphicon glyphicon-refresh'
       },
       fields: {
-          first_name: {
+          display_name: {
               validators: {
                       stringLength: {
                       min: 2,
@@ -17,7 +17,7 @@ $(document).ready(function() {
                   }
               }
           },
-           last_name: {
+           password: {
               validators: {
                    stringLength: {
                       min: 2,
@@ -58,17 +58,8 @@ $(document).ready(function() {
                   }
               }
           },
-          city: {
-              validators: {
-                   stringLength: {
-                      min: 4,
-                  },
-                  notEmpty: {
-                      message: 'Please supply your city'
-                  }
-              }
-          },
-          state: {
+
+          meeting: {
               validators: {
                   notEmpty: {
                       message: 'Please select your state'
@@ -81,7 +72,7 @@ $(document).ready(function() {
                       message: 'Please supply your zip code'
                   },
                   zipCode: {
-                      country: 'US',
+
                       message: 'Please supply a vaild zip code'
                   }
               }
