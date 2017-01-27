@@ -29,25 +29,35 @@
         <div class="container">
             <h1>{{event.title}}</h1>
             <div>
-                <div>{{event.location.title}}</div>
-                <span class="opacity-5">{{event.location.address}}</span>
-                <span class="opacity-5">{{event.location.area}}</span>
+              <div>{{event.location.title}}</div>
+              <span class="opacity-5">{{event.location.address}}</span>
+              <span class="opacity-5">{{event.location.area}}</span>
+              <div>{{event.date}}</div>
             </div>
+<<<<<<< HEAD
             <div>{{event.date}}</div>
             <ul id="tags">
                 {{#each event.tags}}
                     <li class="tag"><a href="/events/{{this}}">{{this}}</a></li>
                 {{/each}}
+=======
+            <ul id="tags">
+              {{#each event.tags}}
+              <li class="tag"><a href="/events/{{this}}">{{this}}</a></li>
+              {{/each}}
+>>>>>>> 690d5070f3d7d5c09a392e2d296c71d7330648d4
             </ul>
             <p>{{event.description}}</p>
             <div id="host">
                 <img class="avatar" alt="host's photo" src="{{event.host.avatar}}">
                 <a href="/user/{{event.host.id}}"><h2>{{event.host.display_name}}</h2></a>
                 <div>{{event.host.rating}}</div>
+                <div>{{event.host.xp}}</div>
             </div>
             <h4>Instructors</h4>
             <ul>
                 {{#each event.teachers}}
+<<<<<<< HEAD
                     <li class="teacher">
                         <a href="/user/{{this.id}}">
                           <img class="avatar" alt="teacher photo" src="{{this.avatar}}">
@@ -58,6 +68,23 @@
             </ul>
             <div>{{event.vacancies}} spaces left</div>
             <button class="button btn btn-default">RSVP</button>
+=======
+                    <li><a href="/user/{{this.id}}">{{this.display_name}}</a></li>
+                {{/each}}
+            </ul>
+            <!-- {{#if event.students}} -->
+                {{#if event.vacancies}}
+                    <div>{{event.vacancies}} spaces left</div>
+                    <button class="button btn btn-info">RSVP</button>
+                {{else}}
+                    <div>This Event Is Full.</div>
+                    <button class="button btn btn-default">Join The Waitlist</button>
+                {{/if}}
+            <!-- {{else}}
+                <div>You are going</div>
+                <button class="button btn btn-danger">Cancel</button>
+            {{/if}} -->
+>>>>>>> 690d5070f3d7d5c09a392e2d296c71d7330648d4
         </div>
     </main>
 </body>
