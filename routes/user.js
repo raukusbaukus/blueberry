@@ -1,7 +1,7 @@
 const express = require('express'),
     router = express.Router();
 
-router.post('/create', (req, res) => {
-  res.send('hi');
+router.get('/create', (req, res) => {
+  res.render('create_user');
 })
 module.exports = router;
