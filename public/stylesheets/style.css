@@ -4,7 +4,12 @@ section {
     padding: 5rem 0 15rem;
     background-color: #fbfbfb;
 }
-
+header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+}
 a {
     cursor: pointer;
     color: inherit;
@@ -12,6 +17,12 @@ a {
 a:hover {
   color: inherit;
   text-decoration: inherit;
+}
+li {
+  list-style: none;
+}
+ul {
+  padding: 0;
 }
 .padding-top-3rem {
     padding-top: 10rem;
@@ -34,6 +45,7 @@ a:hover {
     background-color: #ccc;
     border-radius: .5rem;
     padding: .5rem 1rem;
+    display: inline-block;
 }
 .tag:hover {
   background-color: #aaa;
@@ -68,6 +80,16 @@ a:hover {
 
 .navbar-default {
     border-radius: 0;
+}
+.transparent {
+  border: none;
+  background-color: rgba(0,0,0,0);
+}
+.transparent .navbar-nav li a {
+  color: white;
+}
+.transparent button.navbar-toggle {
+  border: .1rem solid #fff
 }
 
 .navbar-brand img {
