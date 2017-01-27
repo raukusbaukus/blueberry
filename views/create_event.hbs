@@ -7,24 +7,24 @@
 
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <link rel="stylesheet" href="event.css">
+  <link rel="stylesheet" href="/stylesheets/event.css">
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-<script type="text/javascript" src="event.js"></script>
+<script type="text/javascript" src="/js/event.js"></script>
 
 </head>
 
 <div class="container">
 
-    <form class="well form-horizontal" action=" " method="post"  id="contact_form">
+    <form class="well form-horizontal" action="/event/create" method="post"  id="contact_form">
 <fieldset>
 
 <!-- Form Name -->
-<legend>Event Form!</legend>
+<legend>Create Event</legend>
 
 <!-- Text input-->Please fill in the event information
-
+<input type="hidden" name="user" value="1">
 <div class="form-group">
   <label class="col-md-4 control-label">Event title</label>
   <div class="col-md-4 inputGroupContainer">
@@ -41,7 +41,7 @@
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
-  <input name="address" placeholder="Venue" class="form-control" type="text">
+  <input name="venue" placeholder="Venue" class="form-control" type="text">
     </div>
   </div>
 </div>
@@ -51,7 +51,7 @@
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
   <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
-  <input name="last_name" placeholder="Address" class="form-control"  type="text">
+  <input name="address" placeholder="Address" class="form-control"  type="text">
     </div>
   </div>
 </div>
@@ -61,7 +61,7 @@
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
   <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
-  <input name="last_name" placeholder="Area" class="form-control"  type="text">
+  <input name="area" placeholder="Area" class="form-control"  type="text">
     </div>
   </div>
 </div>
@@ -71,7 +71,7 @@
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-  <input name="date" placeholder="date" class="form-control" type="text">
+  <input name="date" placeholder="date" class="form-control" type="date">
     </div>
   </div>
 </div>
@@ -81,7 +81,7 @@
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
-  <input name="time" placeholder="Start-time" class="form-control" type="text">
+  <input name="start" placeholder="Start-time" class="form-control" type="text">
     </div>
   </div>
 </div>
@@ -92,17 +92,7 @@
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
-  <input name="End-time" placeholder="End-time" class="form-control" type="text">
-    </div>
-  </div>
-</div>
-<!-- Text input-->
-       <div class="form-group">
-  <label class="col-md-4 control-label">E-Mail</label>
-    <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-  <input name="email" placeholder="E-Mail Address" class="form-control"  type="text">
+  <input name="end" placeholder="End-time" class="form-control" type="text">
     </div>
   </div>
 </div>
@@ -113,12 +103,11 @@
     <div class="col-md-4 selectContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-    <select name="state" class="form-control selectpicker" >
-      <option value=" " >Please select a tags</option>
-      <option>JS</option>
-      <option>Java</option>
-      <option >C++</option>
-      <option >Paython</option>
+    <select name="tags" multiple class="form-control selectpicker" >
+      <option value="1">JS</option>
+      <option value="2">Java</option>
+      <option value="3">C++</option>
+      <option value="4">Paython</option>
 
     </select>
   </div>
@@ -131,7 +120,7 @@
    <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-  <input name="website" placeholder="Enter Capacity" class="form-control" type="text">
+  <input name="capacity" placeholder="Enter Capacity" class="form-control" type="text" pattern="[0-9]*">
     </div>
   </div>
 </div>
@@ -142,18 +131,18 @@
                         <div class="col-md-4">
                             <div class="radio">
                                 <label>
-                                    <input type="radio" name="skill" value="Advanced" /> Advanced
+                                    <input type="radio" name="skill" value="advanced" /> Advanced
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" name="skill" value="Intermediate" /> intermediate
+                                    <input type="radio" name="skill" value="intermediate" /> intermediate
                                 </label>
                             </div>
 
                             <div class="radio">
                                 <label>
-                                    <input type="radio" name="skill" value="Beginner" /> Beginner
+                                    <input type="radio" name="skill" value="beginner" /> Beginner
                                 </label>
                             </div>
 
