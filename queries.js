@@ -156,32 +156,40 @@ module.exports = {
       .innerJoin('tags', 'events_tags.tag', 'tags.id')
       .where('events_tags.event', event_id)
   },
-    create_event(event) {
-        return connect.insert(event)
-            .into(events)
-            .then((new_event) => {
-                console.log(new_event);
-            });
-            .finally(() => {
-                connect.destroy();
-            });
-    },
-    delete_event(event) {
-        return connect.del(event)
-            .where(event.title, event)//doubts about this
-            .then((deleted) => {
-                console.log(deleted);
-            }).finally(() => {
-                connect.destroy();
-            });
-    },
-    update_event(event) {
-        return connect.update(event)
-            .where(events, event)
-            .then((updated) => {
-                console.log(updated);
-            }).finally(() => {
-              connect.destroy();
-            });
-    }
+  create_event(event) {
+    return connect.insert(event)
+      .into(events)
+      .then((new_event) => {
+        console.log(new_event);
+      }).catch(err => {
+        console.error(err)
+        res.status(500).send(err);
+      }).finally(() => {
+        connect.destroy();
+      });
+  },
+  delete_event(event) {
+    return connect.del(event)
+      .where(event.title, event) //doubts about this
+      .then((deleted) => {
+        console.log(deleted);
+      }).catch(err => {
+        console.error(err)
+        res.status(500).send(err);
+      }).finally(() => {
+        connect.destroy();
+      });
+  },
+  update_event(event) {
+    return connect.update(event)
+      .where(events, event)
+      .then((updated) => {
+        console.log(updated);
+      }).catch(err => {
+        console.error(err)
+        res.status(500).send(err);
+      }).finally(() => {
+        connect.destroy();
+      });
+  }
 }
