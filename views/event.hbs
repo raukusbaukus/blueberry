@@ -34,20 +34,30 @@
                 <span class="opacity-5">{{event.location.area}}</span>
             </div>
             <div>{{event.date}}</div>
+            <ul id="tags">
+                {{#each event.tags}}
+                    <li class="tag"><a href="/events/{{this}}">{{this}}</a></li>
+                {{/each}}
+            </ul>
+            <p>{{event.description}}</p>
             <div id="host">
                 <img class="avatar" alt="host's photo" src="{{event.host.avatar}}">
                 <a href="/user/{{event.host.id}}"><h2>{{event.host.display_name}}</h2></a>
                 <div>{{event.host.rating}}</div>
             </div>
-            <p>{{event.description}}</p>
             <h4>Instructors</h4>
             <ul>
-              {{#each event.teachers}}
-                <li><a href="/user/{{this.id}}">{{this.display_name}}</a></li>
-              {{/each}}
+                {{#each event.teachers}}
+                    <li class="teacher">
+                        <a href="/user/{{this.id}}">
+                          <img class="avatar" alt="teacher photo" src="{{this.avatar}}">
+                          <span>{{this.display_name}}</span>
+                        </a>
+                    </li>
+                {{/each}}
             </ul>
-              <div>{{event.vacancies}} spaces left</div>
-              <button class="button btn btn-default">RSVP</button>
+            <div>{{event.vacancies}} spaces left</div>
+            <button class="button btn btn-default">RSVP</button>
         </div>
     </main>
 </body>
