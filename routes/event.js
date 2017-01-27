@@ -46,7 +46,7 @@ router.get('/:id', (req, res) => {
             query.get_users_by_event(id)
                 .then(db_users => {
                     db_users.forEach(user => {
-                        user.role === 'student' ? event.students.push(user) : event.teachers.push(user);
+                        user.role === 'student'  ? event.students.push(user) : event.teachers.push(user);
                     })
                     event.vacancies = event.capacity - event.students.length;
                     query.get_tags_by_event(id)
@@ -67,5 +67,38 @@ router.get('/:id', (req, res) => {
                 })
         }))
 })
+
+//POST
+router.post('/post', (req, res, next) => { //take path from moh's form
+  let event = String(req.body.event.title); //is this how I grab the info?!
+  create_event(event); //calling the function!
+});
+
+//DELETE
+router.delete('/delete', (req, res, next) => {
+  let event_to_delete = String(req.body.event.title);
+  delete_event(event_to_delete);
+});
+
+//UPDATE
+router.put('/update', (req, res, next) => {
+  let event_to_update = //grab the event to update
+  knex(events).where(events, event_to_update).update(event_to_update).then((updated) => {
+    console.log(updated);
+  }).finally(function () {
+    knex,destroy();
+  }) 
+});
+
+
+
+
+
+
+
+
+
+
+
 
 module.exports = router;
