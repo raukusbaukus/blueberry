@@ -3,3 +3,4 @@ node_modules
 notes.txt
 heroku-deploy-guide.txt
 .DS_Store
+npm-debug.log
