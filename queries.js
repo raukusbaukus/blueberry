@@ -163,7 +163,7 @@ module.exports = {
                 console.log(new_event);
             });
             .finally(() => {
-                knex.destroy();
+                connect.destroy();
             });
     },
     delete_event(event) {
@@ -172,7 +172,7 @@ module.exports = {
             .then((deleted) => {
                 console.log(deleted);
             }).finally(() => {
-                knex.destroy();
+                connect.destroy();
             });
     },
     update_event(event) {
@@ -181,7 +181,7 @@ module.exports = {
             .then((updated) => {
                 console.log(updated);
             }).finally(() => {
-              knex.destroy();
+              connect.destroy();
             });
     }
 }
