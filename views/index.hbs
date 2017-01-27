@@ -21,34 +21,42 @@
 </head>
 
 <body>
-	<header class="navbar-fixed-top">
-		<nav class="navbar">
-			<div class="container white">
+	<header>
+		<nav class="navbar navbar-inverse transparent">
+			<div class="container">
 				<a class="navbar-brand" href="#">
-					<span class="weight-900">blueberry</span>
-					<img alt="blueberry logo" src="/img/logo.png">
+					<span class="weight-900 white">blueberry</span>
+					<!-- <img alt="blueberry logo" src="/img/logo.png"> -->
 				</a>
-				<ul class="nav navbar-nav pull-right">
-					<li>
-						<a id="login-trigger">Sign-In</a>
-						<div id="login-content" class="text-center">
-							<form method="POST" action="/login">
-								<fieldset id="inputs">
-									<label for="username" class="sr-only">Email</label>
-									<input autofocus required id="username" type="email" name="email" placeholder="email" required>
-									<label for="password" class="sr-only">Password</label>
-									<input required id="password" type="password" name="password" placeholder="Password" required>
-								</fieldset>
-								<fieldset id="actions">
-									<input type="checkbox" checked="checked">
-									<label>Keep me signed in</label>
-									<button class="button btn btn-info" type="submit" id="submit">Sign-In</button>
-								</fieldset>
-							</form>
-						</div>
-					</li>
-					<li><a href="/registration-form.html">Sign-Up</a></li>
-				</ul>
+				<button class="navbar-toggle" data-toggle="collapse" data-target="nav_links">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+				</button>
+				<div id="nav_links" class="collapse navbar-collapse">
+					<ul class="nav navbar-nav pull-right">
+						<li>
+							<a id="login-trigger">sign in</a>
+							<div id="login-content" class="text-center">
+								<form method="POST" action="/login">
+									<fieldset id="inputs">
+										<label for="username" class="sr-only">Email</label>
+										<input autofocus required id="username" type="email" name="email" placeholder="email" required>
+										<label for="password" class="sr-only">Password</label>
+										<input required id="password" type="password" name="password" placeholder="Password" required>
+									</fieldset>
+									<fieldset id="actions">
+										<input type="checkbox" checked="checked">
+										<label>Keep me signed in</label>
+										<button class="button btn btn-info" type="submit" id="submit">sign in</button>
+									</fieldset>
+								</form>
+							</div>
+						</li>
+						<li><a href="/user/create">sign up</a></li>
+
+					</ul>
+				</div>
 			</div>
 		</nav>
 	</header>
@@ -67,50 +75,48 @@
         {{/each}}
       	</datalist>
 			</form>
-			<div class="text-center"><a>I want to teach a subject</a></div>
+			<div class="text-center"><a href="/user/create">I want to teach a subject</a></div>
 		</section>
 		<!-- EVENTS LIST -->
 		<section id="event_list">
 			<div class="container">
 				<h2 class="text-center">Upcoming Lessons</h2>
 				<ul class="list-group container margin-top-2rem">
-          {{#each events}}
+					{{#each events}}
 						<li class="list-group-item event row">
-							<div class="col-xs-6">
-								<div>
-                  {{this.location.title}} <span class="opacity-5">{{this.location.area}}</span></div>
-								<h3>{{this.title}}</h3>
-								<div><strong>{{this.date}}</strong>
-									{{this.start}} -
-										{{this.end}}
+							<a href="/event/{{this.id}}">
+								<div class="col-xs-6">
+									<div>
+										{{this.location.title}} <span class="opacity-5">{{this.location.area}}</span></div>
+									<h3>{{this.title}}</h3>
+									<div><strong>{{this.date}}</strong> {{this.start}} - {{this.end}}
+									</div>
 								</div>
-							</div>
-							<div class="col-xs-6 text-right">
-								<ul class="tag-list">
-                  {{#each this.tags}}
-										<li class="tag">
-											<a href="/events">
+								<div class="col-xs-6 text-right">
+									<ul class="tag-list">
+										{{#each this.tags}}
+											<li class="tag">
+												<a href="/events">
 												{{this}}
 											</a>
-										</li>
-									{{/each}}
-								</ul>
-								<div>
-									<div class="event_user">
-										<a href="/users">
-										<img class="event_avatar" alt="user photo" src="{{this.host.avatar}}">
-										<span>{{this.host.display_name}}</span>
-									</a>
-									</div>
-									<div>xp
-										{{this.host.xp}} | <img alt="star" src="/img/star.png" style="height: 1em">
-											{{this.host.rating}}
+											</li>
+										{{/each}}
+									</ul>
+									<div>
+										<div class="event_user">
+											<a href="/user/{{this.host.id}}">
+												<img class="event_avatar" alt="user photo" src="{{this.host.avatar}}">
+												<span>{{this.host.display_name}}</span>
+											</a>
+										</div>
+										<div>xp {{this.host.xp}} | <img alt="star" src="/img/star.png" style="height: 1em"> {{this.host.rating}}
+										</div>
 									</div>
 								</div>
-							</div>
 
 						</li>
-            {{/each}}
+						</a>
+					{{/each}}
 				</ul>
 			</div>
 		</section>

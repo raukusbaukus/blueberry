@@ -23,7 +23,7 @@ exports.seed = function(knex, Promise) {
                     area: 'online',
                     start: '2017-01-27 12:00:00',
                     end: '2017-01-27 13:00:00',
-                    description: 'The awesomest event ever',
+                    description: 'The traditional flamenco guitar is made of Spanish cypress, sycamore, or rosewood for the back and sides, and spruce for the top. This (in the case of cypress and sycamore) accounts for its characteristic body color. Flamenco guitars are built lighter with thinner tops than classical guitars, which produces a “brighter” and more percussive sound quality. Builders also use less internal bracing to keep the top more percussively resonant. The top is typically made of either spruce or cedar, though other tone woods are used today. Volume has traditionally been very important for flamenco guitarists, as they must be heard over the sound of the dancers’ nailed shoes. To increase volume, harder woods, such as rosewood, can be used for the back and sides, with softer woods for the top.',
                     skill_level: 'beginner',
                     capacity: 50
                 }),
@@ -38,7 +38,7 @@ exports.seed = function(knex, Promise) {
                     end: '2017-01-28 16:00:00',
                     description: 'The awesomest event ever',
                     skill_level: 'beginner',
-                    capacity: 50
+                    capacity: 2
                 }),
                 knex('events').insert({
                     id: 4,
