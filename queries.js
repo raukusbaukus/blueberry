@@ -25,12 +25,12 @@ module.exports = {
                 )
                 .catch(err => {
                     console.error(err)
-                    res.status(500).send(err);
+                    // res.status(500).send(err);
                 })
             )
             .catch(err => {
                 console.error(err)
-                res.status(500).send(err);
+                // res.status(500).send(err);
             })
             .finally(() => {
                 connect.destroy();
@@ -164,13 +164,14 @@ module.exports = {
             .where('events_tags.event', event_id)
     },
     create_event(event) {
-      let tags = event.tags;
-      let event_tags = {tags}
-      event.start = event.date + " " + event.start;
-      event.end = event.date + " " + event.end;
-        // Create Date Start And End Handling Here
-        // start and end are datetime data types
-        // example: '2017-01-29 18:00:00'
+        let event_tags = [];
+        event.tags.forEach(tag => {
+            event_tags.push({
+                tag: Number(tag)
+            });
+        })
+        event.start = event.date + " " + event.start;
+        event.end = event.date + " " + event.end;
         return connect.insert({
                 'title': event.event_title,
                 'venue': event.venue,
@@ -186,28 +187,30 @@ module.exports = {
             .into('events')
             .returning('id')
             .then((event) => {
-                tags.forEach(tag => {
-                  console.log('record tag: ', Number(tag), 'event: ', Number(event[0]))
-                  connect.insert({
-                    event: Number(event[0]),
-                    tag: Number(tag)
-                  }).into('events_tags')
-                })
+                event_tags.forEach(event_tag => {
+                    event_tag.event = Number(event);
+                });
+                return connect.insert(event_tags)
+                    .into('events_tags')
+                    .catch(err => {
+                        console.error(err);
+                    })
+                    .finally(() => {
+                        connect.destroy();
+                    })
             }).catch(err => {
                 console.error(err)
-                // res.status(500).send(err);
             }).finally(() => {
                 connect.destroy();
             });
     },
     delete_event(event) {
-        return connect.del(event)
-            .where(event.title, event) //doubts about this
+        return connect.del('events')
+            .where('id', event)
             .then((deleted) => {
                 console.log(deleted);
             }).catch(err => {
                 console.error(err)
-                // res.status(500).send(err);
             }).finally(() => {
                 connect.destroy();
             });
@@ -219,7 +222,6 @@ module.exports = {
                 console.log(updated);
             }).catch(err => {
                 console.error(err)
-                // res.status(500).send(err);
             }).finally(() => {
                 connect.destroy();
             });

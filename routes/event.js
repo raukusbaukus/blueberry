@@ -4,8 +4,16 @@ const express = require('express'),
 
 router.post('/create', (req, res, next) => { //take path from moh's form
     query.create_event(req.body); //is this how I grab the info?!
+    res.redirect('/');
     // create_event(); //calling the function!
 });
+router.get('/create', (req, res) => {
+  let me = {
+    id: Number(req.query.id)
+  };
+  res.render('create_event', {me});
+})
+
 router.get('/:id', (req, res) => {
     let id = req.params.id;
     query.get_event_by_id(id)

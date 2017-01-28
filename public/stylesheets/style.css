@@ -176,6 +176,8 @@ ul {
 
 
 /*------- EVENT LIST -----*/
+#event_list {
+}
 
 #event_list .tag {
     display: inline-block;
