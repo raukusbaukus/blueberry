@@ -4,72 +4,95 @@ const env = process.env.NODE_ENV || 'development',
     connect = knex(config[env]);
 
 module.exports = {
-    add_new_tag(tag_name, user_id) {
-        connect.insert({
-                title: tag_name,
-                user: user_id
+    find_user(email) {
+        return connect.select('*')
+            .from('users')
+            .where('email', email)
+            .limit(1);
+    },
+    create_tag(title, user) {
+        return connect.insert({
+                title,
+                user
             })
             .into('tags')
-            .then(
-                connect.select('id')
-                .from('tags')
-                .where('title', tag_name)
-                .then(
-                    new_tag_id => {
-                        connect.insert({
-                                tag: new_tag_id,
-                                user: user_id
-                            })
-                            .into('users_tags');
-                    }
-                )
-                .catch(err => {
-                    console.error(err)
-                    res.status(500).send(err);
-                })
-            )
-            .catch(err => {
-                console.error(err)
-                res.status(500).send(err);
-            })
-            .finally(() => {
-                connect.destroy();
-            });
+            .returning('id')
     },
-    add_tag_to_user(tag_name, user_id) {
-        connect.select('id')
-            .from('tags')
-            .where('title', tag_name)
-            .then(
-                tag_id => {
-                    let exists = connect.select('tag')
-                        .from('users_tags')
-                        .where('tag', tag_id)
-                        .where('user', user_id);
-                    if (exists.length < 1) {
-                        console.log('relationship is new');
-                        //only add relation if tag is new to user
-                        connect.insert({
-                                tag: tag_id,
-                                user: user_id
-                            })
-                            .into('users_tags');
-                    }
-                }
-            )
-            .catch(err => {
-                console.error(err)
-                res.status(500).send(err);
+    add_tag_to_user(tag, user) {
+        return connect.insert({
+                tag,
+                user,
+                interest: 'learn'
             })
-            .finally(() => {
-                connect.destroy();
-            });
+            .into('users_tags')
+            .returning('title')
     },
+    // add_new_tag(tag_name, user_id) {
+    // connect.insert({
+    //         title: tag_name,
+    //         user: user_id
+    //     })
+    //     .into('tags')
+    //     .then(
+    //         connect.select('id')
+    //         .from('tags')
+    //         .where('title', tag_name)
+    //         .then(
+    //             new_tag_id => {
+    //                 connect.insert({
+    //                         tag: new_tag_id,
+    //                         user: user_id,
+    //                         interest: 'learn'
+    //                     })
+    //                     .into('users_tags');
+    //             }
+    //         )
+    //         .catch(err => {
+    //             console.error(err)
+    //             res.status(500).send(err);
+    //         })
+    //     )
+    //     .catch(err => {
+    //         console.error(err)
+    //         res.status(500).send(err);
+    //     })
+    //     .finally(() => {
+    //         connect.destroy();
+    //         });
+    // },
+    // add_tag_to_user(tag_name, user_id) {
+    //     connect.select('id')
+    //         .from('tags')
+    //         .where('title', tag_name)
+    //         .then(
+    //             tag_id => {
+    //                 let exists = connect.select('tag')
+    //                     .from('users_tags')
+    //                     .where('tag', tag_id)
+    //                     .where('user', user_id);
+    //                 if (exists.length < 1) {
+    //                     console.log('relationship is new');
+    //                     //only add relation if tag is new to user
+    //                     connect.insert({
+    //                             tag: tag_id,
+    //                             user: user_id
+    //                         })
+    //                         .into('users_tags');
+    //                 }
+    //             }
+    //         )
+    //         .catch(err => {
+    //             console.error(err)
+    //             res.status(500).send(err);
+    //         })
+    //         .finally(() => {
+    //             connect.destroy();
+    //         });
+    // },
     check_tag(tag_name) {
-        return connect.select('title')
+        return connect.select('title', 'id')
             .from('tags')
             .where('title', tag_name)
-        connect.destroy();
     },
     get_tags() {
         return connect.select('event', 'tag', 'title')
@@ -82,11 +105,10 @@ module.exports = {
             .from('tags')
         connect.destroy();
     },
-    get_events_from_tag_titles(tag_arr) {
+    get_tags_ids_by_tags_titles(tags) {
         return connect.select('id')
             .from('tags')
-            .whereIn('title', tag_arr)
-        connect.destroy();
+            .whereIn('title', tags)
     },
     get_events() {
         return connect.select(
@@ -110,13 +132,6 @@ module.exports = {
             .from('events')
             .innerJoin('users', 'events.user', 'users.id')
             .orderBy('list', 'desc')
-        connect.destroy();
-    },
-    find_user(email) {
-        return connect.select('*')
-            .from('users')
-            .where('email', email)
-            .limit(1);
     },
     get_event_by_id(id) {
         return connect.select(
@@ -164,10 +179,8 @@ module.exports = {
             .where('events_tags.event', event_id)
     },
     create_event(event) {
-      let tags = event.tags;
-      let event_tags = {tags}
-      event.start = event.date + " " + event.start;
-      event.end = event.date + " " + event.end;
+        event.start = event.date + " " + event.start;
+        event.end = event.date + " " + event.end;
         // Create Date Start And End Handling Here
         // start and end are datetime data types
         // example: '2017-01-29 18:00:00'
@@ -185,20 +198,19 @@ module.exports = {
             })
             .into('events')
             .returning('id')
-            .then((event) => {
-                tags.forEach(tag => {
-                  console.log('record tag: ', Number(tag), 'event: ', Number(event[0]))
-                  connect.insert({
-                    event: Number(event[0]),
-                    tag: Number(tag)
-                  }).into('events_tags')
-                })
-            }).catch(err => {
-                console.error(err)
-                // res.status(500).send(err);
-            }).finally(() => {
-                connect.destroy();
-            });
+    },
+    add_tags_to_event(tags, event) {
+        //takes and array of tag IDs and an event ID makes it an array of tagID/eventID objects
+        let event_tags = [];
+        tags.forEach(tag => {
+            event_tags.push({
+                event: Number(event),
+                tag: Number(tag)
+            })
+        });
+        //inserts each object in the events_tags table
+        return connect.insert(event_tags)
+            .into('events_tags')
     },
     delete_event(event) {
         return connect.del(event)
@@ -223,5 +235,8 @@ module.exports = {
             }).finally(() => {
                 connect.destroy();
             });
+    },
+    end_connection() {
+        connect.destroy();
     }
 }
