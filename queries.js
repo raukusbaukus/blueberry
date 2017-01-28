@@ -114,10 +114,10 @@ module.exports = {
     },
     create_user(data) {
         data.interests.forEach(interest => {
-          interest.type = 'learn';
+            interest.type = 'learn';
         });
         data.skills.forEach(skill => {
-          skill.type = 'teach';
+            skill.type = 'teach';
         });
         let tags = data.interests.concat(data.skills);
         return connect.insert({
@@ -134,19 +134,20 @@ module.exports = {
             .into('users')
             .returning('id')
             .then(id => {
-                console.log(id);
-                tags.forEach(tag => {
-                    tag.id = Number(tag.id);
-                    tag.user = Number(id);
-                });
-                connect.insert(tags)
-                    .into('users_tags')
-                    .catch(err => {
-                        console.error(err)
-                    })
-                    .finally(() => {
-                        connect.destroy();
-                    })
+                if (tags) {
+                    tags.forEach(tag => {
+                        tag.id = Number(tag.id);
+                        tag.user = Number(id);
+                    });
+                    connect.insert(tags)
+                        .into('users_tags')
+                        .catch(err => {
+                            console.error(err)
+                        })
+                        .finally(() => {
+                            connect.destroy();
+                        })
+                }
             })
             .catch(err => {
                 console.error(err);
