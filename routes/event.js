@@ -4,12 +4,23 @@ const express = require('express'),
 
 //CREATE
 router.get('/create/:user', (req, res) => {
-    let me = {
-        id: req.params.user
-    }
-    res.render('create_event', {
-        me
-    })
+    query.get_all_tags()
+        .then(tags => {
+            let me = {
+                id: req.params.user
+            }
+            res.render('create_event', {
+                me,
+                tags
+            })
+        })
+        .catch(err => {
+            console.error(err);
+            res.status(400).send(err);
+        })
+        .finally(() => {
+            query.end_connection();
+        })
 })
 
 router.post('/create', (req, res, next) => { //take path from moh's form
@@ -40,7 +51,7 @@ router.post('/create', (req, res, next) => { //take path from moh's form
 router.get('/read/:id', (req, res) => {
     let id = req.params.id;
     query.get_event_by_id(id)
-        .then((db_event => {
+        .then(db_event => {
             let event = {
                 title: db_event[0].title,
                 description: db_event[0].description,
@@ -96,11 +107,23 @@ router.get('/read/:id', (req, res) => {
                         .catch(err => {
                             console.error(err);
                         })
+                        .finally(() => {
+                          query.end_connection();
+                        })
                 })
                 .catch(err => {
                     console.error(err);
                 })
-        }))
+                .finally(() => {
+                    query.end_connection();
+                })
+        })
+        .catch(err => {
+            console.error(err);
+        })
+        .finally(() => {
+            query.end_connection();
+        })
 })
 
 //UPDATE

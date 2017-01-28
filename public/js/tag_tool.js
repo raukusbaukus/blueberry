@@ -7,7 +7,7 @@ $(document).ready(function() {
     console.log(tag + ' ' + user_id);
     $.ajax({
       type: "POST",
-      url: "/tags/check_tag/",
+      url: "/tags/create",
       data: {tag, user_id},
       success: display_tags,
       dataType: "json"
