@@ -4,8 +4,11 @@ const env = process.env.NODE_ENV || 'development',
     connect = knex(config[env]);
 
 module.exports = {
-    end_connection() {
-      connect.destroy();
+    find_user(email) {
+        return connect.select('*')
+            .from('users')
+            .where('email', email)
+            .limit(1);
     },
     add_new_tag(tag_name, user_id) {
         connect.insert({
@@ -115,12 +118,6 @@ module.exports = {
             .orderBy('list', 'desc')
         connect.destroy();
     },
-    find_user(email) {
-        return connect.select('*')
-            .from('users')
-            .where('email', email)
-            .limit(1);
-    },
     get_event_by_id(id) {
         return connect.select(
                 'events.id',
@@ -167,10 +164,8 @@ module.exports = {
             .where('events_tags.event', event_id)
     },
     create_event(event) {
-      // let tags = event.tags;
-      // let event_tags = {tags}
-      event.start = event.date + " " + event.start;
-      event.end = event.date + " " + event.end;
+        event.start = event.date + " " + event.start;
+        event.end = event.date + " " + event.end;
         // Create Date Start And End Handling Here
         // start and end are datetime data types
         // example: '2017-01-29 18:00:00'
@@ -188,33 +183,19 @@ module.exports = {
             })
             .into('events')
             .returning('id')
-            // .then((event) => {
-            //     tags.forEach(tag => {
-            //       console.log('record tag: ', Number(tag), 'event: ', Number(event[0]))
-            //       connect.insert({
-            //         event: Number(event[0]),
-            //         tag: Number(tag)
-            //       }).into('events_tags')
-            //     })
-            // }).catch(err => {
-            //     console.error(err)
-            //     // res.status(500).send(err);
-            // }).finally(() => {
-            //     connect.destroy();
-            // });
     },
     add_tags_to_event(tags, event) {
-      let event_tags = [];//takes and array of tag IDs and an event ID makes it an array of tagID/eventID objects
-      tags.forEach(tag => {
-        event_tags.push({
-          event: Number(event),
-          tag: Number(tag)
-        })
-      });
-      console.log('tags', event_tags)
-      //inserts each object in the events_tags table
-      return connect.insert(event_tags)
-      .into('events_tags')
+        //takes and array of tag IDs and an event ID makes it an array of tagID/eventID objects
+        let event_tags = [];
+        tags.forEach(tag => {
+            event_tags.push({
+                event: Number(event),
+                tag: Number(tag)
+            })
+        });
+        //inserts each object in the events_tags table
+        return connect.insert(event_tags)
+            .into('events_tags')
     },
     delete_event(event) {
         return connect.del(event)
@@ -239,5 +220,8 @@ module.exports = {
             }).finally(() => {
                 connect.destroy();
             });
+    },
+    end_connection() {
+        connect.destroy();
     }
 }

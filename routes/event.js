@@ -2,6 +2,7 @@ const express = require('express'),
     router = express.Router(),
     query = require('../queries');
 
+//CREATE
 router.get('/create/:user', (req, res) => {
     let me = {
         id: req.params.user
@@ -15,9 +16,9 @@ router.post('/create', (req, res, next) => { //take path from moh's form
     query.create_event(req.body)
         .then(event => {
             query.add_tags_to_event(req.body.tags, event)
-            .then(event => {
-              res.redirect('/');
-            })
+                .then(event => {
+                    res.redirect('/');
+                })
                 .catch(err => {
                     console.error(err);
                     res.status(400).send(err)
@@ -25,7 +26,6 @@ router.post('/create', (req, res, next) => { //take path from moh's form
                 .finally(() => {
                     query.end_connection();
                 })
-
         })
         .catch(err => {
             console.error(err);
@@ -34,8 +34,9 @@ router.post('/create', (req, res, next) => { //take path from moh's form
         .finally(() => {
             query.end_connection();
         })
-
 });
+
+//READ
 router.get('/read/:id', (req, res) => {
     let id = req.params.id;
     query.get_event_by_id(id)
@@ -102,31 +103,74 @@ router.get('/read/:id', (req, res) => {
         }))
 })
 
-//POST
-
-//DELETE
-router.delete('/delete/:id', (req, res, next) => {
-    let event_to_delete = String(req.body.event.title);
-    delete_event(event_to_delete);
-});
-
 //UPDATE
-router.put('/update/:id', (req, res, next) => {
-    let event_to_update = //grab the event to update
-        knex(events).where(events, event_to_update).update(event_to_update).then((updated) => {
-            console.log(updated);
-        }).finally(function() {
-            knex,
-            destroy();
+router.get('/update/:id', (req, res) => {
+    let id = Number(req.params.id);
+    query.get_event_by_id(id)
+        .then(event => {
+            query.get_tags_by_event(event)
+                .then(tags => {
+                    query.get_users_by_event(event)
+                        .then(users => {
+                            res.render('update_user', {
+                                event,
+                                tags,
+                                users
+                            });
+                        })
+                        .catch(err => {
+                            console.error(err);
+                            res.status(400).send(err);
+                        })
+                        .finally(() => {
+                            query.end_connection();
+                        })
+                })
+                .catch(err => {
+                    console.error(err);
+                    res.status(400).send(err);
+                })
+                .finally(() => {
+                    query.end_connection();
+                })
+        })
+        .catch(err => {
+            console.error(err);
+            res.status(400).send(err);
+        })
+        .finally(() => {
+            query.end_connection();
+        })
+})
+
+router.put('/update', (req, res) => {
+    let id = Number(req.body.id);
+    query.update_event(id)
+        .then(id => {
+            res.redirect(`/event/update/${id}`);
+        })
+        .catch(err => {
+            console.error(err);
+            res.status(400).send(err)
+        })
+        .finally(() => {
+            query.end_connection();
         })
 });
 
-
-
-
-
-
-
-
+//DELETE
+router.delete('/delete/:id', (req, res, next) => {
+    let id = Number(req.params.id);
+    query.delete_event(id)
+        .then(event => {
+            res.redirect('/events');
+        })
+        .catch(err => {
+            console.error(err);
+        })
+        .finally(() => {
+            query.end_connection();
+        })
+});
 
 module.exports = router;
