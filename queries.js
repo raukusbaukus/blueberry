@@ -112,6 +112,49 @@ module.exports = {
             .orderBy('list', 'desc')
         connect.destroy();
     },
+    create_user(data) {
+        data.interests.forEach(interest => {
+          interest.type = 'learn';
+        });
+        data.skills.forEach(skill => {
+          skill.type = 'teach';
+        });
+        let tags = data.interests.concat(data.skills);
+        return connect.insert({
+                'display_name': data.display_name,
+                'bio': data.bio,
+                'email': data.email,
+                'password': data.password,
+                'location': data.location,
+                'avatar': data.avatar,
+                'remote_irl': data.remote_irl,
+                'phone': data.phone,
+                'notifications': data.notifications
+            })
+            .into('users')
+            .returning('id')
+            .then(id => {
+                console.log(id);
+                tags.forEach(tag => {
+                    tag.id = Number(tag.id);
+                    tag.user = Number(id);
+                });
+                connect.insert(tags)
+                    .into('users_tags')
+                    .catch(err => {
+                        console.error(err)
+                    })
+                    .finally(() => {
+                        connect.destroy();
+                    })
+            })
+            .catch(err => {
+                console.error(err);
+            })
+            .finally(() => {
+                connect.destroy();
+            })
+    },
     find_user(email) {
         return connect.select('*')
             .from('users')
@@ -164,10 +207,12 @@ module.exports = {
             .where('events_tags.event', event_id)
     },
     create_event(event) {
-      let tags = event.tags;
-      let event_tags = {tags}
-      event.start = event.date + " " + event.start;
-      event.end = event.date + " " + event.end;
+        let tags = event.tags;
+        let event_tags = {
+            tags
+        }
+        event.start = event.date + " " + event.start;
+        event.end = event.date + " " + event.end;
         // Create Date Start And End Handling Here
         // start and end are datetime data types
         // example: '2017-01-29 18:00:00'
@@ -187,11 +232,11 @@ module.exports = {
             .returning('id')
             .then((event) => {
                 tags.forEach(tag => {
-                  console.log('record tag: ', Number(tag), 'event: ', Number(event[0]))
-                  connect.insert({
-                    event: Number(event[0]),
-                    tag: Number(tag)
-                  }).into('events_tags')
+                    console.log('record tag: ', Number(tag), 'event: ', Number(event[0]))
+                    connect.insert({
+                        event: Number(event[0]),
+                        tag: Number(tag)
+                    }).into('events_tags')
                 })
             }).catch(err => {
                 console.error(err)
