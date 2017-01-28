@@ -6,7 +6,7 @@ router.post('/create', (req, res, next) => { //take path from moh's form
     query.create_event(req.body); //is this how I grab the info?!
     // create_event(); //calling the function!
 });
-router.get('/:id', (req, res) => {
+router.get('/read/:id', (req, res) => {
     let id = req.params.id;
     query.get_event_by_id(id)
         .then((db_event => {
@@ -75,13 +75,13 @@ router.get('/:id', (req, res) => {
 //POST
 
 //DELETE
-router.delete('/delete', (req, res, next) => {
+router.delete('/delete/:id', (req, res, next) => {
     let event_to_delete = String(req.body.event.title);
     delete_event(event_to_delete);
 });
 
 //UPDATE
-router.put('/update', (req, res, next) => {
+router.put('/update/:id', (req, res, next) => {
     let event_to_update = //grab the event to update
         knex(events).where(events, event_to_update).update(event_to_update).then((updated) => {
             console.log(updated);
