@@ -4,6 +4,9 @@ const env = process.env.NODE_ENV || 'development',
     connect = knex(config[env]);
 
 module.exports = {
+    end_connection() {
+      connect.destroy();
+    },
     add_new_tag(tag_name, user_id) {
         connect.insert({
                 title: tag_name,
@@ -164,8 +167,8 @@ module.exports = {
             .where('events_tags.event', event_id)
     },
     create_event(event) {
-      let tags = event.tags;
-      let event_tags = {tags}
+      // let tags = event.tags;
+      // let event_tags = {tags}
       event.start = event.date + " " + event.start;
       event.end = event.date + " " + event.end;
         // Create Date Start And End Handling Here
@@ -185,20 +188,33 @@ module.exports = {
             })
             .into('events')
             .returning('id')
-            .then((event) => {
-                tags.forEach(tag => {
-                  console.log('record tag: ', Number(tag), 'event: ', Number(event[0]))
-                  connect.insert({
-                    event: Number(event[0]),
-                    tag: Number(tag)
-                  }).into('events_tags')
-                })
-            }).catch(err => {
-                console.error(err)
-                // res.status(500).send(err);
-            }).finally(() => {
-                connect.destroy();
-            });
+            // .then((event) => {
+            //     tags.forEach(tag => {
+            //       console.log('record tag: ', Number(tag), 'event: ', Number(event[0]))
+            //       connect.insert({
+            //         event: Number(event[0]),
+            //         tag: Number(tag)
+            //       }).into('events_tags')
+            //     })
+            // }).catch(err => {
+            //     console.error(err)
+            //     // res.status(500).send(err);
+            // }).finally(() => {
+            //     connect.destroy();
+            // });
+    },
+    add_tags_to_event(tags, event) {
+      let event_tags = [];//takes and array of tag IDs and an event ID makes it an array of tagID/eventID objects
+      tags.forEach(tag => {
+        event_tags.push({
+          event: Number(event),
+          tag: Number(tag)
+        })
+      });
+      console.log('tags', event_tags)
+      //inserts each object in the events_tags table
+      return connect.insert(event_tags)
+      .into('events_tags')
     },
     delete_event(event) {
         return connect.del(event)

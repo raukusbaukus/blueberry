@@ -2,9 +2,39 @@ const express = require('express'),
     router = express.Router(),
     query = require('../queries');
 
+router.get('/create/:user', (req, res) => {
+    let me = {
+        id: req.params.user
+    }
+    res.render('create_event', {
+        me
+    })
+})
+
 router.post('/create', (req, res, next) => { //take path from moh's form
-    query.create_event(req.body); //is this how I grab the info?!
-    // create_event(); //calling the function!
+    query.create_event(req.body)
+        .then(event => {
+            query.add_tags_to_event(req.body.tags, event)
+            .then(event => {
+              res.redirect('/');
+            })
+                .catch(err => {
+                    console.error(err);
+                    res.status(400).send(err)
+                })
+                .finally(() => {
+                    query.end_connection();
+                })
+
+        })
+        .catch(err => {
+            console.error(err);
+            res.status(400).send(err)
+        })
+        .finally(() => {
+            query.end_connection();
+        })
+
 });
 router.get('/read/:id', (req, res) => {
     let id = req.params.id;
