@@ -1,35 +1,36 @@
 {
-    "name": "blueberry",
-    "version": "1.0.0",
-    "description": "An app that facilitates p2p learning.",
-    "repository": "https://github.com/raukusbaukus/blueberry",
-    "author": "Team Myrmidon",
-    "license": "ISC",
-    "scripts": {
-        "test": "mocha",
-        "watch": "`npm bin`/nodemon ./bin/www",
-        "start": "node ./bin/www"
-    },
-    "dependencies": {
-        "body-parser": "^1.16.0",
-        "cookie-parser": "^1.4.3",
-        "dotenv": "^4.0.0",
-        "ejs": "^2.5.5",
-        "express": "^4.14.0",
-        "express-session": "^1.15.0",
-        "hbs": "^4.0.1",
-        "knex": "^0.12.6",
-        "passport": "^0.3.2",
-        "passport-local": "^1.0.0",
-        "pg": "^6.1.2"
-    },
-    "devDependencies": {
-        "mocha": "^3.2.0",
-        "chai": "^3.5.0",
-        "nodemon": "^1.11.0",
-        "supertest": "^2.0.1"
-    },
-    "engines": {
-        "node": "7.4.0"
-    }
+  "name": "blueberry",
+  "version": "1.0.0",
+  "description": "An app that facilitates p2p learning.",
+  "repository": "https://github.com/raukusbaukus/blueberry",
+  "author": "Team Myrmidon",
+  "license": "ISC",
+  "scripts": {
+    "test": "mocha",
+    "watch": "`npm bin`/nodemon ./bin/www",
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "argon2": "^0.15.0",
+    "body-parser": "^1.16.0",
+    "cookie-parser": "^1.4.3",
+    "dotenv": "^4.0.0",
+    "ejs": "^2.5.5",
+    "express": "^4.14.0",
+    "express-session": "^1.15.0",
+    "hbs": "^4.0.1",
+    "knex": "^0.12.6",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "pg": "^6.1.2"
+  },
+  "devDependencies": {
+    "mocha": "^3.2.0",
+    "chai": "^3.5.0",
+    "nodemon": "^1.11.0",
+    "supertest": "^2.0.1"
+  },
+  "engines": {
+    "node": "7.4.0"
+  }
 }
