@@ -171,7 +171,7 @@ module.exports = {
   },
   delete_event(event) {
     return connect.del(event)
-      .where(event.title, event) //doubts about this
+      .where('event.title', event) //doubts about this
       .then((deleted) => {
         console.log(deleted);
       }).catch(err => {
@@ -184,7 +184,7 @@ module.exports = {
   },
   update_event(event) {
     return connect.update(event)
-      .where(events, event)
+      .where('events', event)
       .then((updated) => {
         console.log(updated);
       }).catch(err => {

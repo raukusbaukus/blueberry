@@ -53,6 +53,10 @@ ul {
 
 /*----------HEADER-------*/
 
+.navbar-toggle {
+     background-color: transparent; 
+}
+
 #login-content {
     display: none;
     position: absolute;
@@ -88,9 +92,9 @@ ul {
 .transparent .navbar-nav li a {
   color: white;
 }
-.transparent button.navbar-toggle {
+/*.transparent button.navbar-toggle {
   border: .1rem solid #fff
-}
+}*/
 
 .navbar-brand img {
     display: none;
@@ -102,8 +106,13 @@ ul {
     font-size: 2rem;
 }
 
-.centered {
-    position: center;
+/*#centered {
+    position: run-in;
+    margin-left: 0px;
+
+}*/
+.dropdown-toogle {
+    margin-left: 20px;
 }
 
 /*--------------#LANDING---------------*/
