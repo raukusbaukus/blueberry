@@ -27,9 +27,6 @@ router.post('/create', (req, res) => {
             console.error(err);
             res.status(400).send(err)
         })
-        .finally(() => {
-            // query.end_connection();
-        })
 });
 router.get('/read/:id', (req, res) => {
     query.find_user(id)
@@ -40,9 +37,6 @@ router.get('/read/:id', (req, res) => {
         })
         .catch(err => {
             res.status(400).send(err)
-        })
-        .finally(() => {
-            // query.end_connection();
         })
 });
 router.get('/update/:id', (req, res) => {
@@ -55,9 +49,6 @@ router.get('/update/:id', (req, res) => {
         .catch(err => {
             res.status(400).send(err)
         })
-        .finally(() => {
-            // query.end_connection();
-        })
 })
 router.put('/update/:id', (req, res) => {
     let id = Number(req.params.id);
@@ -68,9 +59,6 @@ router.put('/update/:id', (req, res) => {
         .catch(err => {
             res.status(400).send(err)
         })
-        .finally(() => {
-            // query.end_connection();
-        })
 });
 router.delete('/delete/:id', (req, res) => {
     let id = Number(req.params.id);
@@ -80,9 +68,6 @@ router.delete('/delete/:id', (req, res) => {
         })
         .catch(err => {
             res.status(400).send(err)
-        })
-        .finally(() => {
-            // query.end_connection();
         })
 });
 module.exports = router;
