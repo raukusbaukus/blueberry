@@ -24,13 +24,14 @@ module.exports = {
       .returning('id')
   },
   associate_users_tags(tag_id, user_id) {
+    console.log("in assoc_u_t ",tag_id," ",user_id)
     return connect.insert({
         tag: tag_id,
-        user: user_id,
-        interest: 'learn'
+        user: user_id//,
+        //interest: 'learn'
       })
       .into('users_tags')
-      .returning('id')
+      //.returning('tag')
   },
   unassociate_tag(tag_id, user_id) {
     return connect.select('*')
@@ -50,7 +51,7 @@ module.exports = {
       .from('users_tags')
       .where('tag', tag_id)
       .where('user', user_id)
-      //.returning('tag')
+      .returning('tag')
   },
   get_tags() {
     return connect.select('event', 'tag', 'title')
