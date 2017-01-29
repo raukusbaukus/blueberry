@@ -1,4 +1,11 @@
 $(document).ready(function() {
+
+  $('#example-multiple-selected').multiselect({
+  enableClickableOptGroups: true,
+  enableCollapsibleOptGroups: true,
+  enableFiltering: true,
+  includeSelectAllOption: true});
+
   $('#contact_form').bootstrapValidator({
       // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
       feedbackIcons: {
@@ -7,7 +14,7 @@ $(document).ready(function() {
           validating: 'glyphicon glyphicon-refresh'
       },
       fields: {
-          first_name: {
+          event_title: {
               validators: {
                       stringLength: {
                       min: 2,
@@ -17,7 +24,7 @@ $(document).ready(function() {
                   }
               }
           },
-           last_name: {
+           venue: {
               validators: {
                    stringLength: {
                       min: 2,
@@ -58,7 +65,7 @@ $(document).ready(function() {
                   }
               }
           },
-          city: {
+          area: {
               validators: {
                    stringLength: {
                       min: 4,
