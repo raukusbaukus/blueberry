@@ -14,7 +14,7 @@ router.post('/create', (req, res) => {
         //new tag. create and associate to user.
         query.create_tag(tag_title, user_id)
           .then(r_tag_id => {
-            new_tag_id = r_tag_id[0];
+            new_tag_id = Number(r_tag_id[0].id);
             query.associate_users_tags(new_tag_id, user_id)
               .then(() => {
                 res.status(200).send("new tag created");
@@ -32,11 +32,10 @@ router.post('/create', (req, res) => {
         //existing tag. get tag_id
         query.get_tag_id_by_tag_title(tag_title)
           .then(g_tag_id => {
-            e_tag_id = g_tag_id[0];
+            e_tag_id = Number(g_tag_id[0].id);
             //check for association to user
             query.check_tag_association(e_tag_id, user_id)
               .then(tag_assoc => {
-                console.log("assoc is ", tag_assoc);
                 if (tag_assoc.length < 1) {
                   //tag not associated to user, add association
                   query.associate_users_tags(e_tag_id, user_id)

@@ -27,8 +27,8 @@ module.exports = {
     console.log("in assoc_u_t ",tag_id," ",user_id)
     return connect.insert({
         tag: tag_id,
-        user: user_id//,
-        //interest: 'learn'
+        user: user_id,
+        interest: 'learn'
       })
       .into('users_tags')
       //.returning('tag')
