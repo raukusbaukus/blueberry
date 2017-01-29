@@ -5,7 +5,7 @@ require('dotenv').config({
 module.exports = {
 
   development: {
-    client: 'postgresql', //do pg later
+    client: 'pg', //do pg later
     connection: {
       database: 'blueberry'
       //later

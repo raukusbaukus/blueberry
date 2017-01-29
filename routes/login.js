@@ -1,30 +1,44 @@
 const express = require('express'),
     router = express.Router(),
+    argon2 = require('argon2'),
     query = require('../queries');
 
 router.get('/', (req, res) => {
-  if (req.query.e === 'invalid') {
-    let error = 'Your email and password combination was invalid.';
-    res.render('login', {error});
-  }
-  else {
-    res.render('login');
-  }
+    if (req.query.e === 'invalid') {
+        let error = 'Your email and password combination was invalid.';
+        res.render('login', {
+            error
+        });
+    } else {
+        res.render('login');
+    }
 });
 router.post('/', (req, res) => {
-    let email = req.body.email,
-    password = req.body.password;
-    console.log('pass', password)
-
-    query.find_user(email).then(user => {
-      console.log(user[0].password);
-      password === user[0].password ?
-      res.redirect('/user?user=' + user[0].id) : res.redirect('/login?e=invalid')
-    })
-    .catch(err => {
-      console.error(err);
-      res.status(500).send(err);
-    })
+    query.find_user(req.body.email)
+        .then(user => {
+            argon2.verify(user[0].password, req.body.password)
+                .then(match => {
+                    if (match) {
+                        res.render('me', {
+                            user
+                        })
+                    } else {
+                        res.redirect('/login?e=invalid');
+                    }
+                })
+                .catch(err => {
+                    console.error(err);
+                    res.render('error', {
+                        err
+                    })
+                })
+        })
+        .catch(err => {
+            console.error(err);
+            res.render('error', {
+                err
+            });
+        })
 });
 
 module.exports = router;

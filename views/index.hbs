@@ -127,7 +127,7 @@
 				<ul class="list-group container margin-top-2rem">
 					{{#each events}}
 						<li class="list-group-item event row">
-							<a href="/event/{{this.id}}">
+							<a href="/event/read/{{this.id}}">
 								<div class="col-xs-6">
 									<div>
 										{{this.location.title}} <span class="opacity-5">{{this.location.area}}</span></div>
@@ -147,7 +147,7 @@
 									</ul>
 									<div>
 										<div class="event_user">
-											<a href="/user/{{this.host.id}}">
+											<a href="/user/read/{{this.host.id}}">
 												<img class="event_avatar" alt="user photo" src="{{this.host.avatar}}">
 												<span>{{this.host.display_name}}</span>
 											</a>
