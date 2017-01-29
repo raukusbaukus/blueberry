@@ -1,12 +1,17 @@
 $(document).ready(function() {
-$('#example-multiple-selected').multiselect({
-enableClickableOptGroups: true,
-enableCollapsibleOptGroups: true,
-enableFiltering: true,
-includeSelectAllOption: true});
+$('#date').datepicker({
+
+});
 
 
-$('#contact_form').bootstrapValidator({
+  $('#example-multiple-selected').multiselect({
+  enableClickableOptGroups: true,
+  enableCollapsibleOptGroups: true,
+  enableFiltering: true,
+  includeSelectAllOption: true});
+
+
+  $('#contact_form').bootstrapValidator({
       // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
       feedbackIcons: {
           valid: 'glyphicon glyphicon-ok',
@@ -14,7 +19,7 @@ $('#contact_form').bootstrapValidator({
           validating: 'glyphicon glyphicon-refresh'
       },
       fields: {
-          first_name: {
+          event_title: {
               validators: {
                       stringLength: {
                       min: 2,
@@ -24,7 +29,7 @@ $('#contact_form').bootstrapValidator({
                   }
               }
           },
-           last_name: {
+           venue: {
               validators: {
                    stringLength: {
                       min: 2,
@@ -65,7 +70,7 @@ $('#contact_form').bootstrapValidator({
                   }
               }
           },
-          city: {
+          area: {
               validators: {
                    stringLength: {
                       min: 4,
@@ -125,6 +130,4 @@ $('#contact_form').bootstrapValidator({
               console.log(result);
           }, 'json');
       });
-
-
-      });
+});
