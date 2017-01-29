@@ -1,4 +1,4 @@
-#host .avatar {
+/*#host .avatar {
   height: 10rem;
   width: 10rem;
   border-radius: 50%;
@@ -7,4 +7,7 @@
   height: 3rem;
   width: 3rem;
   border-radius: 50%;
-}
+}*/
+
+
+#success_message{ display: none;}
