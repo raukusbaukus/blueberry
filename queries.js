@@ -24,26 +24,34 @@ module.exports = {
       .returning('id')
   },
   associate_users_tags(tag_id, user_id) {
+    console.log("in assoc_u_t ",tag_id," ",user_id)
     return connect.insert({
         tag: tag_id,
         user: user_id,
         interest: 'learn'
       })
       .into('users_tags')
-    .returning('id')
+      //.returning('tag')
+  },
+  unassociate_tag(tag_id, user_id) {
+    return connect.select('*')
+      .from('users_tags')
+      .where('tag', tag_id)
+      .where('user', user_id)
+      .del();
   },
   check_tag(tag_title) {
-    return connect.select('title', 'id')
+    return connect.select('id')
       .from('tags')
       .where('title', tag_title)
       .returning('id')
   },
   check_tag_association(tag_id, user_id) {
-    return connect.select('tag', 'user', 'id')
+    return connect.select('tag')
       .from('users_tags')
       .where('tag', tag_id)
       .where('user', user_id)
-      .returning('id')
+      .returning('tag')
   },
   get_tags() {
     return connect.select('event', 'tag', 'title')
@@ -54,10 +62,10 @@ module.exports = {
     return connect.select('title')
       .from('tags')
   },
-  get_tags_ids_by_tags_titles(tags) {
+  get_tag_id_by_tag_title(tag_title) {
     return connect.select('id')
       .from('tags')
-      .whereIn('title', tags)
+      .where('title', tag_title)
   },
   get_events() {
     return connect.select(

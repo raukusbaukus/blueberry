@@ -9,13 +9,13 @@ exports.seed = function(knex, Promise) {
                     interest: 'learn',
                     skill_level: 'intermediate'
                 }),
-                knex('users_tags').insert({
-                    id: 2,
-                    user: 2,
-                    tag: 2,
-                    interest: 'learn',
-                    skill_level: 'intermediate'
-                }),
+                 knex('users_tags').insert({
+                     id: 2,
+                     user: 2,
+                     tag: 2,
+                     interest: 'learn',
+                     skill_level: 'intermediate'
+                 }),
                 knex('users_tags').insert({
                     id: 3,
                     user: 1,
