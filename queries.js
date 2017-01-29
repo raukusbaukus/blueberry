@@ -10,6 +10,11 @@ module.exports = {
             .where('email', email)
             .limit(1);
     },
+    create_user(data) {
+        return connect.insert(data)
+            .into('users')
+            .returning('*')
+    },
     create_tag(title, user) {
         return connect.insert({
                 title,
@@ -27,68 +32,6 @@ module.exports = {
             .into('users_tags')
             .returning('title')
     },
-    // add_new_tag(tag_name, user_id) {
-    // connect.insert({
-    //         title: tag_name,
-    //         user: user_id
-    //     })
-    //     .into('tags')
-    //     .then(
-    //         connect.select('id')
-    //         .from('tags')
-    //         .where('title', tag_name)
-    //         .then(
-    //             new_tag_id => {
-    //                 connect.insert({
-    //                         tag: new_tag_id,
-    //                         user: user_id,
-    //                         interest: 'learn'
-    //                     })
-    //                     .into('users_tags');
-    //             }
-    //         )
-    //         .catch(err => {
-    //             console.error(err)
-    //             res.status(500).send(err);
-    //         })
-    //     )
-    //     .catch(err => {
-    //         console.error(err)
-    //         res.status(500).send(err);
-    //     })
-    //     .finally(() => {
-    //         connect.destroy();
-    //         });
-    // },
-    // add_tag_to_user(tag_name, user_id) {
-    //     connect.select('id')
-    //         .from('tags')
-    //         .where('title', tag_name)
-    //         .then(
-    //             tag_id => {
-    //                 let exists = connect.select('tag')
-    //                     .from('users_tags')
-    //                     .where('tag', tag_id)
-    //                     .where('user', user_id);
-    //                 if (exists.length < 1) {
-    //                     console.log('relationship is new');
-    //                     //only add relation if tag is new to user
-    //                     connect.insert({
-    //                             tag: tag_id,
-    //                             user: user_id
-    //                         })
-    //                         .into('users_tags');
-    //                 }
-    //             }
-    //         )
-    //         .catch(err => {
-    //             console.error(err)
-    //             res.status(500).send(err);
-    //         })
-    //         .finally(() => {
-    //             connect.destroy();
-    //         });
-    // },
     check_tag(tag_name) {
         return connect.select('title', 'id')
             .from('tags')
@@ -98,12 +41,10 @@ module.exports = {
         return connect.select('event', 'tag', 'title')
             .from('events_tags')
             .innerJoin('tags', 'events_tags.tag', 'tags.id')
-        connect.destroy();
     },
     get_all_tags() {
         return connect.select('title')
             .from('tags')
-        connect.destroy();
     },
     get_tags_ids_by_tags_titles(tags) {
         return connect.select('id')

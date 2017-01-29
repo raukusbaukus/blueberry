@@ -22,7 +22,7 @@ router.post('/create', (req, res) => {
                                 res.status(500).send(err)
                             })
                             .finally(() => {
-                                query.end_connection();
+                                // query.end_connection();
                             })
                     })
             } else {
@@ -36,7 +36,7 @@ router.post('/create', (req, res) => {
                         res.status(500).send(err);
                     })
                     .finally(() => {
-                        query.end_connection();
+                        // query.end_connection();
                     })
             }
         })
@@ -45,7 +45,7 @@ router.post('/create', (req, res) => {
             res.status(500).send(err);
         })
         .finally(() => {
-            query.end_connection();
+            // query.end_connection();
         })
 });
 

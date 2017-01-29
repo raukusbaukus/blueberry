@@ -15,11 +15,11 @@ router.get('/create/:user', (req, res) => {
             })
         })
         .catch(err => {
-            console.error(err);
+            console.error('get all tags', err);
             res.status(400).send(err);
         })
         .finally(() => {
-            query.end_connection();
+            // query.end_connection();
         })
 })
 
@@ -31,19 +31,19 @@ router.post('/create', (req, res, next) => { //take path from moh's form
                     res.redirect('/');
                 })
                 .catch(err => {
-                    console.error(err);
+                    console.error('add tags to event', err);
                     res.status(400).send(err)
                 })
                 .finally(() => {
-                    query.end_connection();
+                    // query.end_connection();
                 })
         })
         .catch(err => {
-            console.error(err);
+            console.error('create event', err);
             res.status(400).send(err)
         })
         .finally(() => {
-            query.end_connection();
+            // query.end_connection();
         })
 });
 
@@ -108,21 +108,21 @@ router.get('/read/:id', (req, res) => {
                             console.error(err);
                         })
                         .finally(() => {
-                          query.end_connection();
+                          // query.end_connection();
                         })
                 })
                 .catch(err => {
                     console.error(err);
                 })
                 .finally(() => {
-                    query.end_connection();
+                    // query.end_connection();
                 })
         })
         .catch(err => {
             console.error(err);
         })
         .finally(() => {
-            query.end_connection();
+            // query.end_connection();
         })
 })
 

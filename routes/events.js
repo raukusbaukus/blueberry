@@ -16,9 +16,9 @@ router.get('/', (req, res) => {
             console.error(err);
             res.status(400).send(err);
         })
-        .finally(() => {
-            query.end_connection();
-        })
+        // .finally(() => {
+            // query.end_connection();
+        // })
 });
 
 module.exports = router;
