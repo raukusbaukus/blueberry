@@ -31,6 +31,16 @@ li {
 ul {
     padding: 0;
 }
+.error {
+  background-color: pink;
+  color: crimson;
+  text-align: center;
+  width: 50%;
+  margin: 0 auto 2rem auto;
+  padding: 1rem;
+  border-radius: .5rem;
+  min-width: 30rem;
+}
 .form-horizontal {
   margin-top: 5rem;
 }
@@ -53,7 +63,9 @@ ul {
 .margin-top-2rem {
     margin-top: 2rem;
 }
-
+.min-height-100vh {
+  min-height: 100vh;
+}
 .tag {
     color: #fff;
     background-color: #bbb;
@@ -75,7 +87,6 @@ ul {
 
 .zen {
     background-image: radial-gradient(farthest-corner at 10rem 10rem, rgba(28, 49, 245, 0.94) 0%, rgba(107, 215, 227, 0.94) 100%), url(/img/background.jpg);
-    background-attachment: fixed;
 }
 
 #login-content {
