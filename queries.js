@@ -24,14 +24,13 @@ module.exports = {
       .returning('id')
   },
   associate_users_tags(tag_id, user_id) {
-    console.log("in assoc_u_t ",tag_id," ",user_id)
     return connect.insert({
         tag: tag_id,
         user: user_id,
         interest: 'learn'
       })
       .into('users_tags')
-      //.returning('tag')
+    //.returning('tag')
   },
   unassociate_tag(tag_id, user_id) {
     return connect.select('*')
@@ -52,6 +51,23 @@ module.exports = {
       .where('tag', tag_id)
       .where('user', user_id)
       .returning('tag')
+  },
+  tag_associations(user_id) {
+    return connect.select('tag')
+      .from('users_tags')
+      .where('user', user_id)
+      .then(tag_ids => { //TypeError: Cannot read property 'then' of undefined
+        let tag_id_arr = [];
+        tag_ids.forEach((atag) => {
+          tag_id_arr.push(atag.tag);
+        })
+        return connect.select('title')
+          .from('tags')
+          .whereIn('id', tag_id_arr);
+      })
+      .catch(err => {
+        console.error(err)
+      })
   },
   get_tags() {
     return connect.select('event', 'tag', 'title')
@@ -176,7 +192,6 @@ module.exports = {
         console.log(deleted);
       }).catch(err => {
         console.error(err)
-        // res.status(500).send(err);
       })
     // .finally(() => {
     //     connect.destroy();
@@ -189,7 +204,6 @@ module.exports = {
         console.log(updated);
       }).catch(err => {
         console.error(err)
-        // res.status(500).send(err);
       })
     // .finally(() => {
     //     connect.destroy();

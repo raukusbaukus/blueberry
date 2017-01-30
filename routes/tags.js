@@ -6,7 +6,6 @@ const express = require('express'),
 router.post('/create', (req, res) => {
   let tag_title = String(req.body.tag);
   let user_id = Number(req.body.user_id);
-  console.log("in /create");
   query.check_tag(tag_title)
     .then(tag_id => {
       //tag_id = Number(tag_id);
@@ -14,7 +13,7 @@ router.post('/create', (req, res) => {
         //new tag. create and associate to user.
         query.create_tag(tag_title, user_id)
           .then(r_tag_id => {
-            new_tag_id = Number(r_tag_id[0].id);
+            new_tag_id = Number(r_tag_id[0]);
             query.associate_users_tags(new_tag_id, user_id)
               .then(() => {
                 res.status(200).send("new tag created");
@@ -105,13 +104,25 @@ router.delete('/delete', (req, res) => {
 
 router.get('/user/:user_id', (req, res) => {
   let user_id = Number(req.params.user_id);
-  return query.tag_associations(user_id);
+  console.log('in tags/user/', user_id)
+  query.tag_associations(user_id)
+    .then(tag_data => {
+      let tag_titles = [];
+      tag_data.forEach(atag => {
+        tag_titles.push(atag.title);
+      });
+      res.status(200).send(tag_titles);
+    })
+    .catch(err => {
+      console.error("catch user", err);
+      res.status(500).send(err);
+    })
 });
 
 router.get('/:tags', (req, res) => {
   let tags = String(req.params.tags);
   let tag_arr = tags.split('&');
-  res.send(tag_arr);
+  res.status(200).send(tag_arr);
 });
 
 module.exports = router;
