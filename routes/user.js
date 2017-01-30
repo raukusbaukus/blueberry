@@ -2,10 +2,21 @@ const express = require('express'),
     router = express.Router(),
     argon2 = require('argon2'),
     query = require('../queries');
-//
+
+
+
+
+//PROHIBITED
 router.get('/create/', (req, res) => {
-    res.render('create_user');
+    if(req.session) {
+        res.redirect('/events');
+    } else {
+       res.render('create_user'); 
+    } 
 });
+
+
+
 router.get('/create/:event', (req, res) => {
     let event = Number(req.params.event);
     //if user arrives at signup via event rsvp, save event id to sign them up

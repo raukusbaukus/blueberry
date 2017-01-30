@@ -2,7 +2,11 @@ const express = require('express'),
   router = express.Router(),
   query = require('../queries');
 
+//PROHIBITED
 router.get('/', (req, res, next) => {
+  if (req.session) {
+    res.redirect('/events');
+  } else {
   query.get_events()
     .then(values => {
       let events = [];
@@ -82,6 +86,7 @@ router.get('/', (req, res, next) => {
       console.error(err)
       res.status(500).send(err);
     });
+  }
 });
 
 module.exports = router;

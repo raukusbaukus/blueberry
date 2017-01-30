@@ -3,8 +3,12 @@ const express = require('express'),
     argon2 = require('argon2'),
     query = require('../queries');
 
+//PROHIBITED
 router.get('/', (req, res) => {
-    if (req.query.e === 'invalid') {
+    if (req.session) {
+        res.redirect('/events');
+    } else {
+        if (req.query.e === 'invalid') {
         let error = 'Your email and password combination was invalid.';
         res.render('login', {
             error
@@ -12,6 +16,7 @@ router.get('/', (req, res) => {
     } else {
         res.render('login');
     }
+    } 
 });
 router.post('/', (req, res) => {
     query.find_user(req.body.email)
