@@ -26,7 +26,7 @@
                     <!-- <img alt="blueberry logo" src="/img/logo.png"> -->
                 </a>
                 <ul class="nav navbar-nav pull-right">
-                    <li><a href="/registration-form.html">sign up</a></li>
+                    <li><a href="/user/create">sign up</a></li>
                 </ul>
             </div>
         </nav>
@@ -34,7 +34,9 @@
     <div class="window">
         <h1>Please Sign In</h1>
         <form action="/login" method="post">
-            <div class="error">{{error}}</div>
+            {{#if error}}
+                <div class="error">{{error}}</div>
+            {{/if}}
             <label for="email">Email</label>
             <input autofocus required id="email" type="email" name="email" placeholder="jan.doe@mail.com">
             <label for="password">Password</label>

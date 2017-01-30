@@ -14,9 +14,10 @@
 	<!-- AWESOMEPLETE SEARCH -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.1/awesomplete.css">
 	<link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+	<link rel="stylesheet" type="text/css" href="stylesheets/events.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.1/awesomplete.js"></script>
 	<script src="/js/tag_tool.js"></script>
-	<title>BlueBerry</title>
+	<title>blueberry</title>
 </head>
 
 <body>
@@ -25,59 +26,67 @@
 			<div class="container white">
 				<a class="navbar-brand" href="#">
 					<span class="weight-900">blueberry</span>
-					<img alt="blueberry logo" src="/img/logo.png">
+					<!-- <img alt="blueberry logo" src="/img/logo.png"> -->
 				</a>
 				<ul class="nav navbar-nav pull-right">
 					<li>
-						<a id="login-trigger">sign in</a>
-						<div id="login-content" class="text-center">
-							<form method="POST" action="/login">
-								<fieldset id="inputs">
-									<label for="username" class="sr-only">Email</label>
-									<input autofocus required id="username" type="email" name="email" placeholder="email" required>
-									<label for="password" class="sr-only">Password</label>
-									<input required id="password" type="password" name="password" placeholder="Password" required>
-								</fieldset>
-								<fieldset id="actions">
-									<input type="checkbox" checked="checked">
-									<label>Keep me signed in</label>
-									<button class="button btn btn-info" type="submit" id="submit">sign in</button>
-								</fieldset>
-							</form>
-						</div>
+						<a id="create_event" href="event/create">Create Event</a>
 					</li>
-					<li><a href="/registration-form.html">sign up</a></li>
+					<li>
+						<a href="/logout">Sign Out</a>
+					</li>
 				</ul>
 			</div>
 		</nav>
 	</header>
 	<main>
-		<section id="landing">
+		<section id="landing" style="padding-bottom: 50px; padding-top: 50px;">
 			<!-- <h1>in each of us is a student and a teacher. blueberry helps us be both.</h1> -->
-			<!-- SEARCH BAR -->
-			<form id="search-form" class="searchform group text-center">
-				<label for="search-box">
-   					<span class="spanText">What subject do you want to learn?</span>
-  			</label>
-				<input autofocus type="search" name="search_tag" class="text-center" id="tag-search-box" list="search-tags">
-        <input id="user_id" type="hidden" name="user_id" value="{{me.id}}">
-        <datalist id="search-tags">
-          {{#each all_tags}}
-          	<option>{{this.title}}</option>
-        {{/each}}
-      	</datalist>
-        <input type="submit" value="Add Interest Tag">
-			</form>
-			<div class="text-center"><a>I want to teach a subject</a></div>
 		</section>
+
 		<!-- EVENTS LIST -->
 		<section id="event_list">
 			<div class="container">
-				<h2 class="text-center">Upcoming Lessons</h2>
-				<ul class="list-group container margin-top-2rem">
-					{{#each events}}
-						<li class="list-group-item event row">
-							<a href="/event/{{this.id}}">
+				<div class="row">
+					<h2 class="text-center">Upcoming Events</h2>
+
+					<section class="side-search col-xs-3">
+						<h2 class="text-center subject-text">Subjects of Interest</h2>
+						<ul>
+							<li></li>
+						</ul>
+
+						<div class="caption">
+							<form id="search-form" class="searchform group text-center">
+								<div id="tag_list">
+									<ul id="user_tag_list">
+									</ul>
+								</div>
+								<input type="search" name="search_tag" class="text-center" id="tag-search-box" list="search-tags">
+				        <input id="user_id" type="hidden" name="user_id" value="{{me.id}}">
+				        <datalist id="search-tags">
+				          {{#each all_tags}}
+				          	<option>{{this.title}}</option>
+				        {{/each}}
+				      	</datalist>
+				        <input type="submit" value="Add a Subject">
+							</form>
+							<label class="checkbox">
+    				<input type="checkbox"> Only search my subjects!
+  					</label>
+							<p><a href="#" class="btn btn-primary" role="button">Search</a></p>
+						</div>
+
+					</section>
+
+					<div class="col-sx-1">
+					</div>
+
+					<ul class="col-xs-8">
+						{{#each events}}
+
+							<li class="list-group-item event row">
+								<a href="/event/{{this.id}}"></a>
 								<div class="col-xs-6">
 									<div>
 										{{this.location.title}} <span class="opacity-5">{{this.location.area}}</span></div>
@@ -100,19 +109,21 @@
 											<a href="/user/{{this.host.id}}">
 												<img class="event_avatar" alt="user photo" src="{{this.host.avatar}}">
 												<span>{{this.host.display_name}}</span>
-											</a>
 										</div>
 										<div>xp {{this.host.xp}} | <img alt="star" src="/img/star.png" style="height: 1em"> {{this.host.rating}}
 										</div>
 									</div>
 								</div>
 
-						</li>
-						</a>
-					{{/each}}
-				</ul>
+							</li>
+							</a>
+						{{/each}}
+					</ul>
+				</div>
 			</div>
 		</section>
+		</div>
+		</div>
 	</main>
 
 	<footer>

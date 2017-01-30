@@ -24,14 +24,12 @@ module.exports = {
       .returning('id')
   },
   associate_users_tags(tag_id, user_id) {
-    console.log("in assoc_u_t ",tag_id," ",user_id)
     return connect.insert({
         tag: tag_id,
         user: user_id,
         interest: 'learn'
       })
       .into('users_tags')
-      //.returning('tag')
   },
   unassociate_tag(tag_id, user_id) {
     return connect.select('*')
@@ -44,7 +42,7 @@ module.exports = {
     return connect.select('id')
       .from('tags')
       .where('title', tag_title)
-      .returning('id')
+      //.returning('id')
   },
   check_tag_association(tag_id, user_id) {
     return connect.select('tag')
@@ -52,6 +50,23 @@ module.exports = {
       .where('tag', tag_id)
       .where('user', user_id)
       .returning('tag')
+  },
+  tag_associations(user_id) {
+    return connect.select('tag')
+      .from('users_tags')
+      .where('user', user_id)
+      .then(tag_ids => {
+        let tag_id_arr = [];
+        tag_ids.forEach((atag) => {
+          tag_id_arr.push(atag.tag);
+        })
+        return connect.select('title')
+          .from('tags')
+          .whereIn('id', tag_id_arr);
+      })
+      .catch(err => {
+        console.error(err)
+      })
   },
   get_tags() {
     return connect.select('event', 'tag', 'title')
@@ -112,7 +127,6 @@ module.exports = {
       .from('events')
       .innerJoin('users', 'events.user', 'users.id')
       .where('events.id', id);
-    //connect.destroy();
   },
   get_users_by_event(event_id) {
     return connect.select(
@@ -156,6 +170,15 @@ module.exports = {
       .into('events')
       .returning('id')
   },
+  create_events_users(event, user) {
+    return connect.insert({
+      event: Number(event),
+      user: Number(user),
+      role: 'learn'
+    })
+    .into('events_users')
+    returning('*')
+  },
   add_tags_to_event(tags, event) {
     //takes and array of tag IDs and an event ID makes it an array of tagID/eventID objects
     let event_tags = [];
@@ -171,28 +194,20 @@ module.exports = {
   },
   delete_event(event) {
     return connect.del(event)
-      .where(event.title, event) //doubts about this
+      .where('event.title', event) //doubts about this
       .then((deleted) => {
         console.log(deleted);
       }).catch(err => {
         console.error(err)
-        // res.status(500).send(err);
       })
-    // .finally(() => {
-    //     connect.destroy();
-    // });
   },
   update_event(event) {
     return connect.update(event)
-      .where(events, event)
+      .where('events', event)
       .then((updated) => {
         console.log(updated);
       }).catch(err => {
         console.error(err)
-        // res.status(500).send(err);
       })
-    // .finally(() => {
-    //     connect.destroy();
-    // });
   },
 }
