@@ -42,21 +42,6 @@
 	<main>
 		<section id="landing" style="padding-bottom: 50px; padding-top: 50px;">
 			<!-- <h1>in each of us is a student and a teacher. blueberry helps us be both.</h1> -->
-			<!-- SEARCH BAR -->
-			<form id="search-form" class="searchform group text-center">
-				<label for="search-box">
-   					<span class="spanText">What subject do you want to learn?</span>
-  				</label>
-				<input autofocus type="search" name="search_tag" class="text-center" id="tag-search-box" list="search-tags">
-        		<input id="user_id" type="hidden" name="user_id" value="{{me.id}}">
-        		<datalist id="search-tags">
-          			{{#each all_tags}}
-          			<option>{{this.title}}</option>
-        			{{/each}}
-      			</datalist>
-        	<input type="submit" value="Add Interest Tag">
-			</form>
-			<div class="text-center"><a>I want to teach a subject</a></div>
 		</section>
 
 		<!-- EVENTS LIST -->
