@@ -56,31 +56,27 @@
 					<h2 class="text-center">Upcoming Events</h2>
 
 					<section class="side-search col-xs-3">
-						<h2 class="text-center subject-text">Subjects of Interest</h2>
-						<ul>
-							<li></li>
-						</ul>
-
-						<div class="caption">
-							<form id="search-form" class="searchform group text-center">
+						<h4>Search for subjects</h4>
+						<!-- <div class="caption"> -->
+							<form id="search-form" class="searchform form-control">
 								<div id="tag_list">
 									<ul id="user_tag_list">
 									</ul>
 								</div>
-								<input type="search" name="search_tag" class="text-center" id="tag-search-box" list="search-tags">
-				        <input id="user_id" type="hidden" name="user_id" value="{{me.id}}">
-				        <datalist id="search-tags">
+								<input type="search" name="search_tag" id="tag-search-box" list="search-tags">
+								<input id="user_id" type="hidden" name="user_id" value="{{me.id}}">
+								<datalist id="search-tags">
 				          {{#each all_tags}}
 				          	<option>{{this.title}}</option>
 				        {{/each}}
 				      	</datalist>
-				        <input type="submit" value="Add a Subject">
-							</form>
-							<label class="checkbox">
-    				<input type="checkbox"> Only search my subjects!
-  					</label>
-							<p><a href="#" class="btn btn-primary" role="button">Search</a></p>
-						</div>
+								<button type="submit" class="btn btn-default">Add Subject</button>
+						</form>
+						<label class="checkbox">
+						<input type="checkbox"> Only search my subjects!
+					</label>
+						<p><a href="#" class="btn btn-info pull-right" role="button">Search</a></p>
+						<!-- </div> -->
 
 					</section>
 

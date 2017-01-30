@@ -5,14 +5,24 @@
 }
 
 .side-search {
-  background-color: #ddd; /*rgba(113, 139, 184, 1);*/
-  border-radius: 4px;
-  margin: .5em;
-  padding: 1em;
-  border: solid #888 .1rem;
+  position: relative;
+  background-color: #fff; /*rgba(113, 139, 184, 1);*/
+  border-radius: .5rem;
+  margin: 0 .5em 0 0;
+  padding: 1rem;
+  border: .1rem solid rgba(0,0,0,0.1);
+  min-height: 70vh;
   /*background: linear-gradient(to bottom right, rgba(159, 206, 233, 1), rgba(113, 139, 184, 1));*/
 }
-
+.side-search button {
+  width: 100%;
+}
+.side-search .btn-info {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  left: 1rem;
+}
 .tag_button {
   margin-left: 1rem;
   margin-right: -.6rem;

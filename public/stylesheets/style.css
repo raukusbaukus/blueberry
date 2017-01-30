@@ -75,7 +75,6 @@ ul {
 
 .zen {
     background-image: radial-gradient(farthest-corner at 10rem 10rem, rgba(28, 49, 245, 0.94) 0%, rgba(107, 215, 227, 0.94) 100%), url(/img/background.jpg);
-    background-attachment: fixed;
 }
 
 #login-content {
