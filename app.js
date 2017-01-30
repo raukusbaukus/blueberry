@@ -11,14 +11,17 @@ const express = require('express'),
     tags = require('./routes/tags'),
     user = require('./routes/user'),
     users = require('./routes/users'),
-    passport = require('passport'),
-    local_strategy = require('passport-local').Strategy,
-    session = require('express-session'),
+    express_session = require('express-session'),
     query = require('./queries');
+
 
 hbs.localsAsTemplateData(app);
 app.use(body_parser.urlencoded({ extended: true }));
-
+app.use(express_session({
+  secret: process.env.SECRET,
+  resave: false,
+  saveUninitialized: true
+}));
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use("/", routes);

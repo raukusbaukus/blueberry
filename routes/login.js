@@ -4,13 +4,18 @@ const express = require('express'),
     query = require('../queries');
 
 router.get('/', (req, res) => {
-    if (req.query.e === 'invalid') {
-        let error = 'Your email and password combination was invalid.';
+    if (req.session.id) {
+        res.redirect('/events');
+    } else {
+        let error;
+        if (req.query.e === 'invalid') {
+            error = 'Your email and password combination was invalid.';
+        } else if (req.query.e === 'restricted') {
+            error = 'You must be logged in to view that page';
+        }
         res.render('login', {
             error
-        });
-    } else {
-        res.render('login');
+        })
     }
 });
 router.post('/', (req, res) => {
@@ -19,9 +24,8 @@ router.post('/', (req, res) => {
             argon2.verify(user[0].password, req.body.password)
                 .then(match => {
                     if (match) {
-                        res.render('me', {
-                            user
-                        })
+                        req.session.user = user[0].id
+                        res.render('index')
                     } else {
                         res.redirect('/login?e=invalid');
                     }
