@@ -132,10 +132,27 @@ router.get('/read/:id', (req, res) => {
         })
 })
 
+router.put('/read/:id', (req, res) => {
+    let id = Number(req.params.id);
+    if (req.session.user) {
+        query.create_events_users(id, req.session.user)
+            .then(user => {
+                res.redirect(`/event/read/${id}`);
+            })
+            .catch(err => {
+                console.error(err);
+                res.render('error', {
+                    err
+                })
+            })
+    } else {
+        req.session.cookie.path = `/event/read/${id}`;
+        res.redirect('/user/create');
+    }
+})
 //UPDATE
 router.get('/update/:id', (req, res) => {
     if (req.session.user) {
-        let id = Number(req.params.id);
         query.get_event_by_id(id)
             .then(event => {
                 if (event.user == req.session.user) {
@@ -195,6 +212,12 @@ router.put('/update', (req, res) => {
                     res.redirect('/login?e=unauthorized');
                 }
             })
+            .catch(err => {
+                console.error(err);
+                es.render('error', {
+                    err
+                })
+            })
     } else {
         res.redirect('/login?e=restricted')
     }
@@ -217,6 +240,12 @@ router.delete('/delete/:id', (req, res) => {
                 } else {
                     res.redirect('/login?e=unauthorized');
                 }
+            })
+            .catch(err => {
+                console.error(err);
+                res.render('error', {
+                    err
+                });
             })
     } else {
         res.redirect('/login?e=restricted');

@@ -26,7 +26,6 @@ router.post('/', (req, res) => {
                 .then(match => {
                     if (match) {
                         req.session.user = user[0].id
-                        console.log('req session path in login post', req.session.cookie.path)
                         req.session.cookie.path == '/' ?
                         res.redirect('/events') :
                         res.redirect(req.session.cookie.path);
