@@ -42,7 +42,7 @@ module.exports = {
     return connect.select('id')
       .from('tags')
       .where('title', tag_title)
-      //.returning('id')
+    //.returning('id')
   },
   check_tag_association(tag_id, user_id) {
     return connect.select('tag')
@@ -60,7 +60,7 @@ module.exports = {
         tag_ids.forEach((atag) => {
           tag_id_arr.push(atag.tag);
         })
-        return connect.select('title')
+        return connect.select('title', 'id')
           .from('tags')
           .whereIn('id', tag_id_arr);
       })
@@ -105,31 +105,74 @@ module.exports = {
       .innerJoin('users', 'events.user', 'users.id')
       .orderBy('list', 'desc')
   },
-  get_events_by_tags(tags_ids){
-    return connect.select(
-        'events.id',
-        'events.title',
-        'events.venue',
-        'events.address',
-        'events.area',
-        'events.start',
-        'events.end',
-        'users.id as user',
-        'users.avatar',
-        'users.display_name',
-        'users.bio',
-        'users.rating',
-        'users.xp',
-        'events.description',
-        'events.skill_level',
-        'events.capacity'
-      )
-      .from('events')
-      .innerJoin('users', 'events.user', 'users.id')
-      .innerJoin('events_tags', 'events.id', 'events_tags.event')
-      .whereIn('events_tags.tag', tags_ids)
-      .orderBy('list', 'desc')
-},
+  get_events_by_tags(search_data) {
+    console.log('in get_events_by_tags ', search_data); //{ search_ids: 'false' }
+    let tag_id_arr = search_data.search_ids;
+    if (tag_id_arr === 'false') { //tags_ids
+      //search on everything
+      tag_ids = [];
+      return connect.select('title', 'id')
+        .from('tags')
+        .then(data => {
+          data.forEach(tag => {
+            tag_ids.push(tag.id);
+          })
+          return connect.select(
+              'events.id',
+              'events.title',
+              'events.venue',
+              'events.address',
+              'events.area',
+              'events.start',
+              'events.end',
+              'users.id as user',
+              'users.avatar',
+              'users.display_name',
+              'users.bio',
+              'users.rating',
+              'users.xp',
+              'events.description',
+              'events.skill_level',
+              'events.capacity'
+            )
+            .from('events')
+            .innerJoin('users', 'events.user', 'users.id')
+            .innerJoin('events_tags', 'events.id', 'events_tags.event')
+            .whereIn('events_tags.tag', tag_ids)
+            .orderBy('list', 'desc')
+
+        })
+        .catch(err => {
+          console.error(err)
+        })
+    } else {
+      //only search on passed tags_ids
+      console.log('else ', tag_id_arr);
+      return connect.select(
+          'events.id',
+          'events.title',
+          'events.venue',
+          'events.address',
+          'events.area',
+          'events.start',
+          'events.end',
+          'users.id as user',
+          'users.avatar',
+          'users.display_name',
+          'users.bio',
+          'users.rating',
+          'users.xp',
+          'events.description',
+          'events.skill_level',
+          'events.capacity'
+        )
+        .from('events')
+        .innerJoin('users', 'events.user', 'users.id')
+        .innerJoin('events_tags', 'events.id', 'events_tags.event')
+        .whereIn('events_tags.tag', tag_id_arr)
+        .orderBy('list', 'desc')
+    }
+  },
   get_event_by_id(id) {
     return connect.select(
         'events.id',
@@ -197,11 +240,11 @@ module.exports = {
   },
   create_events_users(event, user) {
     return connect.insert({
-      event: Number(event),
-      user: Number(user),
-      role: 'learn'
-    })
-    .into('events_users')
+        event: Number(event),
+        user: Number(user),
+        role: 'learn'
+      })
+      .into('events_users')
     returning('*')
   },
   add_tags_to_event(tags, event) {

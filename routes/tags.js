@@ -4,7 +4,7 @@ const express = require('express'),
 
 
 router.post('/create', (req, res) => {
-  let tag_title = String(req.body.tag);
+  let tag_title = String(req.body.tag_title);
   let user_id = Number(req.body.user_id);
   query.check_tag(tag_title)
     .then(tag_id => {
@@ -69,7 +69,8 @@ router.post('/create', (req, res) => {
 
 router.delete('/delete', (req, res) => {
   //deletes the passed tag from the passed user. does not delete from tags table
-  let tag_name = String(req.body.tag_name);
+  let tag_name = String(req.body.tag_title);
+  let tag_id = String(req.body.tag_title);
   let user_id = Number(req.body.user_id);
   query.check_tag(tag_name)
     .then(tag_id => {
@@ -108,11 +109,11 @@ router.get('/user/:user_id', (req, res) => {
   let user_id = Number(req.params.user_id);
   query.tag_associations(user_id)
     .then(tag_data => {
-      let tag_titles = [];
+      let tag_objs = [];
       tag_data.forEach(atag => {
-        tag_titles.push(atag.title);
+        tag_objs.push(atag);//(atag.title);
       });
-      res.status(200).send(tag_titles);
+      res.status(200).send(tag_objs);
     })
     .catch(err => {
       console.error("catch user", err);
