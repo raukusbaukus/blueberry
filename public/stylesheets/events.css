@@ -1,5 +1,35 @@
 /*------GLOBAL------*/
 
+.subject-text {
+  font-size: 1.8rem;
+}
+
+.side-search {
+  background-color: #ddd; /*rgba(113, 139, 184, 1);*/
+  border-radius: 4px;
+  margin: .5em;
+  padding: 1em;
+  border: solid #888 .1rem;
+  /*background: linear-gradient(to bottom right, rgba(159, 206, 233, 1), rgba(113, 139, 184, 1));*/
+}
+
+.tag_button {
+  margin-left: 1rem;
+  margin-right: -.6rem;
+  border: solid #000 .1rem;
+  border-radius: 4px;
+  background-color: rgba(166, 166, 166, .5);
+  color: #000;
+}
+
+.tag_button:hover {
+  background-color: #bbb; /*rgba(166, 166, 166, .9);*/
+}
+
+.checkbox {
+  margin-left: 2rem;
+}
+
 section {
     padding: 5rem 0 15rem;
     background-color: #fbfbfb;
@@ -9,7 +39,6 @@ header {
   top: 0;
   right: 0;
   left: 0;
-  margin-left: 40px;
 }
 a {
     cursor: pointer;
@@ -41,17 +70,6 @@ ul {
     margin-top: 2rem;
 }
 
-.tag {
-    color: #fff;
-    background-color: #3361FF;
-    border-radius: .5rem;
-    padding: .5rem 1rem;
-    display: inline-block;
-}
-.tag:hover {
-  background-color: #30A6FF;
-}
-
 /*----------HEADER-------*/
 
 .navbar-toggle {
@@ -78,37 +96,8 @@ ul {
     outline: none;
 }
 
-#login-content button {
-    width: 100%;
-    color: #fff;
-}
-
-.navbar-default {
-    border-radius: 0;
-}
-.transparent {
-  border: none;
-  background-color: rgba(0,0,0,0);
-}
-.transparent .navbar-nav li a {
-  color: white;
-}
-/*.transparent button.navbar-toggle {
-  border: .1rem solid #fff
-}*/
-
-.navbar-brand img {
-    display: none;
-    /* just until we get our own logo */
-    height: 3rem;
-}
-
 .weight-900 {
     font-size: 2rem;
-}
-
-#example-navbar-collapse {
-    margin-right: 60px;
 }
 
 /*--------------#LANDING---------------*/
@@ -123,7 +112,6 @@ ul {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-
 #landing h1 {
     font-size: 5rem;
     font-weight: 300;
@@ -131,7 +119,7 @@ ul {
     text-align: center;
     width: 70%;
     min-width: 35rem;
-    margin: auto;
+    margin: auto;_event
 }
 
 
@@ -181,6 +169,12 @@ ul {
 .searchform :-ms-input-placeholder {
     color: rgba(255, 255, 255, 0.6);
 }
+/*----------ASIDE---------*/
+aside h1 {
+    padding-bottom: 20px;
+}
+
+
 
 
 /*------- EVENT LIST -----*/
@@ -203,12 +197,12 @@ ul {
     margin-top: 1rem;
 }
 #event_list .event .event_user a:hover {
-  color: #555;
+    color: #555;
 }
 #event_list .event .event_user img {
-  height: 3rem;
-  width: 3rem;
-  border-radius: 50%;
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
 }
 
 /* ------ FOOTER ------ */

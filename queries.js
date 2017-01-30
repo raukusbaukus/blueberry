@@ -30,7 +30,6 @@ module.exports = {
         interest: 'learn'
       })
       .into('users_tags')
-    //.returning('tag')
   },
   unassociate_tag(tag_id, user_id) {
     return connect.select('*')
@@ -56,7 +55,7 @@ module.exports = {
     return connect.select('tag')
       .from('users_tags')
       .where('user', user_id)
-      .then(tag_ids => { //TypeError: Cannot read property 'then' of undefined
+      .then(tag_ids => {
         let tag_id_arr = [];
         tag_ids.forEach((atag) => {
           tag_id_arr.push(atag.tag);
@@ -128,7 +127,6 @@ module.exports = {
       .from('events')
       .innerJoin('users', 'events.user', 'users.id')
       .where('events.id', id);
-    //connect.destroy();
   },
   get_users_by_event(event_id) {
     return connect.select(
@@ -187,26 +185,20 @@ module.exports = {
   },
   delete_event(event) {
     return connect.del(event)
-      .where(event.title, event) //doubts about this
+      .where('event.title', event) //doubts about this
       .then((deleted) => {
         console.log(deleted);
       }).catch(err => {
         console.error(err)
       })
-    // .finally(() => {
-    //     connect.destroy();
-    // });
   },
   update_event(event) {
     return connect.update(event)
-      .where(events, event)
+      .where('events', event)
       .then((updated) => {
         console.log(updated);
       }).catch(err => {
         console.error(err)
       })
-    // .finally(() => {
-    //     connect.destroy();
-    // });
   },
 }
