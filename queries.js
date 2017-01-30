@@ -43,7 +43,7 @@ module.exports = {
     return connect.select('id')
       .from('tags')
       .where('title', tag_title)
-      .returning('id')
+      //.returning('id')
   },
   check_tag_association(tag_id, user_id) {
     return connect.select('tag')
