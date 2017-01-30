@@ -13,7 +13,7 @@ $(document).ready(function() {
       prep_tags();
     });
   });
-  $('#search_button').on('click', start_search);
+  //$('#search_button').on('click', start_search);
 });
 
 function prep_tags() {
@@ -30,6 +30,7 @@ function show_tags(data) {
   tag_id_arr = [];
   data.forEach(tag => {
     tag_id_arr.push(tag.id);
+    $('#search_submit').prepend(`<input type="hidden" name="tags[]" value="${tag.id}">`)
     $('#user_tag_list').append(`<li class="tag" id="tag_${tag.title}">${tag.title}<input type="button" class="tag_button" tag_title="${tag.title}" tag_id="${tag.id}" value="X" id="tag_b_${tag.id}"></input></li>`);
     $(`#tag_b_${tag.id}`).on('click', remove_tag_from_user);
   });
@@ -60,7 +61,9 @@ function start_search() {
     search_ids = tag_id_arr;
   }
   console.log('started search ', search_ids);
-  $.get('/events/search', {search_ids});
+  // $.get('/events/search', {search_ids}, (data) => {
+  //   console.log('ok here ', data);
+  // });
 }
 
 function nothing() {

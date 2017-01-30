@@ -107,7 +107,8 @@ module.exports = {
   },
   get_events_by_tags(search_data) {
     console.log('in get_events_by_tags ', search_data); //{ search_ids: 'false' }
-    let tag_id_arr = search_data.search_ids;
+    let tag_id_arr = search_data.tags;
+    console.log('tag_id_arr ', tag_id_arr);
     if (tag_id_arr === 'false') { //tags_ids
       //search on everything
       tag_ids = [];

@@ -93,12 +93,11 @@ router.get('/', (req, res, next) => {
   }
 });
 
-router.get('/search', (req, res) => {
-  res.render('login');
+router.post('/search', (req, res) => {
   if (req.session.user) {
 
-    console.log('in search route ', req.query);
-    let search_data = req.query; //array of numbers or false
+    console.log('in search route ', req.body);
+    let search_data = req.body; //array of numbers or false
     query.get_all_tags()
       .then(all_tag_titles => {
         let all_tags = [];
@@ -110,8 +109,8 @@ router.get('/search', (req, res) => {
         })
         query.get_events_by_tags(search_data)
           .then(events => {
-            console.log('in return ', events);
-            res.render('events', {
+            console.log('in return ');//, events);
+            res.render('events_search', {
               events,
               all_tags,
               me: {
@@ -120,6 +119,10 @@ router.get('/search', (req, res) => {
             });
             //res render search results
           })
+          .catch(err => {
+            console.error(err)
+            res.status(500).send(err);
+          });
       })
       .catch(err => {
         console.error(err)
