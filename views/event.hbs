@@ -20,10 +20,33 @@
 </head>
 
 <body>
-    <header>
-        <nav>
+    <header class="zen">
+        <nav class="navbar navbar-default transparent" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example-navbar-collapse">
+	         		<span class="icon-bar"></span>
+	         		<span class="icon-bar"></span>
+	         		<span class="icon-bar"></span>
+      			</button>
+                <a class="navbar-brand" href="#">
+                    <span class="weight-900 white">Blueberry</span>
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="example-navbar-collapse">
+                <ul class="nav navbar-nav pull-right">
+                    {{#if me}}
+                        <li><a href="/logout">Sign Out</a></li>
+                    {{else}}
+                        <li><a href="/login">Sign In</a></li>
+                    {{/if}}
+            </div>
 
         </nav>
+
+
+
+
+
     </header>
     <main>
         <div class="container">
