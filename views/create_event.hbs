@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/css/bootstrap.min.css"rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link href="http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/css/bootstrap-multiselect.css"rel="stylesheet" type="text/css" />
+  <script src="http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/js/bootstrap-multiselect.js"type="text/javascript"></script>
+
+  <link rel="stylesheet" href="/stylesheets/create_event.css">
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+  <script type="text/javascript" src="/js/create_event.js"></script>
+
+
+</head>
+
+
+
+<div class="container">
+
+    <form class="well form-horizontal" action="/event/create" method="post"  id="contact_form">
+<fieldset>
+
+<!-- Form Name -->
+<legend>Create Event</legend>
+
+<!-- Text input-->Please fill in the event information
+<input type="hidden" name="user" value="{{me.id}}">
+<div class="form-group">
+  <label class="col-md-4 control-label">Event title</label>
+  <div class="col-md-4 inputGroupContainer">
+  <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-tasks"></i></span>
+  <input  name="event_title" placeholder="Event title" class="form-control"  type="text">
+    </div>
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label">Location</label>
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
+  <input name="venue" placeholder="Venue" class="form-control" type="text">
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" ></label>
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
+  <input name="address" placeholder="Address" class="form-control"  type="text">
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" ></label>
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
+  <input name="area" placeholder="Area" class="form-control"  type="text">
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label">Event Date</label>
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span  class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+  <input id ="date" name="date" placeholder="date" class="form-control" type="text">
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label">Start-time</label>
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+  <input id ="time" name="start" placeholder="Start-time" class="form-control" type="text">
+    </div>
+  </div>
+</div>
+
+
+<div class="form-group">
+  <label class="col-md-4 control-label">End-time</label>
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+  <input name="end" placeholder="End-time" class="form-control " type="text">
+    </div>
+  </div>
+</div>
+
+
+<div class="form-group">
+  <label class="col-md-4 control-label">Tags</label>
+    <div class="col-md-4 selectContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+    <select id="example-multiple-selected" name="tags"  class ="selectpicker" multiple  data-actions-box="true" >
+      <option value="1">JS</option>
+      <option value="2">Java</option>
+      <option value="3">C++</option>
+      <option value="4">Paython</option>
+
+    </select>
+  </div>
+</div>
+</div>
+
+
+<div class="form-group">
+  <label class="col-md-4 control-label">Capacity</label>
+   <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+  <input name="capacity" placeholder="Enter Capacity" class="form-control" type="text" pattern="[0-9]*">
+    </div>
+  </div>
+</div>
+
+<!-- radio checks -->
+ <div class="form-group">
+                        <label class="col-md-4 control-label">Skill Level</label>
+                        <div class="col-md-4">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="skill" value="advanced" /> Advanced
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="skill" value="intermediate" /> intermediate
+                                </label>
+                            </div>
+
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="skill" value="beginner" /> Beginner
+                                </label>
+                            </div>
+
+                        </div>
+                    </div>
+
+<!-- Text area -->
+
+<div class="form-group">
+  <label class="col-md-4 control-label">Description</label>
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+        	<textarea class="form-control" name="comment" placeholder="Description"></textarea>
+  </div>
+  </div>
+</div>
+
+<!-- Success message -->
+<div class="alert alert-success" role="alert" id="success_message">Success <i class="glyphicon glyphicon-thumbs-up"></i> Thanks for contacting us, we will get back to you shortly.</div>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label"></label>
+  <div class="col-md-4">
+    <button type="submit" class="btn btn-warning" >Send <span class="glyphicon glyphicon-send"></span></button>
+
+
+  </div>
+</div>
+
+</fieldset>
+</form>
+</div>
+    </div><!-- /.container -->

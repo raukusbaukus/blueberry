@@ -60,10 +60,10 @@
             </ul>
             {{#if event.vacancies}}
                 <div>{{event.vacancies}} spaces left</div>
-                <button class="button btn btn-info">RSVP</button>
+                <button id="rsvp" class="button btn btn-info" value="true">RSVP</button>
             {{else}}
                 <div>This Event Is Full.</div>
-                <button class="button btn btn-default">Join The Waitlist</button>
+                <button id="rsvp" class="button btn btn-default" value="true">Join The Waitlist</button>
             {{/if}}
         </div>
     </main>

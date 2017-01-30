@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+  <link rel="stylesheet" href="reg.css">
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="/js/reg.js"></script>
+
+</head>
+<body>
+  <header class="zen">
+		<nav class="navbar navbar-default transparent" role="navigation">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example-navbar-collapse">
+	         		<span class="icon-bar"></span>
+	         		<span class="icon-bar"></span>
+	         		<span class="icon-bar"></span>
+      			</button>
+				<a class="navbar-brand" href="#">
+					<span class="weight-900 white">Blueberry</span>
+				</a>
+			</div>
+			<div class="collapse navbar-collapse" id="example-navbar-collapse">
+				<ul class="nav navbar-nav pull-right">
+					<li><a href="/login">Sign In</a></li>
+			</div>
+
+		</nav>
+
+
+
+
+
+	</header>
+<section>
+<div class="container">
+
+    <form class="well form-horizontal" action="/user/create" method="post"  id="contact_form">
+<fieldset>
+
+<!-- Form Name -->
+<legend>Create Account</legend>
+
+<!-- Display Name Text input-->
+
+<div class="form-group">
+  <label class="col-md-4 control-label">Display Name</label>
+  <div class="col-md-4 inputGroupContainer">
+  <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+  <input  name="display_name" placeholder="Alias" class="form-control"  type="text">
+    </div>
+  </div>
+</div>
+
+<!-- Password input-->
+
+<div class="form-group">
+  <label class="col-md-4 control-label" >Password</label>
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+  <input name="password" placeholder="Password" class="form-control" class="validate"  type="password">
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Zipcode Text input-->
+
+<div class="form-group">
+  <label class="col-md-4 control-label">Zip Code</label>
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+  <input name="location" placeholder="Zip Code" class="form-control"  type="text">
+    </div>
+</div>
+</div>
+
+
+<!-- Email Text input-->
+       <div class="form-group">
+  <label class="col-md-4 control-label">E-Mail</label>
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+  <input name="email" placeholder="E-Mail Address" class="form-control"  type="text">
+    </div>
+  </div>
+</div>
+
+
+<!-- Phone input-->
+
+<div class="form-group">
+  <label class="col-md-4 control-label">Phone #</label>
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+  <input name="phone" placeholder="(845)555-1212" class="form-control" type="text">
+    </div>
+  </div>
+</div>
+
+<!-- Meeting Type Select Basic -->
+
+<div class="form-group">
+  <label class="col-md-4 control-label">Meeting Type</label>
+    <div class="col-md-4 selectContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+    <select name="remote_irl" class="form-control selectpicker" >
+      <option value="both">Both</option>
+      <option value="irl">In person</option>
+      <option value="both">Remote</option>
+    </select>
+  </div>
+</div>
+</div>
+
+
+<!-- Bio Text area -->
+
+<div class="form-group">
+  <label class="col-md-4 control-label">Bio</label>
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+        	<textarea class="form-control" name="bio" placeholder="Your bio"></textarea>
+  </div>
+  </div>
+</div>
+
+<!-- Success message -->
+<div class="alert alert-success" role="alert" id="success_message">Success <i class="glyphicon glyphicon-thumbs-up"></i> Thanks for signin up.</div>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label"></label>
+  <div class="col-md-4">
+    <button type="submit" class="btn btn-warning" >Register <span class="glyphicon glyphicon-ok"></span></button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+</div>
+    </div><!-- /.container -->
+  </section>
+</body>
+</html>

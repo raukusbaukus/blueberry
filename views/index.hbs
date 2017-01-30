@@ -12,23 +12,64 @@
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<!-- AWESOMEPLETE SEARCH -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.1/awesomplete.css">
+	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.1/awesomplete.css"> -->
 	<link rel="stylesheet" type="text/css" href="stylesheets/style.css">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.1/awesomplete.js"></script>
-	<script src="/js/sign.js"></script>
-	<script src="/js/tag_search.js"></script>
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.1/awesomplete.js"></script> -->
+	<!-- <script src="/js/sign.js"></script> -->
+	<!-- <script src="/js/tag_search.js"></script> -->
+	<script defer src="/js/ui.js"></script>
 	<title>BlueBerry</title>
 </head>
 
 <body>
 	<header>
-		<nav class="navbar navbar-inverse transparent">
-			<div class="container">
+		<nav class="navbar navbar-default transparent" role="navigation">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example-navbar-collapse">
+	         		<span class="icon-bar"></span>
+	         		<span class="icon-bar"></span>
+	         		<span class="icon-bar"></span>
+      			</button>
+				<a class="navbar-brand" href="#">
+					<span class="weight-900 white">Blueberry</span>
+				</a>
+			</div>
+			<div class="collapse navbar-collapse" id="example-navbar-collapse">
+				<ul class="nav navbar-nav pull-right">
+					<li><a href="/user/create">Sign Up</a></li>
+					<li class="dropdown"><a href="/login">Sign In</a></li>
+						<!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sign In</a>
+						<ul class="dropdown-menu pull-left">
+							<form method="POST" action="/login">
+								<fieldset id="inputs">
+									<label for="username" class="sr-only">Email</label>
+									<input autofocus required id="username" type="email" name="email" placeholder="email" required>
+									<label for="password" class="sr-only">Password</label>
+									<input required id="password" type="password" name="password" placeholder="Password" required>
+								</fieldset>
+								<fieldset id="actions">
+									<input type="checkbox" checked="checked">
+									<label>Keep me signed in</label>
+									<button class="button btn btn-info" type="submit" id="submit">Sign in</button>
+								</fieldset>
+							</form>
+						</ul>
+					</li>
+				</ul> -->
+			</div>
+
+		</nav>
+
+
+
+
+
+		<!-- <nav class="navbar navbar-inverse transparent">
+			<div class="container-fluid">
 				<a class="navbar-brand" href="#">
 					<span class="weight-900 white">blueberry</span>
-					<!-- <img alt="blueberry logo" src="/img/logo.png"> -->
 				</a>
-				<button class="navbar-toggle" data-toggle="collapse" data-target="nav_links">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
@@ -53,25 +94,26 @@
 								</form>
 							</div>
 						</li>
-						<li><a href="/user/create">sign up</a></li>
-
+						<li>
+							<a href="/user/create">sign up</a>
+						</li>
 					</ul>
 				</div>
 			</div>
-		</nav>
+		</nav> -->
 	</header>
 	<main>
 		<section id="landing">
 			<!-- <h1>in each of us is a student and a teacher. blueberry helps us be both.</h1> -->
 			<!-- SEARCH BAR -->
-			<form id="search-form" class="searchform group text-center">
+			<form action="/" id="search-form" method="POST" class="searchform group text-center">
 				<label for="search-box">
    					<span class="spanText">What do you want to learn?</span>
   			</label>
-				<input autofocus type="search" class="text-center" id="search-box" list="search-tags">
+				<input autofocus name="tags" type="search" class="text-center" id="search-box" list="search-tags">
 				<datalist id="search-tags">
           {{#each all_tags}}
-          	<option>{{this.title}}</option>
+          	<option value="{{this.id}}">{{this.title}}</option>
         {{/each}}
       	</datalist>
 			</form>
@@ -84,7 +126,7 @@
 				<ul class="list-group container margin-top-2rem">
 					{{#each events}}
 						<li class="list-group-item event row">
-							<a href="/event/{{this.id}}">
+							<a href="/event/read/{{this.id}}">
 								<div class="col-xs-6">
 									<div>
 										{{this.location.title}} <span class="opacity-5">{{this.location.area}}</span></div>
@@ -104,7 +146,7 @@
 									</ul>
 									<div>
 										<div class="event_user">
-											<a href="/user/{{this.host.id}}">
+											<a href="/user/read/{{this.host.id}}">
 												<img class="event_avatar" alt="user photo" src="{{this.host.avatar}}">
 												<span>{{this.host.display_name}}</span>
 											</a>
