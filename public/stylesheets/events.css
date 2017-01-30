@@ -1,5 +1,35 @@
 /*------GLOBAL------*/
 
+.subject-text {
+  font-size: 1.8rem;
+}
+
+.side-search {
+  background-color: #ddd; /*rgba(113, 139, 184, 1);*/
+  border-radius: 4px;
+  margin: .5em;
+  padding: 1em;
+  border: solid #888 .1rem;
+  /*background: linear-gradient(to bottom right, rgba(159, 206, 233, 1), rgba(113, 139, 184, 1));*/
+}
+
+.tag_button {
+  margin-left: 1rem;
+  margin-right: -.6rem;
+  border: solid #000 .1rem;
+  border-radius: 4px;
+  background-color: rgba(166, 166, 166, .5);
+  color: #000;
+}
+
+.tag_button:hover {
+  background-color: #bbb; /*rgba(166, 166, 166, .9);*/
+}
+
+.checkbox {
+  margin-left: 2rem;
+}
+
 section {
     padding: 5rem 0 15rem;
     background-color: #fbfbfb;
@@ -40,21 +70,10 @@ ul {
     margin-top: 2rem;
 }
 
-.tag {
-    color: #fff;
-    background-color: #ccc;
-    border-radius: .5rem;
-    padding: .5rem 1rem;
-    display: inline-block;
-}
-.tag:hover {
-  background-color: #aaa;
-}
-
 /*----------HEADER-------*/
 
 .navbar-toggle {
-     background-color: transparent; 
+     background-color: transparent;
 }
 
 #login-content {

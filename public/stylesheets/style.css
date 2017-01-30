@@ -42,19 +42,19 @@ ul {
 
 .tag {
     color: #fff;
-    background-color: #ccc;
+    background-color: #3361FF;
     border-radius: .5rem;
     padding: .5rem 1rem;
     display: inline-block;
 }
 .tag:hover {
-  background-color: #aaa;
+  background-color: #30A6FF;
 }
 
 /*----------HEADER-------*/
 
 .navbar-toggle {
-     background-color: transparent; 
+     background-color: transparent;
 }
 
 #login-content {

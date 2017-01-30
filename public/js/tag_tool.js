@@ -4,6 +4,7 @@ $(document).ready(function() {
     event.preventDefault();
     let tag = $('#tag-search-box').val();
     let user_id = $('#user_id').val();
+    $('#tag-search-box').val('');
     $.post('/tags/create', {
       tag,
       user_id
@@ -25,7 +26,7 @@ function prep_tags() {
 function show_tags(data) {
   $('#user_tag_list').html('');
   data.forEach(tag => {
-    $('#user_tag_list').append(`<li class="tag" id="tag_${tag}">${tag}<input type="button" value="X" name="${tag}" id="tag_b_${tag}"></input></li>`);
+    $('#user_tag_list').append(`<li class="tag" id="tag_${tag}">${tag}<input type="button" class="tag_button" value="X" name="${tag}" id="tag_b_${tag}"></input></li>`);
     $(`#tag_b_${tag}`).on('click', remove_tag_from_user);
   });
 }

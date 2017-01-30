@@ -1,12 +1,12 @@
 const express = require('express'),
   router = express.Router(),
-  queries = require('../queries');
+  query = require('../queries');
 
 router.get('/', (req, res, next) => {
-  queries.get_events()
+  query.get_events()
     .then(values => {
       let events = [];
-      queries.get_all_tags()
+      query.get_all_tags()
         .then(all_tag_titles => {
           let all_tags = [];
           all_tag_titles.forEach(a_tags => {
@@ -15,7 +15,7 @@ router.get('/', (req, res, next) => {
             }
             all_tags.push(all_tag);
           });
-          queries.get_tags()
+          query.get_tags()
             .then(tag_values => {
               let tags = [];
               tag_values.forEach(tag_value => {

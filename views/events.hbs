@@ -14,6 +14,7 @@
 	<!-- AWESOMEPLETE SEARCH -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.1/awesomplete.css">
 	<link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+	<link rel="stylesheet" type="text/css" href="stylesheets/events.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.1/awesomplete.js"></script>
 	<script src="/js/tag_tool.js"></script>
 	<title>BlueBerry</title>
@@ -53,50 +54,43 @@
 	</header>
 	<main>
 		<section id="landing">
-			<!-- <h1>in each of us is a student and a teacher. blueberry helps us be both.</h1> -->
-			<!-- SEARCH BAR -->
-			<form id="search-form" class="searchform group text-center">
-				<label for="search-box">
-   					<span class="spanText">What subject do you want to learn?</span>
-  			</label>
-				<input autofocus type="search" name="search_tag" class="text-center" id="tag-search-box" list="search-tags">
-        <input id="user_id" type="hidden" name="user_id" value="{{me.id}}">
-        <datalist id="search-tags">
-          {{#each all_tags}}
-          	<option>{{this.title}}</option>
-        {{/each}}
-      	</datalist>
-        <input type="submit" value="Add Interest Tag">
-			</form>
-			<div id="tag_list">
-				<ul id="user_tag_list">
-				</ul>
-			</div>
 		</section>
 
 
 
 
 		<!-- EVENTS LIST -->
-			<section id="event_list">
-				<div class="container">
-					<div class="row">
-				<h2 class="text-center">Upcoming Lessons</h2>
+		<section id="event_list">
+			<div class="container">
+				<div class="row">
+					<h2 class="text-center">Upcoming Events</h2>
 
-				<aside class="col-xs-3">
-					<h2 class="text-center">Tag List</h2>
-					<ul>
-						<li></li>
-					</ul>
+					<section class="side-search col-xs-3">
+						<h2 class="text-center subject-text">Subjects of Interest</h2>
+						<ul>
+							<li></li>
+						</ul>
 
-				<div class="caption">
-        		<h3>above this we should have a list of tags!</h3>
-        			<p>Here we can put some text here if we want</p>
-        			<label class="checkbox">
-    				<input type="checkbox"> Only search my tags!
+						<div class="caption">
+							<form id="search-form" class="searchform group text-center">
+								<div id="tag_list">
+									<ul id="user_tag_list">
+									</ul>
+								</div>
+								<input type="search" name="search_tag" class="text-center" id="tag-search-box" list="search-tags">
+				        <input id="user_id" type="hidden" name="user_id" value="{{me.id}}">
+				        <datalist id="search-tags">
+				          {{#each all_tags}}
+				          	<option>{{this.title}}</option>
+				        {{/each}}
+				      	</datalist>
+				        <input type="submit" value="Add a Subject">
+							</form>
+							<label class="checkbox">
+    				<input type="checkbox"> Only search my subjects!
   					</label>
-        			<p><a href="#" class="btn btn-primary" role="button">Search</a></p>
-      			</div>	
+							<p><a href="#" class="btn btn-primary" role="button">Search</a></p>
+						</div>
 
 
 
@@ -104,16 +98,16 @@
 
 
 
-				</aside>
+					</section>
 
-				<div class="col-sx-1">
-				</div>
+					<div class="col-sx-1">
+					</div>
 
-				<ul class="col-xs-8">
-					{{#each events}}
+					<ul class="col-xs-8">
+						{{#each events}}
 
-						<li class="list-group-item event row">
-							<a href="/event/{{this.id}}"></a>
+							<li class="list-group-item event row">
+								<a href="/event/{{this.id}}"></a>
 								<div class="col-xs-6">
 									<div>
 										{{this.location.title}} <span class="opacity-5">{{this.location.area}}</span></div>
@@ -142,10 +136,10 @@
 									</div>
 								</div>
 
-						</li>
-						</a>
-					{{/each}}
-				</ul>
+							</li>
+							</a>
+						{{/each}}
+					</ul>
 				</div>
 			</div>
 		</section>
