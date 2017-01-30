@@ -1,0 +1,232 @@
+/*------GLOBAL------*/
+
+section {
+    padding: 5rem 0 15rem;
+    background-color: #fbfbfb;
+}
+header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+a {
+    cursor: pointer;
+    color: inherit;
+}
+a:hover {
+  color: inherit;
+  text-decoration: inherit;
+}
+li {
+  list-style: none;
+}
+ul {
+  padding: 0;
+}
+.padding-top-3rem {
+    padding-top: 10rem;
+}
+
+.opacity-5 {
+    opacity: 0.5;
+}
+
+.white {
+    color: white;
+}
+
+.margin-top-2rem {
+    margin-top: 2rem;
+}
+
+.tag {
+    color: #fff;
+    background-color: #ccc;
+    border-radius: .5rem;
+    padding: .5rem 1rem;
+    display: inline-block;
+}
+.tag:hover {
+  background-color: #aaa;
+}
+
+/*----------HEADER-------*/
+
+.navbar-toggle {
+     background-color: transparent; 
+}
+
+#login-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    border-radius: .2rem;
+    padding: .5rem 2rem 1rem 2rem;
+    color: #555;
+}
+
+#login-content input:not([type=checkbox]) {
+    display: block;
+    border: none;
+    border-bottom: .1rem solid rgba(0, 0, 0, 0.1);
+    margin: 1rem auto;
+}
+
+#login-content input:focus {
+    outline: none;
+}
+
+#login-content button {
+    width: 100%;
+    color: #fff;
+}
+
+.navbar-default {
+    border-radius: 0;
+}
+.transparent {
+  border: none;
+  background-color: rgba(0,0,0,0);
+}
+.transparent .navbar-nav li a {
+  color: white;
+}
+/*.transparent button.navbar-toggle {
+  border: .1rem solid #fff
+}*/
+
+.navbar-brand img {
+    display: none;
+    /* just until we get our own logo */
+    height: 3rem;
+}
+
+.weight-900 {
+    font-size: 2rem;
+}
+
+.dropdown-toogle {
+    margin-left: 20px;
+}
+
+/*--------------#LANDING---------------*/
+
+#landing {
+    padding-top: 15rem;
+    /*background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/img/background.jpg');*/
+    background-image: radial-gradient(farthest-corner at 10rem 10rem, rgba(28, 49, 245, 0.94) 0%, rgba(107, 215, 227, 0.94) 100%), url(/img/background.jpg);
+    background-size: cover;
+    background-repeat: none;
+    color: #fff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+#landing h1 {
+    font-size: 5rem;
+    font-weight: 300;
+    line-height: 4.7rem;
+    text-align: center;
+    width: 70%;
+    min-width: 35rem;
+    margin: auto;
+}
+
+
+/*----------search bar-----------*/
+
+
+/*.searchform label, .searchform input {
+    color: #737373;
+}*/
+
+.searchform label {
+    margin: 3rem auto 1rem;
+    font-weight: 300;
+    font-size: 8rem;
+    /*background-color: rgba(0, 0, 0, 0.5)*/
+}
+
+.searchform input[type="search"] {
+    border: .1em solid #fff;
+    border-width: 0 0 0.1em;
+    background-color: transparent;
+    font: 2rem "Open Sans", sans-serif;
+    width: 20%;
+    min-width: 20rem;
+    margin: 1rem auto;
+    display: block;
+}
+
+.searchform input[type="search"]:focus {
+    outline: none;
+}
+
+.searchform ::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.searchform :-moz-placeholder {
+    /* Firefox 18- */
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.searchform ::-moz-placeholder {
+    /* Firefox 19+ */
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.searchform :-ms-input-placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+/*----------ASIDE---------*/
+aside h1 {
+    padding-bottom: 20px;
+}
+
+
+
+
+/*------- EVENT LIST -----*/
+
+#event_list .tag {
+    display: inline-block;
+    margin: 0 0 .2rem .2rem;
+}
+
+#event_list h3 {
+    margin-top: 1rem;
+    color: #000;
+}
+
+#event_list .event div {
+    color: #777;
+}
+
+#event_list .event .event_user {
+    margin-top: 1rem;
+}
+#event_list .event .event_user a:hover {
+    color: #555;
+}
+#event_list .event .event_user img {
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+}
+
+/* ------ FOOTER ------ */
+
+footer {
+    background: linear-gradient(to bottom right, rgba(107, 215, 227, 1), rgba(28, 49, 245, 1));
+    font-size: 1.5rem;
+    font-family: 'Arial', serif;
+    text-align: center;
+    /*display: block;*/
+    padding: 30px;
+}
+
+footer p {
+    color: white;
+}

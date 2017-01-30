@@ -70,14 +70,47 @@
 			</form>
 			<div class="text-center"><a>I want to teach a subject</a></div>
 		</section>
+
+
+
+
 		<!-- EVENTS LIST -->
-		<section id="event_list">
-			<div class="container">
+			<section id="event_list">
+				<div class="container">
+					<div class="row">
 				<h2 class="text-center">Upcoming Lessons</h2>
-				<ul class="list-group container margin-top-2rem">
+
+				<aside class="col-xs-3">
+					<h2 class="text-center">Tag List</h2>
+					<ul>
+						<li></li>
+					</ul>
+
+				<div class="caption">
+        		<h3>above this we should have a list of tags!</h3>
+        			<p>Here we can put some text here if we want</p>
+        			<label class="checkbox">
+    				<input type="checkbox"> Only search my tags!
+  					</label>
+        			<p><a href="#" class="btn btn-primary" role="button">Search</a></p>
+      			</div>	
+
+
+
+
+
+
+
+				</aside>
+
+				<div class="col-sx-1">
+				</div>
+
+				<ul class="col-xs-8">
 					{{#each events}}
+
 						<li class="list-group-item event row">
-							<a href="/event/{{this.id}}">
+							<a href="/event/{{this.id}}"></a>
 								<div class="col-xs-6">
 									<div>
 										{{this.location.title}} <span class="opacity-5">{{this.location.area}}</span></div>
@@ -100,7 +133,6 @@
 											<a href="/user/{{this.host.id}}">
 												<img class="event_avatar" alt="user photo" src="{{this.host.avatar}}">
 												<span>{{this.host.display_name}}</span>
-											</a>
 										</div>
 										<div>xp {{this.host.xp}} | <img alt="star" src="/img/star.png" style="height: 1em"> {{this.host.rating}}
 										</div>
@@ -111,8 +143,11 @@
 						</a>
 					{{/each}}
 				</ul>
+				</div>
 			</div>
 		</section>
+		</div>
+		</div>
 	</main>
 
 	<footer>
