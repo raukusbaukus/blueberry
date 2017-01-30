@@ -9,6 +9,7 @@ header {
   top: 0;
   right: 0;
   left: 0;
+  margin-left: 40px;
 }
 a {
     cursor: pointer;
@@ -106,13 +107,8 @@ ul {
     font-size: 2rem;
 }
 
-/*#centered {
-    position: run-in;
-    margin-left: 0px;
-
-}*/
-.dropdown-toogle {
-    margin-left: 20px;
+#example-navbar-collapse {
+    margin-right: 60px;
 }
 
 /*--------------#LANDING---------------*/

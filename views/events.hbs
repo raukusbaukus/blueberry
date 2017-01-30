@@ -13,10 +13,10 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<!-- AWESOMEPLETE SEARCH -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.1/awesomplete.css">
-	<link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+	<link rel="stylesheet" type="text/css" href="stylesheets/events.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.1/awesomplete.js"></script>
 	<script src="/js/tag_tool.js"></script>
-	<title>BlueBerry</title>
+	<title>blueBerry</title>
 </head>
 
 <body>
@@ -25,7 +25,7 @@
 			<div class="container white">
 				<a class="navbar-brand" href="#">
 					<span class="weight-900">blueberry</span>
-					<img alt="blueberry logo" src="/img/logo.png">
+					<!-- <img alt="blueberry logo" src="/img/logo.png"> -->
 				</a>
 				<ul class="nav navbar-nav pull-right">
 					<li>
@@ -45,15 +45,15 @@
 			<form id="search-form" class="searchform group text-center">
 				<label for="search-box">
    					<span class="spanText">What subject do you want to learn?</span>
-  			</label>
+  				</label>
 				<input autofocus type="search" name="search_tag" class="text-center" id="tag-search-box" list="search-tags">
-        <input id="user_id" type="hidden" name="user_id" value="{{me.id}}">
-        <datalist id="search-tags">
-          {{#each all_tags}}
-          	<option>{{this.title}}</option>
-        {{/each}}
-      	</datalist>
-        <input type="submit" value="Add Interest Tag">
+        		<input id="user_id" type="hidden" name="user_id" value="{{me.id}}">
+        		<datalist id="search-tags">
+          			{{#each all_tags}}
+          			<option>{{this.title}}</option>
+        			{{/each}}
+      			</datalist>
+        	<input type="submit" value="Add Interest Tag">
 			</form>
 			<div class="text-center"><a>I want to teach a subject</a></div>
 		</section>
