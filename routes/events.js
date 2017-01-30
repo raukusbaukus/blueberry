@@ -4,11 +4,6 @@ const express = require('express'),
 
 
 router.get('/', (req, res, next) => {
-  req.session = {
-    cookie: {
-      id: 2
-    }
-  };
   if (req.session) {
     query.get_events()
       .then(values => {
