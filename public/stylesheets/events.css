@@ -96,37 +96,8 @@ ul {
     outline: none;
 }
 
-#login-content button {
-    width: 100%;
-    color: #fff;
-}
-
-.navbar-default {
-    border-radius: 0;
-}
-.transparent {
-  border: none;
-  background-color: rgba(0,0,0,0);
-}
-.transparent .navbar-nav li a {
-  color: white;
-}
-/*.transparent button.navbar-toggle {
-  border: .1rem solid #fff
-}*/
-
-.navbar-brand img {
-    display: none;
-    /* just until we get our own logo */
-    height: 3rem;
-}
-
 .weight-900 {
     font-size: 2rem;
-}
-
-.dropdown-toogle {
-    margin-left: 20px;
 }
 
 /*--------------#LANDING---------------*/
@@ -141,7 +112,6 @@ ul {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-
 #landing h1 {
     font-size: 5rem;
     font-weight: 300;
@@ -149,7 +119,7 @@ ul {
     text-align: center;
     width: 70%;
     min-width: 35rem;
-    margin: auto;
+    margin: auto;_event
 }
 
 
