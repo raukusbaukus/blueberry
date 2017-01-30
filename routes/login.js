@@ -4,15 +4,14 @@ const express = require('express'),
     query = require('../queries');
 
 router.get('/', (req, res) => {
-    if (req.session.id) {
+    if (req.session.user) {
         res.redirect('/events');
     } else {
-        let error;
-        if (req.query.e === 'invalid') {
-            error = 'Your email and password combination was invalid.';
-        } else if (req.query.e === 'restricted') {
-            error = 'You must be logged in to view that page';
-        }
+        let error = req.query.e === 'invalid' ?
+            'Your email and password combination was invalid.' :
+            req.query.e === 'restricted' ?
+            'You must be logged in to view that page' :
+            false;
         res.render('login', {
             error
         })
@@ -25,7 +24,8 @@ router.post('/', (req, res) => {
                 .then(match => {
                     if (match) {
                         req.session.user = user[0].id
-                        res.render('index')
+                        console.log('req session user in login post', req.session.user)
+                        res.redirect('/events')
                     } else {
                         res.redirect('/login?e=invalid');
                     }

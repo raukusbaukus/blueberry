@@ -6,6 +6,7 @@ const express = require('express'),
     path = require('path'),
     routes = require('./routes/index'),
     login = require('./routes/login'),
+    logout = require('./routes/logout'),
     event = require('./routes/event'),
     events = require('./routes/events'),
     tags = require('./routes/tags'),
@@ -20,12 +21,14 @@ app.use(body_parser.urlencoded({ extended: true }));
 app.use(express_session({
   secret: process.env.SECRET,
   resave: false,
-  saveUninitialized: true
+  saveUninitialized: true,
+  unset: 'destroy'
 }));
 
 app.use(express.static(path.join(__dirname, 'public')));
-app.use("/", routes);
+app.use('/', routes);
 app.use('/login', login);
+app.use('/logout', logout)
 app.use('/event', event);
 app.use('/events', events);
 app.use('/user', user);
