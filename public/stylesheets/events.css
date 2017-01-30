@@ -106,11 +106,6 @@ ul {
     font-size: 2rem;
 }
 
-/*#centered {
-    position: run-in;
-    margin-left: 0px;
-
-}*/
 .dropdown-toogle {
     margin-left: 20px;
 }
@@ -185,6 +180,12 @@ ul {
 .searchform :-ms-input-placeholder {
     color: rgba(255, 255, 255, 0.6);
 }
+/*----------ASIDE---------*/
+aside h1 {
+    padding-bottom: 20px;
+}
+
+
 
 
 /*------- EVENT LIST -----*/
@@ -207,12 +208,12 @@ ul {
     margin-top: 1rem;
 }
 #event_list .event .event_user a:hover {
-  color: #555;
+    color: #555;
 }
 #event_list .event .event_user img {
-  height: 3rem;
-  width: 3rem;
-  border-radius: 50%;
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
 }
 
 /* ------ FOOTER ------ */
