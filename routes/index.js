@@ -3,6 +3,8 @@ const express = require('express'),
   query = require('../queries');
 
 router.get('/', (req, res, next) => {
+  if(req.session){
+    let me = {id:req.session.cookie.user}
   query.get_events()
     .then(values => {
       let events = [];
@@ -64,6 +66,7 @@ router.get('/', (req, res, next) => {
                 events.push(event);
               });
               res.render('index', {
+                me,
                 events,
                 all_tags
               });
@@ -82,6 +85,9 @@ router.get('/', (req, res, next) => {
       console.error(err)
       res.status(500).send(err);
     });
+  }else {
+    res.redirect('/login?e=restricted');
+  }
 });
 
 module.exports = router;

@@ -4,17 +4,33 @@ const express = require('express'),
     query = require('../queries');
 //
 router.get('/create/', (req, res) => {
+  if(req.session){
+    let me = {id:req.session.cookie.user}
     res.render('create_user');
+
+  }else {
+    res.redirect('/login?e=restricted')
+  }
 });
+
+------
 router.get('/create/:event', (req, res) => {
+
+  if(req.session){
+    let me = {id:req.session.cookie.user}
     let event = Number(req.params.event);
     //if user arrives at signup via event rsvp, save event id to sign them up
     //automagically, post registration
     res.render('create_user', {
         event
     })
+  }else {
+    res.redirect('/login?e=restricted')
+  }
 });
 router.post('/create', (req, res) => {
+  if(req.session){
+    let me = {id:req.session.cookie.user}
     argon2.generateSalt(16).then(salt => {
             argon2.hash(req.body.password, salt)
                 .then(hash => {
@@ -46,8 +62,17 @@ router.post('/create', (req, res) => {
                 err
             })
         })
+
+      }else {
+        res.redirect('/login?e=restricted')
+      }
 });
+
+
+
 router.get('/read/:id', (req, res) => {
+  if(req.session){
+    let me = {id:req.session.cookie.user}
     query.find_user(id)
         .then(user => {
             res.render('read_user', {
@@ -57,19 +82,30 @@ router.get('/read/:id', (req, res) => {
         .catch(err => {
             res.status(400).send(err)
         })
+      }else {
+        res.redirect('/login?e=restricted')
+      }
 });
 router.get('/update/:id', (req, res) => {
+  if(req.session){
+    let me = {id:req.session.cookie.user}
     query.find_user(id)
         .then(user => {
             res.render('update_user', {
+                me,
                 user
             });
         })
         .catch(err => {
             res.status(400).send(err)
         })
+      }else {
+        res.redirect('/login?e=restricted')
+      }
 })
 router.put('/update/:id', (req, res) => {
+  if(req.session){
+    let me = {id:req.session.cookie.user}
     let id = Number(req.params.id);
     query.update_user(id)
         .then(user => {
@@ -78,8 +114,13 @@ router.put('/update/:id', (req, res) => {
         .catch(err => {
             res.status(400).send(err)
         })
+      }else {
+        res.redirect('/login?e=restricted')
+      }
 });
 router.delete('/delete/:id', (req, res) => {
+  if(req.session){
+    let me = {id:req.session.cookie.user}
     let id = Number(req.params.id);
     query.delete_user(id)
         .then(() => {
@@ -88,5 +129,8 @@ router.delete('/delete/:id', (req, res) => {
         .catch(err => {
             res.status(400).send(err)
         })
+      }else {
+          res.redirect('/login?e=restricted')
+      }
 });
 module.exports = router;

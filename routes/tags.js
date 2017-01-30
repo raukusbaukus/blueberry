@@ -4,6 +4,8 @@ const express = require('express'),
 
 
 router.post('/create', (req, res) => {
+  if(req.session){
+    let me = {id:req.session.cookie.user}
   let tag_title = String(req.body.tag);
   let user_id = Number(req.body.user_id);
   query.check_tag(tag_title)
@@ -65,9 +67,15 @@ router.post('/create', (req, res) => {
       console.error(err);
       res.status(500).send(err);
     })
+  }else {
+    res.redirect('/login?e=restricted');
+  }
 })
-
+// ---------
 router.delete('/delete', (req, res) => {
+
+  if(req.session){
+    let me = {id:req.session.cookie.user}
   //deletes the passed tag from the passed user. does not delete from tags table
   let tag_name = String(req.body.tag_name);
   let user_id = Number(req.body.user_id);
@@ -102,9 +110,14 @@ router.delete('/delete', (req, res) => {
       console.error(err);
       res.status(500).send(err);
     })
+  }else {
+    res.redirect('/login?e=restricted');
+  }
 });
-
+// ---------
 router.get('/user/:user_id', (req, res) => {
+  if(req.session){
+    let me = {id:req.session.cookie.user}
   let user_id = Number(req.params.user_id);
   query.tag_associations(user_id)
     .then(tag_data => {
@@ -118,6 +131,9 @@ router.get('/user/:user_id', (req, res) => {
       console.error("catch user", err);
       res.status(500).send(err);
     })
+  }else {
+    res.redirect('/login?e=restricted');
+  }
 });
 
 // router.get('/:tags', (req, res) => {

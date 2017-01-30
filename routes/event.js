@@ -3,7 +3,9 @@ const express = require('express'),
   query = require('../queries');
 
 //CREATE
-router.get('/create/:user', (req, res) => {
+router.get('/create', (req, res) => {
+  if(req.session){
+    let me = {id:req.session.cookie.user}
   query.get_all_tags()
     .then(tags => {
       let me = {
@@ -18,9 +20,17 @@ router.get('/create/:user', (req, res) => {
       console.error('get all tags', err);
       res.status(400).send(err);
     })
-})
+  }else{
 
+    res.redirect('/login?e=restricted');
+
+
+  }
+});
+// ----------------
 router.post('/create', (req, res, next) => { //take path from moh's form
+  if (req.session){
+    let me = {id:req.session.cookie.user}
   query.create_event(req.body)
     .then(event => {
       query.add_tags_to_event(req.body.tags, event)
@@ -36,10 +46,16 @@ router.post('/create', (req, res, next) => { //take path from moh's form
       console.error('create event', err);
       res.status(400).send(err)
     })
+  }else {
+    res.redirect('/login?e=restricted');
+  }
 });
-
+// -------------
 //READ
 router.get('/read/:id', (req, res) => {
+  if(req.session){
+
+  let me = {id:req.session.cookie.user}
   let id = req.params.id;
   query.get_event_by_id(id)
     .then(db_event => {
@@ -92,6 +108,7 @@ router.get('/read/:id', (req, res) => {
                 event.tags.push(tag.title);
               })
               res.render('event', {
+                me,
                 event
               })
             })
@@ -106,10 +123,15 @@ router.get('/read/:id', (req, res) => {
     .catch(err => {
       console.error(err);
     })
+  }else {
+    res.redirect('/login?e=restricted');
+  }
 })
-
+// -----------
 //UPDATE
 router.get('/update/:id', (req, res) => {
+  if(req.session){
+    let me = {id:req.session.cookie.user}
   let id = Number(req.params.id);
   query.get_event_by_id(id)
     .then(event => {
@@ -118,6 +140,7 @@ router.get('/update/:id', (req, res) => {
           query.get_users_by_event(event)
             .then(users => {
               res.render('update_user', {
+                me,
                 event,
                 tags,
                 users
@@ -137,9 +160,14 @@ router.get('/update/:id', (req, res) => {
       console.error(err);
       res.status(400).send(err);
     })
+  }else {
+    res.redirect('/login?e=restricted');
+  }
 })
-
+// -------
 router.put('/update', (req, res) => {
+  if(req.session){
+    let me = {id:req.session.cookie.user}
   let id = Number(req.body.id);
   query.update_event(id)
     .then(id => {
@@ -149,10 +177,16 @@ router.put('/update', (req, res) => {
       console.error(err);
       res.status(400).send(err)
     })
+  }else {
+    res.redirect('/login?e=restricted');
+  }
 });
 
 //DELETE
 router.delete('/delete/:id', (req, res, next) => {
+
+  if(req.session){
+    let me = {id:req.session.cookie.user}
   let id = Number(req.params.id);
   query.delete_event(id)
     .then(event => {
@@ -161,6 +195,9 @@ router.delete('/delete/:id', (req, res, next) => {
     .catch(err => {
       console.error(err);
     })
+  }else {
+    res.redirect('/login?e=restricted');
+  }
 });
 
 module.exports = router;
