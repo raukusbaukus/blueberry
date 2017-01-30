@@ -11,6 +11,8 @@ router.get('/', (req, res) => {
             'Your email and password combination was invalid.' :
             req.query.e === 'restricted' ?
             'You must be logged in to view that page' :
+            req.query.e === 'unauthorized' ?
+            'This isn\'t yours to update' :
             false;
         res.render('login', {
             error
@@ -24,8 +26,9 @@ router.post('/', (req, res) => {
                 .then(match => {
                     if (match) {
                         req.session.user = user[0].id
-                        console.log('req session user in login post', req.session.user)
-                        res.redirect('/events')
+                        req.session.cookie.path == '/' ?
+                        res.redirect('/events') :
+                        res.redirect(req.session.cookie.path);
                     } else {
                         res.redirect('/login?e=invalid');
                     }

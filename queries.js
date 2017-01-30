@@ -170,6 +170,15 @@ module.exports = {
       .into('events')
       .returning('id')
   },
+  create_events_users(event, user) {
+    return connect.insert({
+      event: Number(event),
+      user: Number(user),
+      role: 'learn'
+    })
+    .into('events_users')
+    returning('*')
+  },
   add_tags_to_event(tags, event) {
     //takes and array of tag IDs and an event ID makes it an array of tagID/eventID objects
     let event_tags = [];
