@@ -74,7 +74,7 @@ module.exports = {
       .innerJoin('tags', 'events_tags.tag', 'tags.id')
   },
   get_all_tags() {
-    return connect.select('title')
+    return connect.select('title', 'id')
       .from('tags')
   },
   get_tag_id_by_tag_title(tag_title) {
@@ -105,6 +105,31 @@ module.exports = {
       .innerJoin('users', 'events.user', 'users.id')
       .orderBy('list', 'desc')
   },
+  get_events_by_tags(tags_ids){
+    return connect.select(
+        'events.id',
+        'events.title',
+        'events.venue',
+        'events.address',
+        'events.area',
+        'events.start',
+        'events.end',
+        'users.id as user',
+        'users.avatar',
+        'users.display_name',
+        'users.bio',
+        'users.rating',
+        'users.xp',
+        'events.description',
+        'events.skill_level',
+        'events.capacity'
+      )
+      .from('events')
+      .innerJoin('users', 'events.user', 'users.id')
+      .innerJoin('events_tags', 'events.id', 'events_tags.event')
+      .whereIn('events_tags.tag', tags_ids)
+      .orderBy('list', 'desc')
+},
   get_event_by_id(id) {
     return connect.select(
         'events.id',

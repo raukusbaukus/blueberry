@@ -9,7 +9,8 @@ header {
   top: 0;
   right: 0;
   left: 0;
-  margin-left: 40px;
+  z-index: 1000;
+  transition: background 1s
 }
 a {
     cursor: pointer;
@@ -28,7 +29,9 @@ ul {
 .padding-top-3rem {
     padding-top: 10rem;
 }
-
+.navbar {
+  margin-bottom: .5rem;
+}
 .opacity-5 {
     opacity: 0.5;
 }
@@ -43,13 +46,13 @@ ul {
 
 .tag {
     color: #fff;
-    background-color: #3361FF;
+    background-color: #bbb;
     border-radius: .5rem;
     padding: .5rem 1rem;
     display: inline-block;
 }
 .tag:hover {
-  background-color: #30A6FF;
+  background-color: #aaa;
 }
 
 /*----------HEADER-------*/
@@ -57,7 +60,9 @@ ul {
 .navbar-toggle {
      background-color: transparent;
 }
-
+.zen {
+  background-image: radial-gradient(farthest-corner at 10rem 10rem, rgba(28, 49, 245, 0.94) 0%, rgba(107, 215, 227, 0.94) 100%), url(/img/background.jpg);
+}
 #login-content {
     display: none;
     position: absolute;
