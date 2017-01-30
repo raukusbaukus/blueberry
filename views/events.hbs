@@ -21,28 +21,33 @@
 </head>
 
 <body>
-	<header class="navbar-fixed-top">
-		<nav class="navbar">
-			<div class="container white">
+	<header class="zen">
+		<nav class="navbar navbar-default transparent" role="navigation">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example-navbar-collapse">
+	         		<span class="icon-bar"></span>
+	         		<span class="icon-bar"></span>
+	         		<span class="icon-bar"></span>
+      			</button>
 				<a class="navbar-brand" href="#">
-					<span class="weight-900">blueberry</span>
-					<!-- <img alt="blueberry logo" src="/img/logo.png"> -->
+					<span class="weight-900 white">Blueberry</span>
 				</a>
-				<ul class="nav navbar-nav pull-right">
-					<li>
-						<a id="create_event" href="event/create">Create Event</a>
-					</li>
-					<li>
-						<a href="/logout">Sign Out</a>
-					</li>
-				</ul>
 			</div>
+			<div class="collapse navbar-collapse" id="example-navbar-collapse">
+				<ul class="nav navbar-nav pull-right">
+					<li><a href="/event/create">Create An Event</a></li>
+					<li><a href="/logout">Sign Out</a></li>
+			</div>
+
 		</nav>
+
+
+
+
+
 	</header>
+
 	<main>
-		<section id="landing" style="padding-bottom: 50px; padding-top: 50px;">
-			<!-- <h1>in each of us is a student and a teacher. blueberry helps us be both.</h1> -->
-		</section>
 
 		<!-- EVENTS LIST -->
 		<section id="event_list">
