@@ -13,7 +13,7 @@ router.get('/create/', (req, res) => {
   }
 });
 
-------
+// ------
 router.get('/create/:event', (req, res) => {
 
   if(req.session){

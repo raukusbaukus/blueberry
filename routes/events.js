@@ -4,7 +4,7 @@ const express = require('express'),
 
 
 router.get('/', (req, res, next) => {
-  
+
 
   req.session = {
     cookie: {
@@ -99,6 +99,6 @@ router.get('/', (req, res, next) => {
     //redirect to login
   }
 });
---------------
+// --------------
 ///
 module.exports = router;
